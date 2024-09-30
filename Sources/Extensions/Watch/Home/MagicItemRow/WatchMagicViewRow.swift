@@ -16,7 +16,7 @@ struct WatchMagicViewRow: View {
                 iconToDisplay
                     .animation(.bouncy, value: viewModel.state)
                 Text(viewModel.itemInfo.name)
-                    .font(.body.bold())
+                    .font(.footnote.bold())
                     .foregroundStyle(textColor)
                     .lineLimit(3)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -40,7 +40,7 @@ struct WatchMagicViewRow: View {
             }
         )
         .modify { view in
-            if let backgroundColor = viewModel.item.customization.backgroundColor {
+            if let backgroundColor = viewModel.item.customization?.backgroundColor {
                 view.listRowBackground(
                     Color(uiColor: .init(hex: backgroundColor))
                         .clipShape(RoundedRectangle(cornerRadius: 14))
@@ -98,7 +98,7 @@ struct WatchMagicViewRow: View {
     }
 
     private var textColor: Color {
-        if let textColor = viewModel.itemInfo.customization?.textColor {
+        if let textColor = viewModel.item.customization?.textColor {
             .init(uiColor: .init(hex: textColor))
         } else {
             .white

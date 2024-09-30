@@ -29,12 +29,12 @@ public struct LegacyNotificationParserImpl: LegacyNotificationParser {
         let isAlert: Bool
         let payload: [String: Any]
 
-        init(_ name: String, aps: [String: Any] = [:], homeassistant: [String: Any] = [:]) {
+        init(_ name: String, aps: [String: Any] = [:], mysmarthomes: [String: Any] = [:]) {
             self.init(
                 isAlert: false,
                 payload: [
                     "aps": ["contentAvailable": true].merging(aps, uniquingKeysWith: { a, _ in a }),
-                    "homeassistant": ["command": name].merging(homeassistant, uniquingKeysWith: { a, _ in a }),
+                    "mysmarthomes": ["command": name].merging(mysmarthomes, uniquingKeysWith: { a, _ in a }),
                 ]
             )
         }
@@ -65,17 +65,17 @@ public struct LegacyNotificationParserImpl: LegacyNotificationParser {
             case .clearBadge:
                 return .init(isAlert: true, payload: ["aps": ["badge": 0]])
             case .clearNotification:
-                var homeassistant = [String: Any]()
+                var mysmarthomes = [String: Any]()
 
                 if let tag = data["tag"] {
-                    homeassistant["tag"] = tag
+                    mysmarthomes["tag"] = tag
                 }
 
                 if let collapseId = headers["apns-collapse-id"] {
-                    homeassistant["collapseId"] = collapseId
+                    mysmarthomes["collapseId"] = collapseId
                 }
 
-                return .init(LegacyNotificationCommandType.clearNotification.rawValue, homeassistant: homeassistant)
+                return .init(LegacyNotificationCommandType.clearNotification.rawValue, mysmarthomes: mysmarthomes)
             case .updateComplications:
                 return .init(LegacyNotificationCommandType.updateComplications.rawValue)
             case .updateWidgets:
@@ -129,7 +129,7 @@ public struct LegacyNotificationParserImpl: LegacyNotificationParser {
         }
 
         if let actionData = data["action_data"] {
-            payload["homeassistant"] = actionData
+            payload["mysmarthomes"] = actionData
             needsCategory = true
         }
 

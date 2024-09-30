@@ -6,10 +6,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="22609"/>
     </dependencies>
     <scenes>
-        <!--Home Assistant-->
+        <!--MySmartHomes-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller title="Home Assistant" id="AgC-eL-Hgc" customClass="HostingController" customModule="WatchExtension_Watch"/>
+                <controller title="MySmartHomes" id="AgC-eL-Hgc" customClass="HostingController" customModule="WatchExtension_Watch"/>
             </objects>
             <point key="canvasLocation" x="34" y="32"/>
         </scene>

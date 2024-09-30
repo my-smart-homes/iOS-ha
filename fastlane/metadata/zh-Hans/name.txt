@@ -1,1 +1,1 @@
-Home Assistant 官方iOS应用
+MySmartHomes 官方iOS应用

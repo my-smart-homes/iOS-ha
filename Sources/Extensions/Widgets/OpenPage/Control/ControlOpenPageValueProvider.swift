@@ -10,7 +10,7 @@ struct ControlOpenPageItem {
     let icon: SFSymbolEntity
 }
 
-@available(iOS 18, *)
+/*@available(iOS 18, *)
 struct ControlOpenPageValueProvider: AppIntentControlValueProvider {
     func currentValue(configuration: ControlOpenPageConfiguration) async throws -> ControlOpenPageItem {
         item(configuration: configuration)
@@ -36,7 +36,7 @@ struct ControlOpenPageValueProvider: AppIntentControlValueProvider {
             page: .init(
                 id: UUID().uuidString,
                 panel: .init(
-                    icon: SFSymbol.rectangleAndPaperclip.rawValue,
+                    icon: nil,
                     title: L10n.Widgets.Controls.OpenPage.Configuration.Parameter.choosePage,
                     path: "",
                     component: "",
@@ -65,4 +65,4 @@ struct ControlOpenPageConfiguration: ControlConfigurationIntent {
         title: .init("app_intents.scenes.icon.title", defaultValue: "Icon")
     )
     var icon: SFSymbolEntity?
-}
+}*/

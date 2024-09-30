@@ -170,10 +170,6 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         GuaranteedMessage.observations.store[.init(queue: .main)] = { message in
             Current.Log.verbose("Received guaranteed message! \(message)")
 
-            if message.identifier == GuaranteedMessages.sync.rawValue {
-                _ = HomeAssistantAPI.SyncWatchContext()
-            }
-
             self.endWatchConnectivityBackgroundTaskIfNecessary()
         }
 

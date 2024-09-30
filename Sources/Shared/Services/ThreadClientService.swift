@@ -7,11 +7,8 @@ import ThreadNetwork
 public final class ThreadClientService: ThreadClientProtocol {
     public init() {}
 
-    private var client: THClient?
-
     public func retrieveAllCredentials() async throws -> [ThreadCredential] {
-        client = THClient()
-        guard let client else { return [] }
+        let client = THClient()
         let placeholder = "Unknown"
 
         // Thre preferred credential call is necessary as it triggers a permission dialog
@@ -23,7 +20,6 @@ public final class ThreadClientService: ThreadClientProtocol {
         allCredentials = allCredentials.filter { $0.borderAgentID != preferredCredential.borderAgentID }
         allCredentials.insert(preferredCredential)
 
-        self.client = nil
         return allCredentials.map { credential in
             ThreadCredential(
                 networkName: credential.networkName ?? placeholder,
@@ -47,12 +43,11 @@ public final class ThreadClientService: ThreadClientProtocol {
               let activeOperationalDataSet = operationalDataSet.hexadecimal else {
             throw ThreadClientServiceError.failedToConvertToHexadecimal
         }
-        client = THClient()
-        try await client?.storeCredentials(
+
+        try await THClient().storeCredentials(
             forBorderAgent: borderAgent,
             activeOperationalDataSet: activeOperationalDataSet
         )
-        client = nil
     }
 
     public func saveCredential(
@@ -65,29 +60,11 @@ public final class ThreadClientService: ThreadClientProtocol {
             completion(ThreadClientServiceError.failedToConvertToHexadecimal)
             return
         }
-        client = THClient()
-        client?.storeCredentials(
+        THClient().storeCredentials(
             forBorderAgent: borderAgent,
             activeOperationalDataSet: activeOperationalDataSet,
-            completion: { [weak self] error in
-                completion(error)
-                self?.client = nil
-            }
+            completion: completion
         )
-    }
-
-    public func deleteCredential(macExtendedAddress: String, completion: @escaping (Error?) -> Void) {
-        guard let data = macExtendedAddress.hexadecimal else {
-            Current.Log.error("Thread operation, failed to convert to macExtendedAddress to hexadecimal")
-            completion(nil)
-            return
-        }
-
-        client = THClient()
-        client?.deleteCredentials(forBorderAgent: data, completion: { [weak self] error in
-            completion(error)
-            self?.client = nil
-        })
     }
 }
 #else
@@ -106,9 +83,5 @@ public final class ThreadClientService: ThreadClientProtocol {
         operationalDataSet: String,
         completion: @escaping (Error?) -> Void
     ) {}
-
-    public func deleteCredential(macExtendedAddress: String, completion: @escaping (Error?) -> Void) {
-        /* no-op */
-    }
 }
 #endif

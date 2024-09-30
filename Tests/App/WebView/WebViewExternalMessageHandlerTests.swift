@@ -1,4 +1,4 @@
-@testable import HomeAssistant
+@testable import MySmartHomes
 import Improv_iOS
 import SwiftUI
 import XCTest

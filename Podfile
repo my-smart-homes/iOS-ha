@@ -30,7 +30,7 @@ pod 'Improv-iOS', '~> 0.0.6'
 pod 'SFSafeSymbols', '~> 5.3'
 
 pod 'RealmSwift'
-pod 'GRDB.swift', git: 'https://github.com/groue/GRDB.swift.git', tag: 'v6.29.3'
+pod 'GRDB.swift', git: 'https://github.com/groue/GRDB.swift.git', tag: 'v6.29.1'
 pod 'UIColor_Hex_Swift'
 pod 'Version'
 pod 'XCGLogger'
@@ -76,7 +76,10 @@ abstract_target 'iOS' do
     pod 'Eureka', git: 'https://github.com/xmartlabs/Eureka', branch: 'master'
 
     pod 'FirebaseMessaging'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Core' 
 
+    pod 'lottie-ios'
     pod 'SwiftMessages'
     pod 'ViewRow', git: 'https://github.com/EurekaCommunity/ViewRow', branch: 'master'
 
@@ -94,20 +97,20 @@ abstract_target 'iOS' do
   target 'Extensions-NotificationService'
   target 'Extensions-PushProvider'
   target 'Extensions-Share'
-  target 'Extensions-Widgets'
+  #target 'Extensions-Widgets'
 end
 
-abstract_target 'watchOS' do
-  platform :watchos, '8.0'
-
-  target 'Shared-watchOS' do
-    shared_fwk_pods
-  end
-
-  target 'WatchExtension-Watch' do
-    pod 'EMTLoadingIndicator', git: 'https://github.com/hirokimu/EMTLoadingIndicator', branch: 'master'
-  end
-end
+#abstract_target 'watchOS' do
+#  platform :watchos, '8.0'
+#
+#  target 'Shared-watchOS' do
+#    shared_fwk_pods
+#  end
+#
+#  target 'WatchExtension-Watch' do
+#    pod 'EMTLoadingIndicator', git: 'https://github.com/hirokimu/EMTLoadingIndicator', branch: 'master'
+#  end
+# end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|

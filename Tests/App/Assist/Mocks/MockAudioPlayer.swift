@@ -1,5 +1,5 @@
 import Foundation
-@testable import HomeAssistant
+@testable import MySmartHomes
 
 final class MockAudioPlayer: AudioPlayerProtocol {
     var playUrl: URL?

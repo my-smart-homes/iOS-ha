@@ -1,5 +1,4 @@
 import Foundation
-import GRDB
 import PromiseKit
 import Shared
 
@@ -11,43 +10,53 @@ enum MagicItemAddType {
 
 final class MagicItemAddViewModel: ObservableObject {
     @Published var selectedItemType = MagicItemAddType.scripts
-    @Published var scripts: [Server: [HAAppEntity]] = [:]
-    @Published var scenes: [Server: [HAAppEntity]] = [:]
+    @Published var scripts: [Server: [HAScript]] = [:]
+    @Published var scenes: [Server: [HAScene]] = [:]
     @Published var actions: [Action] = []
     @Published var searchText: String = ""
     @MainActor
     func loadContent() {
-        loadScriptsAndScenes()
+        loadScripts()
+        loadScenes()
         loadActions()
     }
 
     @MainActor
-    private func loadScriptsAndScenes() {
+    private func loadScripts() {
         Current.servers.all.forEach { [weak self] server in
-            do {
-                let scripts: [HAAppEntity] = try Current.database().read { db in
-                    try HAAppEntity
-                        .filter(Column(DatabaseTables.AppEntity.serverId.rawValue) == server.identifier.rawValue)
-                        .filter(Column(DatabaseTables.AppEntity.domain.rawValue) == Domain.script.rawValue).fetchAll(db)
+            let key = HAScript.cacheKey(serverId: server.identifier.rawValue)
+            (Current.diskCache.value(for: key) as Promise<[HAScript]>).pipe { result in
+                switch result {
+                case let .fulfilled(scripts):
+                    self?.dispatchInMain {
+                        self?.scripts[server] = scripts
+                    }
+                case let .rejected(error):
+                    Current.Log
+                        .error(
+                            "Failed to retrieve scripts from cache while adding magic item, error: \(error.localizedDescription)"
+                        )
                 }
-                self?.dispatchInMain {
-                    self?.scripts[server] = scripts
-                }
-            } catch {
-                Current.Log.error("Failed to load scripts from database: \(error.localizedDescription)")
             }
+        }
+    }
 
-            do {
-                let scenes: [HAAppEntity] = try Current.database().read { db in
-                    try HAAppEntity
-                        .filter(Column(DatabaseTables.AppEntity.serverId.rawValue) == server.identifier.rawValue)
-                        .filter(Column(DatabaseTables.AppEntity.domain.rawValue) == Domain.scene.rawValue).fetchAll(db)
+    @MainActor
+    private func loadScenes() {
+        Current.servers.all.forEach { [weak self] server in
+            let key = HAScene.cacheKey(serverId: server.identifier.rawValue)
+            (Current.diskCache.value(for: key) as Promise<[HAScene]>).pipe { result in
+                switch result {
+                case let .fulfilled(scenes):
+                    self?.dispatchInMain {
+                        self?.scenes[server] = scenes
+                    }
+                case let .rejected(error):
+                    Current.Log
+                        .error(
+                            "Failed to retrieve scenes from cache while adding magic item, error: \(error.localizedDescription)"
+                        )
                 }
-                self?.dispatchInMain {
-                    self?.scenes[server] = scenes
-                }
-            } catch {
-                Current.Log.error("Failed to load scripts from database: \(error.localizedDescription)")
             }
         }
     }

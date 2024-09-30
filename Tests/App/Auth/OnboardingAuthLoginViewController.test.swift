@@ -1,4 +1,4 @@
-@testable import HomeAssistant
+@testable import MySmartHomes
 import PromiseKit
 import Shared
 import WebKit
@@ -19,7 +19,7 @@ class OnboardingAuthLoginViewControllerImplTests: XCTestCase {
     }
 
     func testDecisionHandlerWithHomeassistantScheme() {
-        let url = URL(string: "homeassistant://test")!
+        let url = URL(string: "mysmarthomes://test")!
 
         let expectation = expectation(description: "decision handler")
         controller.webView(

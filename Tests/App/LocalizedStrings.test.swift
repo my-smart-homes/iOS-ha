@@ -1,5 +1,5 @@
 import Foundation
-@testable import HomeAssistant
+@testable import MySmartHomes
 @testable import Shared
 import XCTest
 

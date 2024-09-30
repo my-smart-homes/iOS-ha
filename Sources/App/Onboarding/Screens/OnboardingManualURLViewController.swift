@@ -17,7 +17,7 @@ class OnboardingManualURLViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = Current.style.onboardingBackground
 
         let (scrollView, stackView, equalSpacers) = UIView.contentStackView(in: view, scrolling: true)
         self.scrollView = scrollView
@@ -30,7 +30,7 @@ class OnboardingManualURLViewController: UIViewController, UITextFieldDelegate {
         stackView.addArrangedSubview(with(UILabel()) {
             $0.text = L10n.Onboarding.ManualSetup.description
             $0.font = .preferredFont(forTextStyle: .body)
-            $0.textColor = Asset.Colors.haPrimary.color
+            $0.textColor = Current.style.onboardingLabelSecondary
             $0.textAlignment = .natural
             $0.numberOfLines = 0
         })
@@ -39,7 +39,7 @@ class OnboardingManualURLViewController: UIViewController, UITextFieldDelegate {
             $0.delegate = self
             $0.backgroundColor = UIColor(white: 0, alpha: 0.12)
             $0.borderStyle = .roundedRect
-            $0.placeholder = "http://homeassistant.local:8123"
+            $0.placeholder = "http://mysmarthomes.local:8123"
             $0.textContentType = .URL
             $0.keyboardType = .URL
             $0.autocapitalizationType = .none

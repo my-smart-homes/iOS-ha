@@ -5,7 +5,7 @@ import Shared
 struct HAThreadNetworkConfig {
     enum Source {
         case Apple
-        case HomeAssistant
+        case MySmartHomes
     }
 
     let id: String
@@ -46,25 +46,9 @@ final class ThreadCredentialsManagementViewModel: ObservableObject {
         case .Apple:
             // To be implemented when HA has a proper dataset listing similar to Apple
             break
-        case .HomeAssistant:
+        case .MySmartHomes:
             shareCredentialWithHomeAssistant(credential: credential.activeOperationalDataSet) { success in
                 completion(success)
-            }
-        }
-    }
-
-    func deleteCredential(_ credential: ThreadCredential?) {
-        guard let credential else {
-            Current.Log.error("No credential provided to be deleted")
-            return
-        }
-
-        threadClientService.deleteCredential(macExtendedAddress: credential.macExtendedAddress) { [weak self] error in
-            if let error {
-                Current.Log.error("Failed to delete credential with error: \(error)")
-            }
-            Task.detached {
-                await self?.loadCredentials()
             }
         }
     }
@@ -87,7 +71,7 @@ final class ThreadCredentialsManagementViewModel: ObservableObject {
                 case let .rejected(error):
                     Current.Log
                         .error(
-                            "Failed to transfer thread credentials from apple to home assistant (server name: \(server.info.name): \(error.localizedDescription)"
+                            "Failed to transfer thread credentials from apple to mysmarthomes (server name: \(server.info.name): \(error.localizedDescription)"
                         )
                 }
 

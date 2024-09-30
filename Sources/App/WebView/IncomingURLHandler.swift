@@ -43,7 +43,7 @@ class IncomingURLHandler {
             )
         case "perform_action":
             performActionURLHandler(url, serviceData: serviceData)
-        case "navigate": // homeassistant://navigate/lovelace/dashboard
+        case "navigate": // mysmarthomes://navigate/lovelace/dashboard
             guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
                 return false
             }
@@ -103,8 +103,7 @@ class IncomingURLHandler {
                     webView.webViewExternalMessageHandler.showAssist(
                         server: server,
                         pipeline: pipeline?.identifier ?? "",
-                        autoStartRecording: autoStartRecording,
-                        animated: false
+                        autoStartRecording: autoStartRecording
                     )
                 case let .rejected(error):
                     Current.Log.error("Failed to obtain webview to open Assist In App: \(error.localizedDescription)")
@@ -441,7 +440,7 @@ extension IncomingURLHandler {
     }
 
     private func fireEventURLHandler(_ url: URL, _ serviceData: [String: String]) {
-        // homeassistant://fire_event/custom_event?entity_id=device_tracker.entity
+        // mysmarthomes://fire_event/custom_event?entity_id=device_tracker.entity
 
         firstly { () -> Promise<Void> in
             if let api = Current.apis.first {
@@ -466,7 +465,7 @@ extension IncomingURLHandler {
     }
 
     private func callServiceURLHandler(_ url: URL, _ serviceData: [String: String]) {
-        // homeassistant://call_service/device_tracker.see?entity_id=device_tracker.entity
+        // mysmarthomes://call_service/device_tracker.see?entity_id=device_tracker.entity
         let domain = url.pathComponents[1].components(separatedBy: ".")[0]
         let service = url.pathComponents[1].components(separatedBy: ".")[1]
 
@@ -493,7 +492,7 @@ extension IncomingURLHandler {
     }
 
     private func sendLocationURLHandler() {
-        // homeassistant://send_location/
+        // mysmarthomes://send_location/
         firstly {
             Current.location.oneShotLocation(.URLScheme, nil)
         }.then { location in

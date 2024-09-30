@@ -29,7 +29,7 @@
 "DsasVx" = "오류";
 "EA0zLv" = "'${server}'와 일치하는 ${count} 옵션이 있습니다.";
 "EWqRDj" = "실패: ${error}";
-"FBQiVD" = "Home Assistant 인스턴스에서 서비스 호출";
+"FBQiVD" = "MySmartHomes 인스턴스에서 서비스 호출";
 "FZ9qkT" = "렌더 템플릿";
 "FtQqoU" = "위치 업데이트됨";
 "GiSjQE" = "실패: ${error}";
@@ -52,7 +52,7 @@
 "MwEpGz" = "완료";
 "N9iJpK" = "카메라 이미지 가져오기";
 "NUF0Pa" = "${result}";
-"NdG9Jz" = "Home Assistant 템플릿을 렌더링합니다.";
+"NdG9Jz" = "MySmartHomes 템플릿을 렌더링합니다.";
 "NsbUTz" = "카메라 구성요소";
 "Q2Qp4a" = "동작";
 "QCGKRz" = "어떤 언어인가요?";
@@ -146,7 +146,7 @@
 "v7TSD5" = "위치 보내기";
 "vAIAF2" = "Home Assistant에 센서 업데이트 보내기";
 "vebd70" = "섬기는 사람";
-"wfPQQQ" = "Home Assistant 이벤트 버스에 이벤트 발생";
+"wfPQQQ" = "MySmartHomes 이벤트 버스에 이벤트 발생";
 "xN51te" = "결과";
 "xfXG6b" = "어떤 서버?";
 "xhwpj4" = "완료";

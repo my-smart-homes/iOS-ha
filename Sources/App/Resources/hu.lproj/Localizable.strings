@@ -8,11 +8,11 @@
 "about.github.title" = "GitHub";
 "about.github_issue_tracker.title" = "GitHub hibabejelentő";
 "about.help_localize.title" = "Segítsen lokalizálni az alkalmazást!";
-"about.home_assistant_on_facebook.title" = "Home Assistant a Facebookon";
-"about.home_assistant_on_twitter.title" = "Home Assistant a Twitteren";
-"about.logo.app_title" = "Home Assistant mobilalkalmazás";
+"about.home_assistant_on_facebook.title" = "MySmartHomes a Facebookon";
+"about.home_assistant_on_twitter.title" = "MySmartHomes a Twitteren";
+"about.logo.app_title" = "MySmartHomes mobilalkalmazás";
 "about.logo.tagline" = "Ébressze fel otthonát";
-"about.logo.title" = "Home Assistant";
+"about.logo.title" = "MySmartHomes";
 "about.review.title" = "Írja meg véleményét";
 "about.title" = "Névjegy";
 "about.website.title" = "Weboldal";
@@ -52,17 +52,9 @@
 "announcement.drop_support.button_read_more" = "Bővebben";
 "announcement.drop_support.subtitle" = "Alapos mérlegelés után a következő frissítéseinkben megszüntetjük az iOS 12, 13 és 14 támogatását.";
 "announcement.drop_support.title" = "Fontos frissítés";
-"app_intents.assist.pipeline.default.title" = "Default";
 "app_intents.assist.pipeline.title" = "Pipeline";
 "app_intents.assist.preferred_pipeline.title" = "Preferált";
-"app_intents.assist.refresh_warning.title" = "Can't find your Assist pipeline? Open Assist in the app to refresh pipelines list.";
-"app_intents.controls.assist.parameter.with_voice" = "With voice";
-"app_intents.controls.assist.title" = "Assist in app";
 "app_intents.haptic_confirmation.title" = "Haptic confirmation";
-"app_intents.lights.light.target" = "Target state";
-"app_intents.lights.light.title" = "Light";
-"app_intents.notify_when_run.description" = "Shows notification after executed";
-"app_intents.notify_when_run.title" = "Notify when run";
 "app_intents.perform_action.action_parameter_configuration" = "Melyik művelet?";
 "app_intents.perform_action.action_parameter_confirmation" = "Csak megerősítésképp, ezt szeretné: ‘%@’?";
 "app_intents.perform_action.action_parameter_disambiguation_intro" = "%@ lehetőség található a(z) ‘%@’ kifejezésre.";
@@ -70,7 +62,6 @@
 "app_intents.perform_action.response_success" = "Kész";
 "app_intents.scenes.failure_message.content" = "Scene \"%@\" failed to execute, please check your logs.";
 "app_intents.scenes.icon.title" = "Icon";
-"app_intents.scenes.parameter.scene.title" = "Scene";
 "app_intents.scenes.requires_confirmation_before_run.description" = "Requires manual confirmation before running the scene.";
 "app_intents.scenes.requires_confirmation_before_run.title" = "Confirm before run";
 "app_intents.scenes.scene.title" = "Scene";
@@ -163,7 +154,7 @@
 "error_label" = "Hiba";
 "extensions.map.location.new" = "Új helyszín";
 "extensions.map.location.original" = "Eredeti helyszín";
-"extensions.map.payload_missing_homeassistant.message" = "Az adatcsomag nem tartalmazott homeassistant szótárt!";
+"extensions.map.payload_missing_homeassistant.message" = "Az adatcsomag nem tartalmazott mysmarthomes szótárt!";
 "extensions.map.value_missing_or_uncastable.latitude.message" = "A szélességi fok nem található, vagy nem lehetett kiolvasni!";
 "extensions.map.value_missing_or_uncastable.longitude.message" = "A hosszúsági fok nem található, vagy nem lehetett kiolvasni!";
 "extensions.notification_content.error.no_entity_id" = "Nincs entity_id az adatcsomagban!";
@@ -172,10 +163,10 @@
 "extensions.notification_content.error.request.hls_unavailable" = "HLS stream nem elérhető";
 "extensions.notification_content.error.request.other" = "Nem 200-as állapotkód (%li)";
 "ha_api.api_error.cant_build_url" = "Nem lehet API URL-t létrehozni";
-"ha_api.api_error.invalid_response" = "Érvénytelen válasz érkezett a Home Assistant-tól";
+"ha_api.api_error.invalid_response" = "Érvénytelen válasz érkezett a MySmartHomes-tól";
 "ha_api.api_error.manager_not_available" = "A HA API Manager nem elérhető";
 "ha_api.api_error.mobile_app_component_not_loaded" = "A mobile_app komponens nincs betöltve. Kérjük, adja hozzá a konfigurációjához, indítsa újra a Home Assistantot és próbálja meg újra.";
-"ha_api.api_error.must_upgrade_home_assistant" = "A Home Assistant (%@) verziója túl régi, az alkalmazás használatához legalább a %@ verzióra kell frissítenie.";
+"ha_api.api_error.must_upgrade_home_assistant" = "A MySmartHomes (%@) verziója túl régi, az alkalmazás használatához legalább a %@ verzióra kell frissítenie.";
 "ha_api.api_error.not_configured" = "HA API nincs konfigurálva";
 "ha_api.api_error.unacceptable_status_code" = "Elfogadhatatlan állapotkód %1$li.";
 "ha_api.api_error.unexpected_type" = "%1$@ típusú eredményt érkezett a válaszban, miközben %2$@ típusú eredmény az elvárt.";
@@ -228,13 +219,12 @@
 "magic_item.icon_color.title" = "Icon color";
 "magic_item.icon_name.title" = "Icon name";
 "magic_item.item_type.action.list.title" = "iOS Actions";
-"magic_item.item_type.action.list.warning.title" = "We will stop supporting iOS Actions in the future, please consider using Home Assistant scripts or scenes instead.";
+"magic_item.item_type.action.list.warning.title" = "We will stop supporting iOS Actions in the future, please consider using MySmartHomes scripts or scenes instead.";
 "magic_item.item_type.scene.list.title" = "Scenes";
 "magic_item.item_type.script.list.title" = "Scripts";
 "magic_item.item_type.selection.list.title" = "Item type";
 "magic_item.name.title" = "Name";
 "magic_item.name_and_icon.footer" = "Edit script name and icon in frontend under 'Settings' > 'Automations & scenes' > 'Scripts'.";
-"magic_item.name_and_icon.footer.scenes" = "Edit scene name and icon in frontend under 'Settings' > 'Automations & scenes' > 'Scenes'.";
 "magic_item.require_confirmation.title" = "Require confirmation";
 "magic_item.text_color.title" = "Text color";
 "magic_item.use_custom_colors.title" = "Use custom colors";
@@ -258,14 +248,14 @@
 "nfc.generic_tag_read" = "Címke olvasása";
 "nfc.list.description" = "Az alkalmazás által írt NFC-címkék értesítést jeleznek, ha a készüléket a közelükbe viszi. Az értesítés aktiválása elindítja az alkalmazást és eseményt indít.\
 \
-A címkék minden olyan eszközön működnek, amelyre telepítve van a Home Assistant és amely hardveres támogatással rendelkezik az olvasásukhoz.";
+A címkék minden olyan eszközön működnek, amelyre telepítve van a MySmartHomes és amely hardveres támogatással rendelkezik az olvasásukhoz.";
 "nfc.list.learn_more" = "Tudjon meg többet";
 "nfc.list.read_tag" = "Címke olvasása";
 "nfc.list.title" = "NFC-címkék";
 "nfc.list.write_tag" = "Címke írása";
 "nfc.not_available" = "Az NFC nem érhető el ezen a készüléken";
 "nfc.read.error.generic_failure" = "Nem sikerült beolvasni a matricát";
-"nfc.read.error.not_home_assistant" = "Az NFC-címke nem Home Assistant címke";
+"nfc.read.error.not_home_assistant" = "Az NFC-címke nem MySmartHomes címke";
 "nfc.read.error.tag_invalid" = "Az NFC-címke érvénytelen";
 "nfc.read.start_message" = "Tartsa a(z) %@-t egy NFC-címke közelébe";
 "nfc.tag_read" = "NFC-címke olvasása";
@@ -285,7 +275,7 @@ A címkék minden olyan eszközön működnek, amelyre telepítve van a Home Ass
 "notification_service.parser.camera.invalid_entity" = "A megadott entity_id érvénytelen.";
 "notification_service.parser.url.invalid_url" = "A megadott URL érvénytelen.";
 "notification_service.parser.url.no_url" = "Nincs megadva URL.";
-"notifications_configurator.action.rows.authentication_required.footer" = "Ha a felhasználó ezzel a lehetőséggel választja ki a műveletet, a rendszer felszólítja a felhasználót a készülék feloldására. A feloldás után a Home Assistant értesítést kap a kiválasztott műveletről.";
+"notifications_configurator.action.rows.authentication_required.footer" = "Ha a felhasználó ezzel a lehetőséggel választja ki a műveletet, a rendszer felszólítja a felhasználót a készülék feloldására. A feloldás után a MySmartHomes értesítést kap a kiválasztott műveletről.";
 "notifications_configurator.action.rows.authentication_required.title" = "Hitelesítés szükséges";
 "notifications_configurator.action.rows.destructive.footer" = "Ha engedélyezve van, a műveletgomb külön kiemeléssel jelenik meg, jelezve, hogy destruktív feladatot hajt végre.";
 "notifications_configurator.action.rows.destructive.title" = "Destruktív";
@@ -335,7 +325,7 @@ A címkék minden olyan eszközön működnek, amelyre telepítve van a Home Ass
 "onboarding.manual_setup.connect" = "Csatlakozás";
 "onboarding.manual_setup.couldnt_make_url.message" = "%@ nem érvényes URL.";
 "onboarding.manual_setup.couldnt_make_url.title" = "Nem sikerült létrehozni URL-t";
-"onboarding.manual_setup.description" = "A Home Assistant szerver URL-je. Győződjön meg arról, hogy tartalmazza a protokollt és a portot.";
+"onboarding.manual_setup.description" = "A MySmartHomes szerver URL-je. Győződjön meg arról, hogy tartalmazza a protokollt és a portot.";
 "onboarding.manual_setup.no_scheme.message" = "http:// vagy https:// segítségével csatlakozna?";
 "onboarding.manual_setup.no_scheme.title" = "Séma nélkül megadott URL";
 "onboarding.manual_setup.title" = "URL megadása";
@@ -344,7 +334,7 @@ A címkék minden olyan eszközön működnek, amelyre telepítve van a Home Ass
 "onboarding.permissions.change_later_note" = "Ezt az engedélyt később módosíthatja a beállításokban";
 "onboarding.permissions.focus.bullet.automations" = "Fókusz-alapú automatizmusok";
 "onboarding.permissions.focus.bullet.instant" = "Azonnali frissítések az állapotváltozáskor";
-"onboarding.permissions.focus.description" = "Engedélyezi, hogy a Home Assistant számára elküldjük, ha Ön ne zavarj módban van";
+"onboarding.permissions.focus.description" = "Engedélyezi, hogy a MySmartHomes számára elküldjük, ha Ön ne zavarj módban van";
 "onboarding.permissions.focus.grant_description" = "Engedélyezze a fókuszengedélyt, hogy érzékelőket hozzon létre a fókusz állapotához, más néven \"ne zavarjanak\".";
 "onboarding.permissions.focus.title" = "Ne zavarj";
 "onboarding.permissions.location.bullet.automations" = "Jelenlét-alapú automatizmusok";
@@ -356,23 +346,23 @@ A címkék minden olyan eszközön működnek, amelyre telepítve van a Home Ass
 "onboarding.permissions.motion.bullet.activity" = "Az aktuális tevékenységtípus érzékelője";
 "onboarding.permissions.motion.bullet.distance" = "A megtett távolság érzékelője";
 "onboarding.permissions.motion.bullet.steps" = "Érzékelő a lépésszámláláshoz";
-"onboarding.permissions.motion.description" = "A mozgástevékenység és a lépésszámláló adatok elküldésének engedélyezése a Home Assistant számára";
+"onboarding.permissions.motion.description" = "A mozgástevékenység és a lépésszámláló adatok elküldésének engedélyezése a MySmartHomes számára";
 "onboarding.permissions.motion.grant_description" = "Engedélyezze a mozgás engedélyezését a mozgás- és lépésszámláló adatok érzékelőinek létrehozásához.";
 "onboarding.permissions.motion.title" = "Mozgás és lépésszámláló";
 "onboarding.permissions.notification.bullet.alert" = "Értesítések megjelenítése";
 "onboarding.permissions.notification.bullet.badge" = "Frissítse az alkalmazás ikonját";
 "onboarding.permissions.notification.bullet.commands" = "Parancsok küldése a készüléknek";
-"onboarding.permissions.notification.description" = "Home Assistant által küldött Push értesítések engedélyezése";
+"onboarding.permissions.notification.description" = "MySmartHomes által küldött Push értesítések engedélyezése";
 "onboarding.permissions.notification.grant_description" = "Értesítési engedély engedélyezése értesítési szolgáltatás létrehozásához az eszközön.";
 "onboarding.permissions.notification.title" = "Értesítések";
 "onboarding.scanning.discovered_announcement" = "Felfedezve: %@";
 "onboarding.scanning.manual" = "Cím kézi megadása";
 "onboarding.scanning.manual_hint" = "Nem találja a szerverét?";
 "onboarding.scanning.title" = "Szerverek keresése";
-"onboarding.welcome.description" = "Ez az alkalmazás csatlakozik a Home Assistant szerverhez és lehetővé teszi az Önre és telefonjára vonatkozó adatok integrálását.\
+"onboarding.welcome.description" = "Ez az alkalmazás csatlakozik a MySmartHomes szerverhez és lehetővé teszi az Önre és telefonjára vonatkozó adatok integrálását.\
 \
-A Home Assistant egy ingyenes és nyílt forráskódú otthoni automatizálási szoftver, amely a vezérlés helyben történő kivitelezésére és az adatvédelemre összpontosít.";
-"onboarding.welcome.title" = "%@ Home Assistant üdvözli Önt!";
+A MySmartHomes egy ingyenes és nyílt forráskódú otthoni automatizálási szoftver, amely a vezérlés helyben történő kivitelezésére és az adatvédelemre összpontosít.";
+"onboarding.welcome.title" = "%@ MySmartHomes üdvözli Önt!";
 "open_label" = "Megnyitás";
 "preview_output" = "Eredmény előnézete";
 "reload_label" = "Reload";
@@ -391,11 +381,11 @@ A Home Assistant egy ingyenes és nyílt forráskódú otthoni automatizálási 
 "settings.connection_section.delete_server.title" = "Szerver törlése";
 "settings.connection_section.details" = "Részletek";
 "settings.connection_section.errors.cannot_remove_last_url" = "Nem lehet az egyetlen rendelkezésre álló URL-t eltávolítani.";
-"settings.connection_section.external_base_url.placeholder" = "https://homeassistant.myhouse.com";
+"settings.connection_section.external_base_url.placeholder" = "https://mysmarthomes.myhouse.com";
 "settings.connection_section.external_base_url.title" = "Külső URL";
 "settings.connection_section.header" = "Kapcsolat";
-"settings.connection_section.home_assistant_cloud.title" = "Home Assistant Felhő";
-"settings.connection_section.internal_base_url.placeholder" = "pl. http://homeassistant.local:8123/";
+"settings.connection_section.home_assistant_cloud.title" = "MySmartHomes Felhő";
+"settings.connection_section.internal_base_url.placeholder" = "pl. http://mysmarthomes.local:8123/";
 "settings.connection_section.internal_base_url.title" = "Belső URL";
 "settings.connection_section.internal_url_hardware_addresses.add_new_ssid" = "Új hardvercím hozzáadása";
 "settings.connection_section.internal_url_hardware_addresses.footer" = "A rendszer akkor használja a belső URL-címet, ha az elsődleges hálózati adapter MAC-címe megegyezik ezen hardvercímek egyikével.";
@@ -405,7 +395,7 @@ A Home Assistant egy ingyenes és nyílt forráskódú otthoni automatizálási 
 "settings.connection_section.internal_url_ssids.footer" = "A belső URL-t használja a rendszer, ha a felsorolt SSID-ek közül valamelyikéhez csatlakozik";
 "settings.connection_section.internal_url_ssids.header" = "SSID-k";
 "settings.connection_section.internal_url_ssids.placeholder" = "SajátHálózatNév";
-"settings.connection_section.local_push_description" = "Közvetlenül csatlakozhat a Home Assistant szerverhez a push értesítésekért, ha belső SSID-eken van.";
+"settings.connection_section.local_push_description" = "Közvetlenül csatlakozhat a MySmartHomes szerverhez a push értesítésekért, ha belső SSID-eken van.";
 "settings.connection_section.location_send_type.setting.exact" = "Pontos";
 "settings.connection_section.location_send_type.setting.never" = "Soha";
 "settings.connection_section.location_send_type.setting.zone_only" = "Csak a zóna neve";
@@ -462,7 +452,7 @@ A Home Assistant egy ingyenes és nyílt forráskódú otthoni automatizálási 
 "settings.location_history.title" = "Helyelőzmények";
 "settings.navigation_bar.about_button.title" = "Névjegy";
 "settings.navigation_bar.title" = "Beállítások";
-"settings.reset_section.reset_alert.message" = "A beállítások visszaállítását követően ez az eszköz nem lesz regisztrálva többé a push-értesítésekbe, valamint eltávolításra kerül a Home Assistant konfigurációjából.";
+"settings.reset_section.reset_alert.message" = "A beállítások visszaállítását követően ez az eszköz nem lesz regisztrálva többé a push-értesítésekbe, valamint eltávolításra kerül a MySmartHomes konfigurációjából.";
 "settings.reset_section.reset_alert.progress_message" = "Visszaállítás...";
 "settings.reset_section.reset_alert.title" = "Visszaállítás";
 "settings.reset_section.reset_row.title" = "Visszaállítás";
@@ -505,7 +495,7 @@ A Home Assistant egy ingyenes és nyílt forráskódú otthoni automatizálási 
 "settings_details.general.app_icon.enum.electric_violet" = "Ibolya";
 "settings_details.general.app_icon.enum.fire_orange" = "Tűznarancs";
 "settings_details.general.app_icon.enum.green" = "Zöld";
-"settings_details.general.app_icon.enum.ha_blue" = "Home Assistant kék";
+"settings_details.general.app_icon.enum.ha_blue" = "MySmartHomes kék";
 "settings_details.general.app_icon.enum.old_beta" = "Régi béta";
 "settings_details.general.app_icon.enum.old_dev" = "Régi fejlesztői";
 "settings_details.general.app_icon.enum.old_release" = "Régi kiadás";
@@ -639,7 +629,7 @@ A Home Assistant egy ingyenes és nyílt forráskódú otthoni automatizálási 
 "settings_details.notifications.title" = "Értesítések";
 "settings_details.privacy.alerts.description" = "Lehetővé teszi a fontos figyelmeztetések ellenőrzését, például biztonsági rések kapcsán.";
 "settings_details.privacy.alerts.title" = "Riasztások";
-"settings_details.privacy.analytics.generic_description" = "Lehetővé teszi az eszközzel és az alkalmazással való interakciókkal kapcsolatos alapvető információk gyűjtését. Nem osztja meg a felhasználó azonosítható adatait, beleértve a Home Assistant URL-címeit és a tokeneket. Újra kell indítania az alkalmazást ahhoz, hogy a beállítás módosításai hatályba lépjenek.";
+"settings_details.privacy.analytics.generic_description" = "Lehetővé teszi az eszközzel és az alkalmazással való interakciókkal kapcsolatos alapvető információk gyűjtését. Nem osztja meg a felhasználó azonosítható adatait, beleértve a MySmartHomes URL-címeit és a tokeneket. Újra kell indítania az alkalmazást ahhoz, hogy a beállítás módosításai hatályba lépjenek.";
 "settings_details.privacy.analytics.generic_title" = "Analitika";
 "settings_details.privacy.crash_reporting.description" = "Lehetővé teszi az alkalmazásban előforduló összeomlások és egyéb hibák mélyebb nyomon követését, ami gyorsabb javítások közzétételéhez vezet. Az alapvető eszközadatokon kívül nem küldünk a felhasználóval azonosítható adatokat. Az alkalmazás újraindítása szükséges ahhoz, hogy a beállítás módosítása érvénybe lépjen.";
 "settings_details.privacy.crash_reporting.sentry" = "Ez a funkció jelenleg a Sentry-t használja a jelentés célállomásaként.";
@@ -647,7 +637,6 @@ A Home Assistant egy ingyenes és nyílt forráskódú otthoni automatizálási 
 "settings_details.privacy.messaging.description" = "A Firebase Cloud Messagingnek engedélyezve kell lennie a push értesítések működéséhez.";
 "settings_details.privacy.messaging.title" = "Firebase Cloud Messaging";
 "settings_details.privacy.title" = "Adatvédelem";
-"settings_details.thread.delete_credential.confirmation.title" = "Are you sure you want to delete this credential from your Apple Keychain? This can't be reverted and should only be executed if you know what you're doing.";
 "settings_details.thread.title" = "Thread";
 "settings_details.updates.check_for_updates.include_betas" = "Tartalmazza a béta kiadásokat";
 "settings_details.updates.check_for_updates.title" = "Frissítések automatikus keresése";
@@ -686,7 +675,6 @@ A Home Assistant egy ingyenes és nyílt forráskódú otthoni automatizálási 
 "thread.extended_pan_id.title" = "Kiterjesztett PAN azonosító";
 "thread.management.title" = "Thread hitelesítő adatai";
 "thread.network_key.title" = "Hálózati kulcs";
-"thread.save_credential.fail.alert.message" = "Failed to save thread network credential.";
 "thread.store_in_keychain.error.generic.body" = "Nem sikerült tárolni a thread hitelesítő adatait a kulcskarikában, további információért ellenőrizze a naplókat.";
 "thread.store_in_keychain.error.hexadecimal_conversion.body" = "Nem sikerült hexadecimálisra konvertálni a bemenetet, miközben a Thread hitelesítő adatait a kulcskarikában tárolta";
 "thread.store_in_keychain.error.title" = "A művelet sikertelen";
@@ -721,7 +709,7 @@ A Home Assistant egy ingyenes és nyílt forráskódú otthoni automatizálási 
 "url_handler.send_location.success.title" = "Helymeghatározás elküldve";
 "url_handler.x_callback_url.error.eventNameMissing" = "az eventName-et meg kell határozni";
 "url_handler.x_callback_url.error.general" = "Általános hiba történt";
-"url_handler.x_callback_url.error.serviceMissing" = "szolgáltatást (pl. homeassistant.turn_on) definiálni kell";
+"url_handler.x_callback_url.error.serviceMissing" = "szolgáltatást (pl. mysmarthomes.turn_on) definiálni kell";
 "url_handler.x_callback_url.error.templateMissing" = "Meg kell határozni egy renderelhető sablont";
 "username_label" = "Felhasználónév";
 "watch.assist.lack_config.error.title" = "Please configure Assist using iOS companion App";
@@ -937,7 +925,7 @@ A Home Assistant egy ingyenes és nyílt forráskódú otthoni automatizálási 
 "watch.labels.selected_pipeline.title" = "Pipeline";
 "watch.placeholder_complication_name" = "Helykitöltő";
 "watch.settings.no_items.phone.title" = "No items configured, please choose items below.";
-"widgets.actions.description" = "Hajtsa végre a Home Assistant műveleteket.";
+"widgets.actions.description" = "Hajtsa végre a MySmartHomes műveleteket.";
 "widgets.actions.not_configured" = "Nincs konfigurált művelet";
 "widgets.actions.parameters.action" = "Művelet";
 "widgets.actions.title" = "Műveletek";
@@ -946,23 +934,15 @@ A Home Assistant egy ingyenes és nyílt forráskódú otthoni automatizálási 
 "widgets.assist.title" = "Assist";
 "widgets.assist.unknown_configuration" = "Beállítás";
 "widgets.button.reload_timeline" = "Minden widget újratöltése";
-"widgets.controls.assist.description" = "Open Assist in Home Assistant app";
 "widgets.controls.assist.pipeline.placeholder" = "Choose a pipeline";
 "widgets.controls.assist.title" = "Assist";
-"widgets.controls.light.description" = "Turn on/off your light";
-"widgets.controls.light.title" = "Light";
-"widgets.controls.open_page.configuration.parameter.choose_page" = "Choose page";
-"widgets.controls.open_page.configuration.parameter.page" = "Page";
-"widgets.controls.open_page.configuration.title" = "Open Page";
 "widgets.controls.scene.description" = "Run scene";
 "widgets.controls.scene.display_name" = "Scene";
 "widgets.controls.scenes.placeholder_title" = "Choose scene";
 "widgets.controls.script.description" = "Run script";
 "widgets.controls.script.display_name" = "Script";
 "widgets.controls.scripts.placeholder_title" = "Choose script";
-"widgets.controls.switch.description" = "Turn on/off your switch";
-"widgets.controls.switch.title" = "Switch";
-"widgets.details.description" = "Az állapotok megjelenítése a Home Assistant segítségével szöveges formában";
+"widgets.details.description" = "Az állapotok megjelenítése a MySmartHomes segítségével szöveges formában";
 "widgets.details.parameters.action" = "Művelet";
 "widgets.details.parameters.details_template" = "Részletek szöveg sablon (csak a téglalap alakú családban)";
 "widgets.details.parameters.lower_template" = "Alsó szöveg sablon";
@@ -982,13 +962,11 @@ A Home Assistant egy ingyenes és nyílt forráskódú otthoni automatizálási 
 "widgets.gauge.parameters.value_label_template" = "Értékcímke sablon";
 "widgets.gauge.parameters.value_template" = "Értéksablon (0-1)";
 "widgets.gauge.title" = "Mérőműszer";
-"widgets.lights.description" = "Turn on/off light";
-"widgets.open_page.description" = "Nyisson meg egy kezelőfelületet a Home Assistant alkalmazásban.";
+"widgets.open_page.description" = "Nyisson meg egy kezelőfelületet a MySmartHomes alkalmazásban.";
 "widgets.open_page.not_configured" = "Nincsenek elérhető oldalak";
 "widgets.open_page.title" = "Oldal megnyitása";
 "widgets.reload_widgets.app_intent.description" = "Töltse be újra az összes widget idővonalát.";
 "widgets.reload_widgets.app_intent.title" = "Widgetek újratöltése";
-"widgets.scene.activate.title" = "Activate scene";
 "widgets.scene.description.title" = "Run Scene";
 "widgets.scripts.description" = "Szkriptek futtatása";
 "widgets.scripts.not_configured" = "Nincsenek beállított szkriptek";

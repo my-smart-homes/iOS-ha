@@ -17,18 +17,17 @@ struct WidgetScripts: Widget {
                 },
                 contents: timelineEntry.scripts.map { script in
                     WidgetBasicViewModel(
-                        id: script.id,
-                        title: script.name,
+                        id: script.script.id,
+                        title: script.script.name ?? "Unknown",
                         subtitle: timelineEntry.showServerName ? script.serverName : nil,
                         interactionType: .appIntent(.script(
-                            id: script.id,
-                            entityId: script.entityId,
+                            id: script.script.id,
                             serverId: script.serverId,
-                            name: script.name,
+                            name: script.script.name ?? "Unknown",
                             showConfirmationNotification: timelineEntry.showConfirmationDialog
                         )),
                         icon: MaterialDesignIcons(
-                            serversideValueNamed: script.icon,
+                            serversideValueNamed: script.script.iconName ?? "",
                             fallback: .scriptTextIcon
                         ),
                         useCustomColors: false

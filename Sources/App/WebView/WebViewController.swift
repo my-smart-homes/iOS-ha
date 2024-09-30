@@ -16,14 +16,13 @@ protocol WebViewControllerProtocol: AnyObject {
     var server: Server { get }
     var overlayAppController: UIViewController? { get set }
 
-    func presentOverlayController(controller: UIViewController, animated: Bool)
+    func presentOverlayController(controller: UIViewController)
     func presentController(_ controller: UIViewController, animated: Bool)
     func evaluateJavaScript(_ script: String, completion: ((Any?, (any Error)?) -> Void)?)
     func dismissOverlayController(animated: Bool, completion: (() -> Void)?)
     func dismissControllerAboveOverlayController()
     func updateSettingsButton(state: String)
     func navigateToPath(path: String)
-    func reload()
 }
 
 final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
@@ -227,7 +226,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
             let settingsView = SettingsViewController()
             settingsView.hidesBottomBarWhenPushed = true
             let navController = UINavigationController(rootViewController: settingsView)
-            presentOverlayController(controller: navController, animated: true)
+            presentOverlayController(controller: navController)
         }
     }
 
@@ -1038,13 +1037,10 @@ extension ConnectionInfo {
 }
 
 extension WebViewController: WebViewControllerProtocol {
-    func presentOverlayController(controller: UIViewController, animated: Bool) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
-            overlayAppController?.dismiss(animated: false, completion: nil)
-            overlayAppController = controller
-            present(controller, animated: animated, completion: nil)
-        }
+    func presentOverlayController(controller: UIViewController) {
+        overlayAppController?.dismiss(animated: false, completion: nil)
+        overlayAppController = controller
+        present(controller, animated: true, completion: nil)
     }
 
     func evaluateJavaScript(_ script: String, completion: ((Any?, (any Error)?) -> Void)?) {
@@ -1052,13 +1048,8 @@ extension WebViewController: WebViewControllerProtocol {
     }
 
     func presentController(_ controller: UIViewController, animated: Bool) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
-            if let overlayAppController {
-                overlayAppController.dismiss(animated: false)
-            }
-            present(controller, animated: animated)
-        }
+        let mainController = overlayAppController ?? self
+        mainController.present(controller, animated: animated)
     }
 
     func dismissOverlayController(animated: Bool, completion: (() -> Void)?) {
@@ -1084,9 +1075,5 @@ extension WebViewController: WebViewControllerProtocol {
         if let url = URL(string: server.info.connection.activeURL().absoluteString + path) {
             webView.load(URLRequest(url: url))
         }
-    }
-
-    func reload() {
-        webView.reload()
     }
 }

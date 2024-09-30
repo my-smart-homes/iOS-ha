@@ -14,7 +14,6 @@ struct ControlScene: ControlWidget {
                 let intent = SceneAppIntent()
                 intent.scene = .init(
                     id: template.intentSceneEntity.id,
-                    entityId: template.intentSceneEntity.entityId,
                     serverId: template.intentSceneEntity.serverId,
                     serverName: template.intentSceneEntity.serverName,
                     displayString: template.intentSceneEntity.displayString,
@@ -26,7 +25,6 @@ struct ControlScene: ControlWidget {
                 // ControlWidget can only display SF Symbol
                 Label(template.intentSceneEntity.displayString, systemImage: template.icon.id)
             }
-            .tint(.init(uiColor: Asset.Colors.haPrimary.color))
         }
         .displayName(.init(stringLiteral: L10n.Widgets.Controls.Scene.displayName))
         .description(.init(stringLiteral: L10n.Widgets.Controls.Scene.description))

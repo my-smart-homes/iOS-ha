@@ -1,12 +1,12 @@
 "0aqrcy" = "失败: ${error}";
-"2KWKqM" = "失败：Home Assistant 不可达";
+"2KWKqM" = "失败：MySmartHomes 不可达";
 "2LIxe4" = "失败：${error}";
 "2b0Uo4" = "服务";
 "2yevCF" = "您想使用哪条管道？";
 "3jKamg" = "{{ now() }}";
 "4fFx9y" = "已更新";
 "4tpAXn" = "确认一下，你希望是“${server}” ？";
-"5ZzwZD" = "失败：Home Assistant 当前不可达";
+"5ZzwZD" = "失败：MySmartHomes 当前不可达";
 "5bVvn0" = "位置更新失败: ${error}";
 "637QjD" = "错误";
 "6ozAdN" = "相机图像";
@@ -40,7 +40,7 @@
 "JBMp1T" = "确认一下，你希望是“${server}” ？";
 "JFaYRG" = "只为确认，您想使用“${pipeline}” ？";
 "K4xrvF" = "错误";
-"KHH48D" = "失败：Home Assistant 当前不可达";
+"KHH48D" = "失败：MySmartHomes 当前不可达";
 "KJS2jk" = "失败: ${error}";
 "KM7mXC" = "动作";
 "KSmKl0" = "${domain}.${service}已调用";
@@ -82,7 +82,7 @@
 "am5G4A" = "确认一下，你希望是“${server}” ？";
 "cK9jdK" = "失败: ${error}";
 "cLmTme" = "动作";
-"cuflz3" = "失败：Home Assistant 当前不可达";
+"cuflz3" = "失败：MySmartHomes 当前不可达";
 "d65H6l" = "语音助手用于“${text}”";
 "dFHPYK" = "已执行”${action}“";
 "eObn2i" = "页";
@@ -91,13 +91,13 @@
 "fkQXDn" = "有 ${count} 个选项与”${action}“匹配。";
 "flUgtx" = "哪个动作 ？";
 "fnz838" = "传感器已更新";
-"foI0Fv" = "失败：Home Assistant 当前不可达";
+"foI0Fv" = "失败：MySmartHomes 当前不可达";
 "ftQHJw" = "哪个服务器 ？";
 "fuRWMi" = "向HomeAsssiant发送此位置 ${location}";
 "g8g7Af" = "执行此动作";
 "gI3mme" = "您想发送什么服务数据 ？";
 "gePUyy" = "位置";
-"glRCfJ" = "失败：Home Assistant 当前不可达";
+"glRCfJ" = "失败：MySmartHomes 当前不可达";
 "gv7Gg6" = "位置";
 "h1xQ53" = "更新传感器";
 "hKNPaD" = "服务器";
@@ -115,7 +115,7 @@
 "lGqSSG" = "更新传感器失败";
 "lNmaCR" = "模板";
 "lxHlyQ" = "触发事件";
-"mAibJP" = "失败：Home Assistant 当前不可达";
+"mAibJP" = "失败：MySmartHomes 当前不可达";
 "mJ6CrP" = "发送 ${eventName} 失败：${error}";
 "mZnRHS" = "事件${eventName}已触发";
 "mi6B62" = "您想发送此事件的什么数据 ？";
@@ -125,7 +125,7 @@
 "oHn0vD" = "页面";
 "oIWFyR" = "失败: ${error}";
 "onq5yE" = "调用服务失败，错误信息：${error}。";
-"pQhTjo" = "失败：Home Assistant 当前不可达";
+"pQhTjo" = "失败：MySmartHomes 当前不可达";
 "pjQR7t" = "更新传感器";
 "qYpzmu" = "哪些页面 ？";
 "qayMH6" = "调用服务";
@@ -144,7 +144,7 @@
 "tycImk" = "执行应用程序中定义的某个动作。";
 "uqeIcc" = "语音助手用于“${text}”";
 "v7TSD5" = "发送位置";
-"vAIAF2" = "发送传感器更新到 Home Assistant";
+"vAIAF2" = "发送传感器更新到 MySmartHomes";
 "vebd70" = "服务器";
 "wfPQQQ" = "将事件发送到Home Assistant事件总线";
 "xN51te" = "结果";

@@ -19,22 +19,19 @@ struct OpenPageAppIntent: AppIntent {
     var page: PageAppEntity?
 
     func perform() async throws -> some IntentResult {
+        #if !WIDGET_EXTENSION
         guard let page,
               let server = Current.servers.all.first(where: { $0.identifier.rawValue == page.serverId }) ?? Current
               .servers.all.first else { return .result() }
 
         let urlString = "/" + page.panel.path
-
-        #if !WIDGET_EXTENSION
-        DispatchQueue.main.async {
-            Current.sceneManager.webViewWindowControllerPromise.done { windowController in
-                windowController.open(
-                    from: .deeplink,
-                    server: server,
-                    urlString: urlString,
-                    skipConfirm: true
-                )
-            }
+        Current.sceneManager.webViewWindowControllerPromise.done { windowController in
+            windowController.open(
+                from: .deeplink,
+                server: server,
+                urlString: urlString,
+                skipConfirm: true
+            )
         }
         #endif
         return .result()

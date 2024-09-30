@@ -6,7 +6,7 @@ extension ServerInfo {
             name: "Fake Server",
             connection: .init(
                 externalURL: nil,
-                internalURL: URL(string: "http://homeassistant.local:8123")!,
+                internalURL: URL(string: "http://mysmarthomes.local:8123")!,
                 cloudhookURL: nil,
                 remoteUIURL: nil,
                 webhookID: "FakeWebhookID",

@@ -1,4 +1,4 @@
-@testable import HomeAssistant
+@testable import MySmartHomes
 import XCTest
 
 @available(iOS 16.4, *)

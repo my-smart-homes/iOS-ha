@@ -31,7 +31,7 @@ class iOSTagManager: TagManager {
 
     func writeNFC(value: String) -> Promise<String> {
         guard let uriPayload = NFCNDEFPayload.wellKnownTypeURIPayload(url: Self.url(for: value)),
-              let aarPayload = NFCNDEFPayload.androidPackage(payload: "io.homeassistant.companion.android") else {
+              let aarPayload = NFCNDEFPayload.androidPackage(payload: "io.mysmarthomes.companion.android") else {
             return .init(error: TagManagerError.notHomeAssistantTag)
         }
 

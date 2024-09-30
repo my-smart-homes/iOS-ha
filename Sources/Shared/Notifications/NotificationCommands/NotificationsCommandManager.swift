@@ -33,7 +33,7 @@ public class NotificationCommandManager {
     }
 
     public func handle(_ payload: [AnyHashable: Any]) -> Promise<Void> {
-        guard let hadict = payload["homeassistant"] as? [String: Any],
+        guard let hadict = payload["mysmarthomes"] as? [String: Any],
               let command = hadict["command"] as? String else {
             return .init(error: CommandError.notCommand)
         }

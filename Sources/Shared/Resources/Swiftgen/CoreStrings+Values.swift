@@ -3,7 +3,7 @@
 //  App
 //
 //  Created by Bruno Pantaleão on 04/01/2024.
-//  Copyright © 2024 Home Assistant. All rights reserved.
+//  Copyright © 2024 MySmartHomes. All rights reserved.
 //
 
 import Foundation

@@ -331,9 +331,9 @@ class ConnectionInfoTests: XCTestCase {
             securityExceptions: .init()
         )
 
-        XCTAssertEqual(info.activeURL(), URL(string: "http://homeassistant.local:8123"))
-        XCTAssertEqual(info.webhookURL(), URL(string: "http://homeassistant.local:8123/api/webhook/webhook_id1"))
-        XCTAssertEqual(info.activeAPIURL(), URL(string: "http://homeassistant.local:8123/api"))
+        XCTAssertEqual(info.activeURL(), URL(string: "http://mysmarthomes.local:8123"))
+        XCTAssertEqual(info.webhookURL(), URL(string: "http://mysmarthomes.local:8123/api/webhook/webhook_id1"))
+        XCTAssertEqual(info.activeAPIURL(), URL(string: "http://mysmarthomes.local:8123/api"))
     }
 
     func testWebhookURL() {

@@ -1,4 +1,4 @@
-Home Assistant for Apple Platforms
+MySmartHomes for Apple Platforms
 =================
 
 [![TestFlight Beta invite](https://img.shields.io/badge/TestFlight-Beta-blue.svg)](https://www.home-assistant.io/ios/beta/)
@@ -8,7 +8,7 @@ Home Assistant for Apple Platforms
 
 ## Getting Started
 
-Home Assistant uses Bundler, Homebrew and Cocoapods to manage build dependencies. You'll need Xcode 15.3 (or later) which you can download from the [App Store](https://developer.apple.com/download/). You can get the app running using the following commands:
+MySmartHomes uses Bundler, Homebrew and Cocoapods to manage build dependencies. You'll need Xcode 15.3 (or later) which you can download from the [App Store](https://developer.apple.com/download/). You can get the app running using the following commands:
 
 ```bash
 git clone https://github.com/home-assistant/iOS.git
@@ -33,7 +33,7 @@ bundle install
 bundle exec pod install --repo-update
 ```
 
-Once this completes, you can launch  `HomeAssistant.xcworkspace` and run the `App-Debug` scheme onto your simulator or iOS device.
+Once this completes, you can launch  `MySmartHomes.xcworkspace` and run the `App-Debug` scheme onto your simulator or iOS device.
 
 ## Testing just the frontend
 
@@ -69,7 +69,7 @@ You can now debug the WebView in this simulator build using Safari's Web Inspect
 
 Although the app is set up to use Automatic provisioning for Debug builds, you'll need to customize a few of the options. This is because the app makes heavy use of entitlements that require code signing, even for simulator builds.
 
-Edit the file `Configuration/HomeAssistant.overrides.xcconfig` (which will not exist by default and is ignored by git) and add the following:
+Edit the file `Configuration/MySmartHomes.overrides.xcconfig` (which will not exist by default and is ignored by git) and add the following:
 
 ```bash
 DEVELOPMENT_TEAM = YourTeamID

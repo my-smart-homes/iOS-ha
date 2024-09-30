@@ -4,7 +4,7 @@
 //  IconImageView.swift
 //  https://github.com/home-assistant/Iconic
 //
-//  Copyright © 2019 The Home Assistant Authors
+//  Copyright © 2019 The MySmartHomes Authors
 //  Licensed under the Apache 2.0 license
 //  For more information see https://github.com/home-assistant/Iconic
 //

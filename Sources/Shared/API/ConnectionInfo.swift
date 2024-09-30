@@ -148,7 +148,7 @@ public struct ConnectionInfo: Codable, Equatable {
         }
     }
 
-    /// Returns the url that should be used at this moment to access the Home Assistant instance.
+    /// Returns the url that should be used at this moment to access the MySmartHomes instance.
     public mutating func activeURL() -> URL {
         if let overrideActiveURLType {
             let overrideURL: URL?
@@ -191,7 +191,7 @@ public struct ConnectionInfo: Codable, Equatable {
                 url = internalURL
             } else {
                 activeURLType = .internal
-                url = URL(string: "http://homeassistant.local:8123")!
+                url = URL(string: "http://mysmarthomes.local:8123")!
             }
         }
 

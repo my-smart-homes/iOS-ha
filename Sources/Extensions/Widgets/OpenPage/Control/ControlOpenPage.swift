@@ -1,4 +1,4 @@
-import AppIntents
+/*import AppIntents
 import Foundation
 import Shared
 import SwiftUI
@@ -22,4 +22,4 @@ struct ControlOpenPage: ControlWidget {
         }
         .displayName(.init(stringLiteral: L10n.Widgets.OpenPage.title))
     }
-}
+}*/

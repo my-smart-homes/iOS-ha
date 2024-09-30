@@ -8,12 +8,10 @@ struct WidgetBasicView: View {
 
     private let model: WidgetBasicViewModel
     private let sizeStyle: WidgetBasicSizeStyle
-    private let tinted: Bool
 
-    init(model: WidgetBasicViewModel, sizeStyle: WidgetBasicSizeStyle, tinted: Bool) {
+    init(model: WidgetBasicViewModel, sizeStyle: WidgetBasicSizeStyle) {
         self.model = model
         self.sizeStyle = sizeStyle
-        self.tinted = tinted
     }
 
     var body: some View {
@@ -65,60 +63,35 @@ struct WidgetBasicView: View {
 
     private var tileView: some View {
         VStack(alignment: .leading) {
-            Group {
-                switch sizeStyle {
-                case .regular, .condensed:
-                    HStack(alignment: .center, spacing: Spaces.oneAndHalf) {
-                        icon
-                        VStack(alignment: .leading, spacing: .zero) {
-                            text
-                            subtext
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .padding([.leading, .trailing], Spaces.oneAndHalf)
-                case .single, .expanded:
-                    VStack(alignment: .leading, spacing: 0) {
-                        icon
-                        Spacer()
+            switch sizeStyle {
+            case .regular, .condensed:
+                HStack(alignment: .center, spacing: Spaces.oneAndHalf) {
+                    icon
+                    VStack(alignment: .leading, spacing: .zero) {
                         text
                         subtext
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal)
-                    .padding(.vertical, sizeStyle == .regular ? 10 : /* use default */ nil)
                 }
-            }
-            .modify { view in
-                if #available(iOS 18, *) {
-                    view.widgetAccentable()
-                } else {
-                    view
+                .padding([.leading, .trailing], Spaces.oneAndHalf)
+            case .single, .expanded:
+                VStack(alignment: .leading, spacing: 0) {
+                    icon
+                    Spacer()
+                    text
+                    subtext
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+                .padding(.vertical, sizeStyle == .regular ? 10 : /* use default */ nil)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background({
-            if tinted {
-                return Color.clear
-            }
-            if model.useCustomColors {
-                return model.backgroundColor
-            } else {
-                return Color.asset(Asset.Colors.tileBackground)
-            }
-        }())
+        .background(model.useCustomColors ? model.backgroundColor : Color.asset(Asset.Colors.tileBackground))
         .clipShape(RoundedRectangle(cornerRadius: 14))
         .overlay {
             RoundedRectangle(cornerRadius: 14)
                 .stroke(Color.asset(Asset.Colors.tileBorder), lineWidth: sizeStyle == .single ? 0 : 1)
-                .modify { view in
-                    if #available(iOS 18, *) {
-                        view.widgetAccentable()
-                    } else {
-                        view
-                    }
-                }
         }
     }
 }

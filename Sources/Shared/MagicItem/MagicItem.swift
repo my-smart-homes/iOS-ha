@@ -7,18 +7,13 @@ public struct MagicItem: Codable, Equatable {
         lhs.id == rhs.id
     }
 
-    /// Id match it's type Id, e.g. "script.open_gate"
+    /// Id match it's type Id
     public let id: String
     public let serverId: String
     public let type: ItemType
-    public var customization: Customization
+    public var customization: Customization?
 
-    /// Server unique ID - e.g. "EB1364-script.open_gate"
-    public var serverUniqueId: String {
-        "\(serverId)-\(id)"
-    }
-
-    public init(id: String, serverId: String, type: ItemType, customization: Customization = .init()) {
+    public init(id: String, serverId: String, type: ItemType, customization: Customization? = nil) {
         self.id = id
         self.serverId = serverId
         self.type = type
@@ -32,11 +27,11 @@ public struct MagicItem: Codable, Equatable {
     }
 
     public struct Customization: Codable, Equatable {
-        public var iconColor: String?
-        public var textColor: String?
-        public var backgroundColor: String?
+        public let iconColor: String?
+        public let textColor: String?
+        public let backgroundColor: String?
         /// If true, execution will request confirmation before running
-        public var requiresConfirmation: Bool
+        public let requiresConfirmation: Bool
 
         public init(
             iconColor: String? = nil,
@@ -52,7 +47,6 @@ public struct MagicItem: Codable, Equatable {
     }
 
     public struct Info: WatchCodable, Equatable {
-        /// Server unique ID - "\(serverId)-(entityId)"
         public let id: String
         public let name: String
         public let iconName: String

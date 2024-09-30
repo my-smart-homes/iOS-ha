@@ -4,9 +4,6 @@ import SwiftUI
 struct ThreadCredentialsManagementView: View {
     @StateObject private var viewModel: ThreadCredentialsManagementViewModel
 
-    @State private var showDeleteConfirmation = false
-    @State private var credentialPendingDelete: ThreadCredential?
-
     init(viewModel: ThreadCredentialsManagementViewModel) {
         self._viewModel = .init(wrappedValue: viewModel)
     }
@@ -40,26 +37,9 @@ struct ThreadCredentialsManagementView: View {
                             .padding(.top)
                     })
                 }
-                .onDelete { indexSet in
-                    credentialPendingDelete = indexSet.map({ config.credentials[$0] }).first
-                    showDeleteConfirmation = true
-                }
             }
         }
         .environmentObject(viewModel)
-        .confirmationDialog(
-            L10n.SettingsDetails.Thread.DeleteCredential.Confirmation.title,
-            isPresented: $showDeleteConfirmation,
-            titleVisibility: .visible
-        ) {
-            Button(L10n.yesLabel, role: .destructive) {
-                viewModel.deleteCredential(credentialPendingDelete)
-                credentialPendingDelete = nil
-            }
-            Button(L10n.noLabel, role: .cancel) {
-                credentialPendingDelete = nil
-            }
-        }
     }
 }
 

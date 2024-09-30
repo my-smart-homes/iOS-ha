@@ -8,7 +8,7 @@ struct WidgetActionsAppIntent: AppIntent, WidgetConfigurationIntent, CustomInten
 
     static let title: LocalizedStringResource = .init("widgets.actions.title", defaultValue: "Actions")
     static let description = IntentDescription(
-        .init("widgets.actions.description", defaultValue: "Perform Home Assistant actions.")
+        .init("widgets.actions.description", defaultValue: "Perform MySmartHomes actions.")
     )
 
     @Parameter(

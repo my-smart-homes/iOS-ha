@@ -1,4 +1,4 @@
-@testable import HomeAssistant
+@testable import MySmartHomes
 import PromiseKit
 import Shared
 import XCTest
@@ -36,14 +36,14 @@ class OnboardingAuthLoginImplTests: XCTestCase {
     func testInvalidURL() throws {
         let result = login.open(authDetails: authDetails, sender: sender)
         let viewController = try XCTUnwrap(FakeOnboardingAuthLoginViewController.lastCreated)
-        try viewController.resolver.fulfill(XCTUnwrap(URL(string: "homeassistant://auth-callback?no_code_here=true")))
+        try viewController.resolver.fulfill(XCTUnwrap(URL(string: "mysmarthomes://auth-callback?no_code_here=true")))
         XCTAssertThrowsError(try hang(result))
     }
 
     func testSuccess() throws {
         let result = login.open(authDetails: authDetails, sender: sender)
         let viewController = try XCTUnwrap(FakeOnboardingAuthLoginViewController.lastCreated)
-        try viewController.resolver.fulfill(XCTUnwrap(URL(string: "homeassistant://auth-callback?code=code_123")))
+        try viewController.resolver.fulfill(XCTUnwrap(URL(string: "mysmarthomes://auth-callback?code=code_123")))
         XCTAssertEqual(try hang(result), "code_123")
     }
 }

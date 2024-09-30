@@ -12,13 +12,13 @@
         <!--Event Log-->
         <scene sceneID="qH1-CW-E6w">
             <objects>
-                <tableViewController storyboardIdentifier="clientEventsList" title="Event Log" id="rq5-B7-p13" customClass="ClientEventTableViewController" customModule="HomeAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="clientEventsList" title="Event Log" id="rq5-B7-p13" customClass="ClientEventTableViewController" customModule="MySmartHomes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gV6-1M-wT3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="90" id="sBw-Hx-jXH" customClass="ClientEventCell" customModule="HomeAssistant" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="90" id="sBw-Hx-jXH" customClass="ClientEventCell" customModule="MySmartHomes" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sBw-Hx-jXH" id="uyU-87-dqs">
@@ -86,7 +86,7 @@
         <!--Payload-->
         <scene sceneID="Hl9-6Y-Exj">
             <objects>
-                <viewController title="Payload" id="wAg-KU-hf8" customClass="ClientEventPayloadViewController" customModule="HomeAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Payload" id="wAg-KU-hf8" customClass="ClientEventPayloadViewController" customModule="MySmartHomes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yen-9C-11E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

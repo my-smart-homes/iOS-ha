@@ -1,10 +1,10 @@
-Another week, another new Home Assistant Companion build!
+Another week, another new MySmartHomes Companion build!
 
 - More localization support! We now support Chinese (Traditional and Simplified), Dutch and Spanish. Minor updates were also made to the existing German translation.
 - Add support for granular control of location update triggers (in Settings->Location)
 - Support customization of notification display options (see online docs for this, but allows you to specify badge/alert/sound or any combination of the three for each notification)
 - Add ability to send URL in push notification which opens upon tap
-- Add confirmation dialogs when opening a homeassistant:// URL
+- Add confirmation dialogs when opening a mysmarthomes:// URL
 - Re-enable Fabric so I can start tracking crashes again
 - Improve notification permission check
 - Lots of other localization work

@@ -1,12 +1,12 @@
 "0aqrcy" = "Gagal: ${error}";
-"2KWKqM" = "Gagal: Home Assistant tidak dapat dijangkau";
+"2KWKqM" = "Gagal: MySmartHomes tidak dapat dijangkau";
 "2LIxe4" = "Gagal: ${error}";
 "2b0Uo4" = "Layanan";
 "2yevCF" = "Saluran mana yang ingin Anda gunakan?";
 "3jKamg" = "{{ now() }}";
 "4fFx9y" = "Diperbarui";
 "4tpAXn" = "Sekadar konfirmasi, benar Anda menginginkan ‘${server}’?";
-"5ZzwZD" = "Gagal: Home Assistant tidak dapat dijangkau saat ini";
+"5ZzwZD" = "Gagal: MySmartHomes tidak dapat dijangkau saat ini";
 "5bVvn0" = "Gagal memperbarui lokasi dengan kesalahan: ${error}";
 "637QjD" = "Kesalahan";
 "6ozAdN" = "Gambar Kamera";
@@ -29,7 +29,7 @@
 "DsasVx" = "Kesalahan";
 "EA0zLv" = "Ada ${count} opsi yang cocok dengan ‘${server}’.";
 "EWqRDj" = "Gagal: ${error}";
-"FBQiVD" = "Panggil layanan pada instans Home Assistant";
+"FBQiVD" = "Panggil layanan pada instans MySmartHomes";
 "FZ9qkT" = "Render Templat";
 "FtQqoU" = "Lokasi diperbarui";
 "GiSjQE" = "Gagal: ${error}";
@@ -40,7 +40,7 @@
 "JBMp1T" = "Sekadar konfirmasi, benar Anda menginginkan ‘${server}’?";
 "JFaYRG" = "Sekadar mengonfirmasi, Anda menginginkan '${pipeline}'?";
 "K4xrvF" = "Kesalahan";
-"KHH48D" = "Gagal: Home Assistant tidak dapat dijangkau saat ini";
+"KHH48D" = "Gagal: MySmartHomes tidak dapat dijangkau saat ini";
 "KJS2jk" = "Gagal: ${error}";
 "KM7mXC" = "Aksi";
 "KSmKl0" = "${domain}.${service} dipanggil";
@@ -52,7 +52,7 @@
 "MwEpGz" = "Selesai";
 "N9iJpK" = "Dapatkan Gambar Kamera";
 "NUF0Pa" = "${result}";
-"NdG9Jz" = "Render templat Home Assistant";
+"NdG9Jz" = "Render templat MySmartHomes";
 "NsbUTz" = "Entitas Kamera";
 "Q2Qp4a" = "Aksi";
 "QCGKRz" = "Bahasa apa?";
@@ -60,7 +60,7 @@
 "QmGpOH" = "Kesalahan";
 "R2PmrD" = "Ingin menggunakan Assist dengan ucapan?";
 "RCQAlr" = "Dapatkan gambar dari ${cameraID}";
-"RMQY3r" = "Kirim lokasi ke Home Assistant";
+"RMQY3r" = "Kirim lokasi ke MySmartHomes";
 "RsOw3P" = "Templat berhasil dirender";
 "T06Fka" = "Buka halaman di antarmuka";
 "U4u9Xz" = "Ada ${count} opsi yang cocok dengan ‘${server}’.";
@@ -82,7 +82,7 @@
 "am5G4A" = "Sekadar konfirmasi, benar Anda menginginkan ‘${server}’?";
 "cK9jdK" = "Gagal: ${error}";
 "cLmTme" = "Aksi";
-"cuflz3" = "Gagal: Home Assistant tidak dapat dijangkau saat ini";
+"cuflz3" = "Gagal: MySmartHomes tidak dapat dijangkau saat ini";
 "d65H6l" = "Bantu dengan \"${text}\"";
 "dFHPYK" = "Aksi ${action} dijalankan";
 "eObn2i" = "Halaman";
@@ -91,13 +91,13 @@
 "fkQXDn" = "Ada ${count} opsi yang cocok dengan ‘${action}’.";
 "flUgtx" = "Aksi yang mana?";
 "fnz838" = "Sensor diperbarui";
-"foI0Fv" = "Gagal: Home Assistant tidak dapat dijangkau saat ini";
+"foI0Fv" = "Gagal: MySmartHomes tidak dapat dijangkau saat ini";
 "ftQHJw" = "Server yang mana?";
-"fuRWMi" = "Kirim ${location} ke Home Assistant";
+"fuRWMi" = "Kirim ${location} ke MySmartHomes";
 "g8g7Af" = "Jalankan aksinya";
 "gI3mme" = "Data layanan apa yang ingin Anda kirim?";
 "gePUyy" = "Lokasi";
-"glRCfJ" = "Gagal: Home Assistant tidak dapat dijangkau saat ini";
+"glRCfJ" = "Gagal: MySmartHomes tidak dapat dijangkau saat ini";
 "gv7Gg6" = "Lokasi";
 "h1xQ53" = "Perbarui Sensor";
 "hKNPaD" = "Server";
@@ -115,7 +115,7 @@
 "lGqSSG" = "Gagal memperbarui sensor.";
 "lNmaCR" = "Templat";
 "lxHlyQ" = "Jalankan Peristiwa";
-"mAibJP" = "Gagal: Home Assistant tidak dapat dijangkau saat ini";
+"mAibJP" = "Gagal: MySmartHomes tidak dapat dijangkau saat ini";
 "mJ6CrP" = "Gagal mengirim ${eventName}: ${error}";
 "mZnRHS" = "${eventName} dijalankan";
 "mi6B62" = "Data apa yang ingin dikirim dengan event tersebut?";
@@ -125,7 +125,7 @@
 "oHn0vD" = "Halaman";
 "oIWFyR" = "Gagal: ${error}";
 "onq5yE" = "Gagal memanggil layanan dengan kesalahan: ${error}";
-"pQhTjo" = "Gagal: Home Assistant tidak dapat dijangkau saat ini";
+"pQhTjo" = "Gagal: MySmartHomes tidak dapat dijangkau saat ini";
 "pjQR7t" = "Perbarui Sensor";
 "qYpzmu" = "Halaman yang mana?";
 "qayMH6" = "Panggil Layanan";
@@ -144,9 +144,9 @@
 "tycImk" = "Jalankan aksi yang didefinisikan dalam aplikasi";
 "uqeIcc" = "Bantu dengan \"${text}\"";
 "v7TSD5" = "Kirim Lokasi";
-"vAIAF2" = "Kirim pembaruan sensor ke Home Assistant";
+"vAIAF2" = "Kirim pembaruan sensor ke MySmartHomes";
 "vebd70" = "Server";
-"wfPQQQ" = "Jalankan event di bus event Home Assistant.";
+"wfPQQQ" = "Jalankan event di bus event MySmartHomes.";
 "xN51te" = "Hasil";
 "xfXG6b" = "Server yang mana?";
 "xhwpj4" = "Selesai";

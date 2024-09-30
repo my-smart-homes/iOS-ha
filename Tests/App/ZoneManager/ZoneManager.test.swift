@@ -1,6 +1,6 @@
 import CoreLocation
 import Foundation
-@testable import HomeAssistant
+@testable import MySmartHomes
 import PromiseKit
 import RealmSwift
 @testable import Shared

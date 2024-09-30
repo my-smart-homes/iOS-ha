@@ -207,7 +207,7 @@ private class Image {
     private var stubDescriptors: [HTTPStubsDescriptor] = []
 
     private class func newURL() -> URL {
-        URL(string: "http://homeassistant.local:8123/" + UUID().uuidString + ".png")!
+        URL(string: "http://mysmarthomes.local:8123/" + UUID().uuidString + ".png")!
     }
 
     init() {

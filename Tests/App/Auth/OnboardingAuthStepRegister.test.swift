@@ -1,5 +1,5 @@
 import HAKit
-@testable import HomeAssistant
+@testable import MySmartHomes
 import PromiseKit
 @testable import Shared
 import XCTest

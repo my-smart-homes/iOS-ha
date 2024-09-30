@@ -14,7 +14,6 @@ struct ControlScript: ControlWidget {
                 let intent = ScriptAppIntent()
                 intent.script = .init(
                     id: template.intentScriptEntity.id,
-                    entityId: template.intentScriptEntity.entityId,
                     serverId: template.intentScriptEntity.serverId,
                     serverName: template.intentScriptEntity.serverName,
                     displayString: template.intentScriptEntity.displayString,
@@ -26,7 +25,6 @@ struct ControlScript: ControlWidget {
                 // ControlWidget can only display SF Symbol
                 Label(template.intentScriptEntity.displayString, systemImage: template.icon.id)
             }
-            .tint(.init(uiColor: Asset.Colors.haPrimary.color))
         }
         .displayName(.init(stringLiteral: L10n.Widgets.Controls.Script.displayName))
         .description(.init(stringLiteral: L10n.Widgets.Controls.Script.description))

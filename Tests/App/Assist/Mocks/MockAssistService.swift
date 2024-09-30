@@ -1,5 +1,5 @@
 import Foundation
-@testable import HomeAssistant
+@testable import MySmartHomes
 import Shared
 
 final class MockAssistService: AssistServiceProtocol {

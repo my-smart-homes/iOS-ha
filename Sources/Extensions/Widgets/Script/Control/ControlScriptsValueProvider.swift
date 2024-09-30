@@ -39,7 +39,6 @@ struct ControlScriptsValueProvider: AppIntentControlValueProvider {
     private func placeholder() -> IntentScriptEntity {
         .init(
             id: UUID().uuidString,
-            entityId: "",
             serverId: "",
             serverName: "",
             displayString: L10n.Widgets.Controls.Scripts.placeholderTitle,
@@ -67,12 +66,12 @@ struct ControlScriptsConfiguration: ControlConfigurationIntent {
 
     @Parameter(
         title: LocalizedStringResource(
-            "app_intents.notify_when_run.title",
-            defaultValue: "Notify when run"
+            "app_intents.scripts.show_confirmation_dialog.title",
+            defaultValue: "Confirmation notification"
         ),
         description: LocalizedStringResource(
-            "app_intents.notify_when_run.description",
-            defaultValue: "Shows notification after executed"
+            "app_intents.scripts.show_confirmation_dialog.description",
+            defaultValue: "Shows confirmation notification after executed"
         ),
         default: true
     )

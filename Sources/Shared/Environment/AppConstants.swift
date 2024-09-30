@@ -5,7 +5,7 @@ import Version
 
 /// Contains shared constants
 public enum AppConstants {
-    /// Home Assistant Blue
+    /// MySmartHomes Blue
     public static var tintColor: UIColor {
         #if os(iOS)
         return UIColor { [lighterTintColor, darkerTintColor] (traitCollection: UITraitCollection) -> UIColor in
@@ -57,11 +57,11 @@ public enum AppConstants {
     public static var deeplinkURL: URL {
         switch Current.appConfiguration {
         case .debug:
-            return URL(string: "homeassistant-dev://")!
+            return URL(string: "mysmarthomes-dev://")!
         case .beta:
-            return URL(string: "homeassistant-beta://")!
+            return URL(string: "mysmarthomes-beta://")!
         default:
-            return URL(string: "homeassistant://")!
+            return URL(string: "mysmarthomes://")!
         }
     }
 
@@ -72,42 +72,41 @@ public enum AppConstants {
 
     public static var AppGroupContainer: URL {
         let fileManager = FileManager.default
-
-        let groupDir = fileManager.containerURL(forSecurityApplicationGroupIdentifier: AppConstants.AppGroupID)
-
-        guard let groupDir else {
-            fatalError("Unable to get groupDir.")
-        }
-
-        return groupDir
+        let appGroupID = AppConstants.AppGroupID
+        print("App Group ID: \(appGroupID)")
+        
+        let currentDirectoryURL = URL(fileURLWithPath: fileManager.currentDirectoryPath)
+        return currentDirectoryURL
     }
 
-    public static var appGRDBFile: URL {
+
+    public static var watchGRDBFile: URL {
         let fileManager = FileManager.default
         let directoryURL = Self.AppGroupContainer.appendingPathComponent("databases", isDirectory: true)
         if !fileManager.fileExists(atPath: directoryURL.path) {
             do {
                 try fileManager.createDirectory(at: directoryURL, withIntermediateDirectories: true)
             } catch {
-                Current.Log.error("Failed to create App GRDB file")
+                Current.Log.error("Failed to create GRDB file")
             }
         }
-        let databaseURL = directoryURL.appendingPathComponent("App.sqlite")
+        let databaseURL = directoryURL.appendingPathComponent("WatchConfig.sqlite")
         return databaseURL
     }
 
     public static var LogsDirectory: URL {
         let fileManager = FileManager.default
-        let directoryURL = AppGroupContainer.appendingPathComponent("logs", isDirectory: true)
-
+        let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let directoryURL = documentsDirectory.appendingPathComponent("logs", isDirectory: true)
+        
         if !fileManager.fileExists(atPath: directoryURL.path) {
             do {
                 try fileManager.createDirectory(at: directoryURL, withIntermediateDirectories: true, attributes: nil)
             } catch {
-                fatalError("Error while attempting to create data store URL: \(error)")
+                fatalError("Error while attempting to create logs directory: \(error)")
             }
         }
-
+        
         return directoryURL
     }
 
@@ -158,6 +157,16 @@ public enum AppConstants {
         return clientVersion
     }
 }
+
+extension String {
+    func asURL() throws -> URL {
+        guard let url = URL(string: self) else {
+            throw NSError(domain: "Invalid URL", code: 0, userInfo: nil)
+        }
+        return url
+    }
+}
+
 
 public extension Version {
     static let canSendDeviceID: Version = .init(minor: 104)

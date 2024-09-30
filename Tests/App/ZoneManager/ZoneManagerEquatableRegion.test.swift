@@ -1,6 +1,6 @@
 import CoreLocation
 import Foundation
-@testable import HomeAssistant
+@testable import MySmartHomes
 import XCTest
 
 class ZoneManagerEquatableRegionTests: XCTestCase {

@@ -24,12 +24,12 @@ struct WidgetScriptsAppIntent: AppIntent, WidgetConfigurationIntent {
 
     @Parameter(
         title: LocalizedStringResource(
-            "app_intents.notify_when_run.title",
-            defaultValue: "Notify when run"
+            "app_intents.scripts.show_confirmation_dialog.title",
+            defaultValue: "Confirmation notification"
         ),
         description: LocalizedStringResource(
-            "app_intents.notify_when_run.description",
-            defaultValue: "Shows notification after executed"
+            "app_intents.scripts.show_confirmation_dialog.description",
+            defaultValue: "Shows confirmation notification after executed"
         ),
         default: true
     )
@@ -43,9 +43,9 @@ struct WidgetScriptsAppIntent: AppIntent, WidgetConfigurationIntent {
         guard let scripts else { return .result(value: false) }
         for script in scripts {
             let intent = ScriptAppIntent()
+            intent.requiresConfirmationBeforeRun = false
             intent.script = .init(
                 id: script.id,
-                entityId: script.entityId,
                 serverId: script.serverId,
                 serverName: script.serverName,
                 displayString: script.displayString,

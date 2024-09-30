@@ -10,6 +10,10 @@ struct MagicItemCustomizationView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel: MagicItemEditViewModel
 
+    @State private var iconColor: Color = .init(uiColor: Asset.Colors.haPrimary.color)
+    @State private var textColor: Color = .white
+    @State private var backgroundColor: Color = .black
+    @State private var requiresConfirmation = false
     @State private var useCustomColors = false
 
     /// Context in which the screen will be presented, editing existent Magic Item or adding new
@@ -44,58 +48,44 @@ struct MagicItemCustomizationView: View {
                     if viewModel.item.type == .script {
                         Text(L10n.MagicItem.NameAndIcon.footer)
                     }
-                    if viewModel.item.type == .scene {
-                        Text(L10n.MagicItem.NameAndIcon.Footer.scenes)
-                    }
                 }
 
                 Section {
-                    ColorPicker(L10n.MagicItem.IconColor.title, selection: .init(get: {
-                        Color(hex: viewModel.item.customization.iconColor)
-                    }, set: { newColor in
-                        viewModel.item.customization.iconColor = newColor.hex()
-                    }), supportsOpacity: false)
+                    ColorPicker(L10n.MagicItem.IconColor.title, selection: $iconColor)
                     Toggle(L10n.MagicItem.UseCustomColors.title, isOn: $useCustomColors)
                     if useCustomColors {
-                        ColorPicker(L10n.MagicItem.BackgroundColor.title, selection: .init(get: {
-                            Color(hex: viewModel.item.customization.backgroundColor)
-                        }, set: { newColor in
-                            viewModel.item.customization.backgroundColor = newColor.hex()
-                        }), supportsOpacity: false)
-                        ColorPicker(L10n.MagicItem.TextColor.title, selection: .init(get: {
-                            Color(hex: viewModel.item.customization.textColor)
-                        }, set: { newColor in
-                            viewModel.item.customization.textColor = newColor.hex()
-                        }), supportsOpacity: false)
+                        ColorPicker(L10n.MagicItem.BackgroundColor.title, selection: $backgroundColor)
+                        ColorPicker(L10n.MagicItem.TextColor.title, selection: $textColor)
                     }
                 }
 
                 Section {
-                    Toggle(L10n.MagicItem.RequireConfirmation.title, isOn: .init(get: {
-                        viewModel.item.customization.requiresConfirmation
-                    }, set: { newValue in
-                        viewModel.item.customization.requiresConfirmation = newValue
-                    }))
+                    Toggle(L10n.MagicItem.RequireConfirmation.title, isOn: $requiresConfirmation)
                 }
             }
         }
         .onChange(of: viewModel.info) { newValue in
             guard let newValue else { return }
-            useCustomColors = newValue.customization?.backgroundColor != nil || newValue.customization?.textColor != nil
-        }
-        .onChange(of: useCustomColors) { newValue in
-            if newValue {
-                viewModel.item.customization.backgroundColor = viewModel.item.customization.backgroundColor ?? UIColor
-                    .black.hexString()
-                viewModel.item.customization.textColor = viewModel.item.customization.textColor ?? UIColor.white
-                    .hexString()
-            } else {
-                viewModel.item.customization.backgroundColor = nil
-                viewModel.item.customization.textColor = nil
+            if let iconColor = newValue.customization?.iconColor {
+                self.iconColor = Color(uiColor: .init(hex: iconColor))
             }
+            if let backgroundColor = newValue.customization?.backgroundColor {
+                self.backgroundColor = Color(uiColor: .init(hex: backgroundColor))
+            }
+            if let textColor = newValue.customization?.textColor {
+                self.textColor = Color(uiColor: .init(hex: textColor))
+            }
+            useCustomColors = newValue.customization?.backgroundColor != nil || newValue.customization?.textColor != nil
+            requiresConfirmation = newValue.customization?.requiresConfirmation ?? true
         }
         .toolbar {
             Button {
+                viewModel.item.customization = .init(
+                    iconColor: UIColor(iconColor).hexString(),
+                    textColor: useCustomColors ? UIColor(textColor).hexString() : nil,
+                    backgroundColor: useCustomColors ? UIColor(backgroundColor).hexString() : nil,
+                    requiresConfirmation: requiresConfirmation
+                )
                 addItem(viewModel.item)
                 dismiss()
             } label: {

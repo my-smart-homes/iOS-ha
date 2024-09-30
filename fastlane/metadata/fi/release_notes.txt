@@ -4,7 +4,7 @@ Toinen viikko, toinen uusi Kotiavustaja-kumppanin julkaisu!
 - Lisää tuki yksityiskohtaisemman ohjauksen sijaintipäivityksien laukaisuun (Asetukset-> Sijainti)
 - Tuki ilmoituksien näyttämisen vaihtoehtojen räätälöintimiseen (Lue enemmän online-dokumentteistä, mutta voit määrittää merkin/hälytyksen/äänen tai minkä tahansa yhdistelmän näistä kolmesta)
 - Lisää mahdollisuus lähettää URL:ia push-ilmoituksessa, minkä aukeaa naputettaessa
-- Lisää vahvistusdialogeja avattaessa homeassistant://URL:eja
+- Lisää vahvistusdialogeja avattaessa mysmarthomes://URL:eja
 - Fabric on taas otettu käyttään, jotta voin seurata ohjelman kaatumisia uudestaan
 - Ilmoituksien lupien tarkistus parannettu
 - Paljon muita lokalisointitöitä

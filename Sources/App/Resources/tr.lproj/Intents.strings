@@ -1,5 +1,5 @@
 "0aqrcy" = "Başarısız: ${error}";
-"2KWKqM" = "Başarısız: Home Assistant'a ulaşılamıyor";
+"2KWKqM" = "Başarısız: MySmartHomes'a ulaşılamıyor";
 "2LIxe4" = "Başarısız: ${error}";
 "2b0Uo4" = "Servis";
 "2yevCF" = "Hangi işlem hattını kullanmak istiyorsunuz?";
@@ -29,7 +29,7 @@
 "DsasVx" = "Hata";
 "EA0zLv" = "'${server}' ile eşleşen ${count} seçenek var.";
 "EWqRDj" = "Başarısız: ${error}";
-"FBQiVD" = "Home Assistant örneğinde bir hizmeti çağırın";
+"FBQiVD" = "MySmartHomes örneğinde bir hizmeti çağırın";
 "FZ9qkT" = "Oluşturma Şablonu";
 "FtQqoU" = "Konum güncellendi";
 "GiSjQE" = "Başarısız: ${error}";
@@ -60,7 +60,7 @@
 "QmGpOH" = "Hata";
 "R2PmrD" = "Sesli yardıma mı ihtiyacınız var?";
 "RCQAlr" = "${cameraID} Kamera Görüntüsünü al";
-"RMQY3r" = "Konumu Home Assistant'a gönder";
+"RMQY3r" = "Konumu MySmartHomes'a gönder";
 "RsOw3P" = "Başarıyla oluşturulmuş şablon";
 "T06Fka" = "Ön uçta bir sayfa açın";
 "U4u9Xz" = "' ${server} ' ile eşleşen ${count}";
@@ -93,7 +93,7 @@
 "fnz838" = "Sensörler güncellendi.";
 "foI0Fv" = "Başarısız: Ev Asistanı'na şu anda ulaşılamıyor";
 "ftQHJw" = "Hangi sunucu?";
-"fuRWMi" = "Home Assistant'a ${location} gönder";
+"fuRWMi" = "MySmartHomes'a ${location} gönder";
 "g8g7Af" = "Eylemi gerçekleştirin";
 "gI3mme" = "Hangi servis verilerini göndermek istiyorsunuz?";
 "gePUyy" = "Konum";
@@ -116,7 +116,7 @@
 "lNmaCR" = "Taslak";
 "lxHlyQ" = "Olayı Çalıştır";
 "mAibJP" = "Başarısız: Ev Asistanı'na şu anda ulaşılamıyor";
-"mJ6CrP" = "Home Assistant'a ${eventName} gönderilemedi: ${error}";
+"mJ6CrP" = "MySmartHomes'a ${eventName} gönderilemedi: ${error}";
 "mZnRHS" = "${eventName} tetiklendi";
 "mi6B62" = "Olay ile beraber ne verisi göndermek istiyorsunuz?";
 "ni0OSe" = "Onaylamak için '${server}' istediniz mi?";
@@ -144,9 +144,9 @@
 "tycImk" = "Uygulamada tanımlanan bir eylemi gerçekleştirir";
 "uqeIcc" = "\"${text} \" ile yardım";
 "v7TSD5" = "Konumu Gönder";
-"vAIAF2" = "Home Assistant'a bir sensör güncellemesi gönderin";
+"vAIAF2" = "MySmartHomes'a bir sensör güncellemesi gönderin";
 "vebd70" = "Sunucu";
-"wfPQQQ" = "Home Assistant olay veriyoluna bir olay tetikleyin";
+"wfPQQQ" = "MySmartHomes olay veriyoluna bir olay tetikleyin";
 "xN51te" = "Sonuç";
 "xfXG6b" = "Hangi sunucu?";
 "xhwpj4" = "Bitti";

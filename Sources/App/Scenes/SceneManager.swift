@@ -123,18 +123,15 @@ final class SceneManager {
             let options = UIScene.ActivationRequestOptions()
             options.requestingScene = active
 
-            // Guarantee it runs on main thread when coming from widgets
-            DispatchQueue.main.async {
-                if #available(iOS 17.0, *) {
-                    UIApplication.shared.activateSceneSession(for: .init(session: active.session, options: options))
-                } else {
-                    UIApplication.shared.requestSceneSessionActivation(
-                        active.session,
-                        userActivity: nil,
-                        options: options,
-                        errorHandler: nil
-                    )
-                }
+            if #available(iOS 17.0, *) {
+                UIApplication.shared.activateSceneSession(for: .init(session: active.session, options: options))
+            } else {
+                UIApplication.shared.requestSceneSessionActivation(
+                    active.session,
+                    userActivity: nil,
+                    options: options,
+                    errorHandler: nil
+                )
             }
             return .value(delegate)
         }

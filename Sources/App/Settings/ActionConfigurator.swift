@@ -383,8 +383,7 @@ struct WidgetPreviewView: View {
                     backgroundColor: Color(uiColor: .init(hex: action.BackgroundColor)),
                     useCustomColors: action.useCustomColors
                 ),
-                sizeStyle: .condensed,
-                tinted: false
+                sizeStyle: .condensed
             )
             .padding()
             .frame(width: 340, height: 100)

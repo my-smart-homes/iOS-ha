@@ -8,11 +8,11 @@
 "about.github.title" = "GitHub";
 "about.github_issue_tracker.title" = "Rastrejador de problemes de Github";
 "about.help_localize.title" = "Ajudeu a traduïr l'aplicació!";
-"about.home_assistant_on_facebook.title" = "Home Assistant a Facebook";
-"about.home_assistant_on_twitter.title" = "Home Assistant a Twitter";
-"about.logo.app_title" = "Home Assistant Companion";
+"about.home_assistant_on_facebook.title" = "MySmartHomes a Facebook";
+"about.home_assistant_on_twitter.title" = "MySmartHomes a Twitter";
+"about.logo.app_title" = "MySmartHomes Companion";
 "about.logo.tagline" = "Desperta la teva llar";
-"about.logo.title" = "Home Assistant";
+"about.logo.title" = "MySmartHomes";
 "about.review.title" = "Deixa una ressenya";
 "about.title" = "Quant a";
 "about.website.title" = "Lloc web";
@@ -32,8 +32,8 @@
 "actions_configurator.visual_section.scene_hint_footer" = "També podeu canviar-les personalitzant els atributs Scene: %@";
 "actions_configurator.visual_section.server_defined" = "L'aparença d'aquesta acció està controlada per la configuració del servidor.";
 "addButtonLabel" = "Afegir";
-"alerts.action_automation_editor.unavailable.body" = "Per crear automàticament una automatització per a una acció, actualitzeu el vostre Home Assistant com a mínim a la versió 2024.2";
-"alerts.action_automation_editor.unavailable.title" = "Si us plau, actualitza Home Assistant";
+"alerts.action_automation_editor.unavailable.body" = "Per crear automàticament una automatització per a una acció, actualitzeu el vostre MySmartHomes com a mínim a la versió 2024.2";
+"alerts.action_automation_editor.unavailable.title" = "Si us plau, actualitza MySmartHomes";
 "alerts.alert.ok" = "D'acord";
 "alerts.auth_required.message" = "El servidor ha rebutjat les vostres credencials i heu de tornar a iniciar la sessió per continuar.";
 "alerts.auth_required.title" = "Heu d'iniciar la sessió per continuar";
@@ -52,17 +52,9 @@
 "announcement.drop_support.button_read_more" = "Llegir Més";
 "announcement.drop_support.subtitle" = "Després d'una acurada consideració, deixarem de donar suport a iOS 12, 13 i 14 en les nostres properes actualitzacions.";
 "announcement.drop_support.title" = "Actualització important";
-"app_intents.assist.pipeline.default.title" = "Default";
 "app_intents.assist.pipeline.title" = "Pipeline";
 "app_intents.assist.preferred_pipeline.title" = "Preferred";
-"app_intents.assist.refresh_warning.title" = "Can't find your Assist pipeline? Open Assist in the app to refresh pipelines list.";
-"app_intents.controls.assist.parameter.with_voice" = "With voice";
-"app_intents.controls.assist.title" = "Assist in app";
 "app_intents.haptic_confirmation.title" = "Haptic confirmation";
-"app_intents.lights.light.target" = "Target state";
-"app_intents.lights.light.title" = "Light";
-"app_intents.notify_when_run.description" = "Shows notification after executed";
-"app_intents.notify_when_run.title" = "Notify when run";
 "app_intents.perform_action.action_parameter_configuration" = "Quina acció?";
 "app_intents.perform_action.action_parameter_confirmation" = "Només per confirmar, volíeu \"%@\"?";
 "app_intents.perform_action.action_parameter_disambiguation_intro" = "Hi ha %@ opcions que coincideixen amb '%@ '.";
@@ -70,7 +62,6 @@
 "app_intents.perform_action.response_success" = "Fet!";
 "app_intents.scenes.failure_message.content" = "Scene \"%@\" failed to execute, please check your logs.";
 "app_intents.scenes.icon.title" = "Icon";
-"app_intents.scenes.parameter.scene.title" = "Scene";
 "app_intents.scenes.requires_confirmation_before_run.description" = "Requires manual confirmation before running the scene.";
 "app_intents.scenes.requires_confirmation_before_run.title" = "Confirm before run";
 "app_intents.scenes.scene.title" = "Scene";
@@ -163,7 +154,7 @@
 "error_label" = "Error";
 "extensions.map.location.new" = "Nova ubicació";
 "extensions.map.location.original" = "Ubicació original";
-"extensions.map.payload_missing_homeassistant.message" = "Payload didn't contain a homeassistant dictionary!";
+"extensions.map.payload_missing_homeassistant.message" = "Payload didn't contain a mysmarthomes dictionary!";
 "extensions.map.value_missing_or_uncastable.latitude.message" = "La latitud no s'ha trobat o no s'ha pogut encadenar!";
 "extensions.map.value_missing_or_uncastable.longitude.message" = "La longitud no s'ha trobat o no s'ha pogut encadenar!";
 "extensions.notification_content.error.no_entity_id" = "No s'ha trobat cap entity_id a la càrrega útil!";
@@ -172,9 +163,9 @@
 "extensions.notification_content.error.request.hls_unavailable" = "HLS Stream no disponible";
 "extensions.notification_content.error.request.other" = "S'ha rebut codi d'estat no-200 (%li)";
 "ha_api.api_error.cant_build_url" = "No es pot crear l'adreça URL de l'API";
-"ha_api.api_error.invalid_response" = "S'ha rebut una resposta invàlida del Home Assistant";
+"ha_api.api_error.invalid_response" = "S'ha rebut una resposta invàlida del MySmartHomes";
 "ha_api.api_error.manager_not_available" = "El gestor API HA no està disponible";
-"ha_api.api_error.mobile_app_component_not_loaded" = "El component mobile_app no s'ha carregat. Afegiu-lo a la configuració, reinicieu el Home Assistant i torneu-ho a provar.";
+"ha_api.api_error.mobile_app_component_not_loaded" = "El component mobile_app no s'ha carregat. Afegiu-lo a la configuració, reinicieu el MySmartHomes i torneu-ho a provar.";
 "ha_api.api_error.must_upgrade_home_assistant" = "La versió de l'assistent per a la llar ( %@ ) és massa antiga, heu d'actualitzar almenys a la versió %@ per utilitzar l'aplicació.";
 "ha_api.api_error.not_configured" = "L'API HA no està configurada";
 "ha_api.api_error.unacceptable_status_code" = "Codi d'estat inacceptable %1$li.";
@@ -228,13 +219,12 @@
 "magic_item.icon_color.title" = "Icon color";
 "magic_item.icon_name.title" = "Icon name";
 "magic_item.item_type.action.list.title" = "iOS Actions";
-"magic_item.item_type.action.list.warning.title" = "We will stop supporting iOS Actions in the future, please consider using Home Assistant scripts or scenes instead.";
+"magic_item.item_type.action.list.warning.title" = "We will stop supporting iOS Actions in the future, please consider using MySmartHomes scripts or scenes instead.";
 "magic_item.item_type.scene.list.title" = "Scenes";
 "magic_item.item_type.script.list.title" = "Scripts";
 "magic_item.item_type.selection.list.title" = "Item type";
 "magic_item.name.title" = "Name";
 "magic_item.name_and_icon.footer" = "Edit script name and icon in frontend under 'Settings' > 'Automations & scenes' > 'Scripts'.";
-"magic_item.name_and_icon.footer.scenes" = "Edit scene name and icon in frontend under 'Settings' > 'Automations & scenes' > 'Scenes'.";
 "magic_item.require_confirmation.title" = "Require confirmation";
 "magic_item.text_color.title" = "Text color";
 "magic_item.use_custom_colors.title" = "Use custom colors";
@@ -258,14 +248,14 @@
 "nfc.generic_tag_read" = "Llegir etiqueta";
 "nfc.list.description" = "Les etiquetes NFC escrites per l'aplicació mostraran una notificació quan apropeu el vostre dispositiu. Si activeu la notificació, s'obrirà l’aplicació i disparará un esdeveniment. \
 \
-Les etiquetes funcionaran en qualsevol dispositiu amb Home Assistant instal·lat que tingui maquinari per llegir-les.";
+Les etiquetes funcionaran en qualsevol dispositiu amb MySmartHomes instal·lat que tingui maquinari per llegir-les.";
 "nfc.list.learn_more" = "Més informació";
 "nfc.list.read_tag" = "Llegir l’etiqueta";
 "nfc.list.title" = "Etiquetes NFC";
 "nfc.list.write_tag" = "Escriure etiqueta";
 "nfc.not_available" = "L'NFC no està disponible en aquest dispositiu";
 "nfc.read.error.generic_failure" = "No s'ha pogut llegir l'etiqueta";
-"nfc.read.error.not_home_assistant" = "L'etiqueta NFC no és una etiqueta Home Assistant";
+"nfc.read.error.not_home_assistant" = "L'etiqueta NFC no és una etiqueta MySmartHomes";
 "nfc.read.error.tag_invalid" = "L'etiqueta NFC no és vàlida";
 "nfc.read.start_message" = "Mentingueu el vostre %@ prop d'una etiqueta NFC";
 "nfc.tag_read" = "Lectura d'etiquetes NFC";
@@ -285,7 +275,7 @@ Les etiquetes funcionaran en qualsevol dispositiu amb Home Assistant instal·lat
 "notification_service.parser.camera.invalid_entity" = "entity_id proporcionat no era vàlid.";
 "notification_service.parser.url.invalid_url" = "L'adreça URL donada no era vàlida.";
 "notification_service.parser.url.no_url" = "No s'ha proporcionat cap URL.";
-"notifications_configurator.action.rows.authentication_required.footer" = "Quan l'usuari selecciona una acció amb aquesta opció, el sistema demana a l'usuari que desbloquegi el dispositiu. Després del desbloqueig, es notificarà a Home Assistant l'acció seleccionada.";
+"notifications_configurator.action.rows.authentication_required.footer" = "Quan l'usuari selecciona una acció amb aquesta opció, el sistema demana a l'usuari que desbloquegi el dispositiu. Després del desbloqueig, es notificarà a MySmartHomes l'acció seleccionada.";
 "notifications_configurator.action.rows.authentication_required.title" = "Autenticació obligatòria";
 "notifications_configurator.action.rows.destructive.footer" = "Quan està habilitat, el botó d'acció es mostra amb un ressaltat especial per indicar que realitza una tasca destructiva.";
 "notifications_configurator.action.rows.destructive.title" = "Destructiu";
@@ -335,7 +325,7 @@ Les etiquetes funcionaran en qualsevol dispositiu amb Home Assistant instal·lat
 "onboarding.manual_setup.connect" = "Connecta't";
 "onboarding.manual_setup.couldnt_make_url.message" = "El valor \" %@ \" no és una URL vàlida.";
 "onboarding.manual_setup.couldnt_make_url.title" = "No s'ha pogut crear una URL";
-"onboarding.manual_setup.description" = "L'adreça URL del servidor Home Assistant. Assegureu-vos que inclou el protocol i el port.";
+"onboarding.manual_setup.description" = "L'adreça URL del servidor MySmartHomes. Assegureu-vos que inclou el protocol i el port.";
 "onboarding.manual_setup.no_scheme.message" = "Hauríem d'intentar connectar-nos utilitzant http:// o https://?";
 "onboarding.manual_setup.no_scheme.title" = "URL introduïda sense esquema";
 "onboarding.manual_setup.title" = "Introduïu l'adreça URL";
@@ -344,7 +334,7 @@ Les etiquetes funcionaran en qualsevol dispositiu amb Home Assistant instal·lat
 "onboarding.permissions.change_later_note" = "Podeu canviar aquest permís més endavant a la Configuració";
 "onboarding.permissions.focus.bullet.automations" = "Automatismes basats en la concentració";
 "onboarding.permissions.focus.bullet.instant" = "Actualitzacions instantànies quan canvia l'estat";
-"onboarding.permissions.focus.description" = "Permet que s'enviï si estàs en mode de concentració al Home Assistant";
+"onboarding.permissions.focus.description" = "Permet que s'enviï si estàs en mode de concentració al MySmartHomes";
 "onboarding.permissions.focus.grant_description" = "Activa el permís de concentració per crear sensors del teu estat de concentració, també conegut com a no-molestar.";
 "onboarding.permissions.focus.title" = "Enfocar-se";
 "onboarding.permissions.location.bullet.automations" = "Automatismes basats en la presència";
@@ -356,7 +346,7 @@ Les etiquetes funcionaran en qualsevol dispositiu amb Home Assistant instal·lat
 "onboarding.permissions.motion.bullet.activity" = "Sensor pel tipus d'activitat actual";
 "onboarding.permissions.motion.bullet.distance" = "Sensor de distància recorreguda";
 "onboarding.permissions.motion.bullet.steps" = "Sensor per comptar passos";
-"onboarding.permissions.motion.description" = "Permet que s'enviïn dades de moviment i del podòmetre al Home Assistant";
+"onboarding.permissions.motion.description" = "Permet que s'enviïn dades de moviment i del podòmetre al MySmartHomes";
 "onboarding.permissions.motion.grant_description" = "Activa el permís de moviment per crear sensors de moviment i dades del podòmetre.";
 "onboarding.permissions.motion.title" = "Moviment i podòmetre";
 "onboarding.permissions.notification.bullet.alert" = "Rebre alertes de notificacions";
@@ -369,10 +359,10 @@ Les etiquetes funcionaran en qualsevol dispositiu amb Home Assistant instal·lat
 "onboarding.scanning.manual" = "Introduïu l'adreça manualment";
 "onboarding.scanning.manual_hint" = "No trobeu el vostre servidor?";
 "onboarding.scanning.title" = "S'està cercant servidors";
-"onboarding.welcome.description" = "Aquesta aplicació es connecta al vostre servidor Home Assistant i permet integrar dades sobre tu i el teu telèfon. \
+"onboarding.welcome.description" = "Aquesta aplicació es connecta al vostre servidor MySmartHomes i permet integrar dades sobre tu i el teu telèfon. \
 \
-Home Assistant és un programari d'automatització de la llar gratuït i de codi obert, centrat en el control local i la privadesa.";
-"onboarding.welcome.title" = "Benvinguts a Home Assistant %@!";
+MySmartHomes és un programari d'automatització de la llar gratuït i de codi obert, centrat en el control local i la privadesa.";
+"onboarding.welcome.title" = "Benvinguts a MySmartHomes %@!";
 "open_label" = "Obrir";
 "preview_output" = "Previsualització de la sortida";
 "reload_label" = "Reload";
@@ -391,11 +381,11 @@ Home Assistant és un programari d'automatització de la llar gratuït i de codi
 "settings.connection_section.delete_server.title" = "Elimina el servidor";
 "settings.connection_section.details" = "Detalls";
 "settings.connection_section.errors.cannot_remove_last_url" = "No podeu eliminar només l'URL disponible.";
-"settings.connection_section.external_base_url.placeholder" = "https://homeassistant.myhouse.com";
+"settings.connection_section.external_base_url.placeholder" = "https://mysmarthomes.myhouse.com";
 "settings.connection_section.external_base_url.title" = "URL externa";
 "settings.connection_section.header" = "Connexió";
-"settings.connection_section.home_assistant_cloud.title" = "Home Assistant Cloud";
-"settings.connection_section.internal_base_url.placeholder" = "p.e. http://homeassistant.local:8123";
+"settings.connection_section.home_assistant_cloud.title" = "MySmartHomes Cloud";
+"settings.connection_section.internal_base_url.placeholder" = "p.e. http://mysmarthomes.local:8123";
 "settings.connection_section.internal_base_url.title" = "URL interna";
 "settings.connection_section.internal_url_hardware_addresses.add_new_ssid" = "Afegeix una adreça de maquinari nova";
 "settings.connection_section.internal_url_hardware_addresses.footer" = "Internal URL will be used when the primary network interface has a MAC address matching one of these hardware addresses.";
@@ -405,7 +395,7 @@ Home Assistant és un programari d'automatització de la llar gratuït i de codi
 "settings.connection_section.internal_url_ssids.footer" = "La URL interna s'utilitzarà quan estigui connectat a algun dels SSIDs de la llista";
 "settings.connection_section.internal_url_ssids.header" = "SSIDs";
 "settings.connection_section.internal_url_ssids.placeholder" = "ElMeuNomDeXarxaDivertit";
-"settings.connection_section.local_push_description" = "Connecteu-vos directament al servidor Home Assistant per rebre notificacions push quan estigueu connectats a SSIDs interns.";
+"settings.connection_section.local_push_description" = "Connecteu-vos directament al servidor MySmartHomes per rebre notificacions push quan estigueu connectats a SSIDs interns.";
 "settings.connection_section.location_send_type.setting.exact" = "Exacte";
 "settings.connection_section.location_send_type.setting.never" = "Mai";
 "settings.connection_section.location_send_type.setting.zone_only" = "Només el nom de la zona";
@@ -462,7 +452,7 @@ Home Assistant és un programari d'automatització de la llar gratuït i de codi
 "settings.location_history.title" = "Historial d'ubicació";
 "settings.navigation_bar.about_button.title" = "Quant a";
 "settings.navigation_bar.title" = "Configuració";
-"settings.reset_section.reset_alert.message" = "La vostra configuració es restablirà i aquest dispositiu deixarà d'estar registrat de les notificacions push així com també s'eliminarà de la configuració del vostre Home Assistant.";
+"settings.reset_section.reset_alert.message" = "La vostra configuració es restablirà i aquest dispositiu deixarà d'estar registrat de les notificacions push així com també s'eliminarà de la configuració del vostre MySmartHomes.";
 "settings.reset_section.reset_alert.progress_message" = "S'està restablint …";
 "settings.reset_section.reset_alert.title" = "Restablir";
 "settings.reset_section.reset_row.title" = "Restablir";
@@ -470,7 +460,7 @@ Home Assistant és un programari d'automatització de la llar gratuït i de codi
 "settings.server_select.page_title" = "Servidor";
 "settings.server_select.title" = "Servidor";
 "settings.status_section.header" = "Estat";
-"settings.status_section.location_name_row.placeholder" = "El meu Home Assistant";
+"settings.status_section.location_name_row.placeholder" = "El meu MySmartHomes";
 "settings.status_section.location_name_row.title" = "Nom";
 "settings.status_section.version_row.placeholder" = "0.92.0";
 "settings.status_section.version_row.title" = "Versió";
@@ -505,7 +495,7 @@ Home Assistant és un programari d'automatització de la llar gratuït i de codi
 "settings_details.general.app_icon.enum.electric_violet" = "Violeta Elèctric";
 "settings_details.general.app_icon.enum.fire_orange" = "Taronja de foc";
 "settings_details.general.app_icon.enum.green" = "Verd";
-"settings_details.general.app_icon.enum.ha_blue" = "Blau Home Assistant";
+"settings_details.general.app_icon.enum.ha_blue" = "Blau MySmartHomes";
 "settings_details.general.app_icon.enum.old_beta" = "Beta antiga";
 "settings_details.general.app_icon.enum.old_dev" = "Antic Dev";
 "settings_details.general.app_icon.enum.old_release" = "Versió antiga";
@@ -639,7 +629,7 @@ Home Assistant és un programari d'automatització de la llar gratuït i de codi
 "settings_details.notifications.title" = "Notificacions";
 "settings_details.privacy.alerts.description" = "Permet comprovar si hi ha alertes importants, com ara vulnerabilitats de seguretat.";
 "settings_details.privacy.alerts.title" = "Alertes";
-"settings_details.privacy.analytics.generic_description" = "Permet la recopilació d'informació bàsica sobre el dispositiu i les interaccions amb l'aplicació. No es comparteixen dades identificables de l'usuari, inclosos les URL i els tokens del Home Assistant. Heu de reiniciar l'aplicació perquè els canvis en aquesta configuració tinguin efecte.";
+"settings_details.privacy.analytics.generic_description" = "Permet la recopilació d'informació bàsica sobre el dispositiu i les interaccions amb l'aplicació. No es comparteixen dades identificables de l'usuari, inclosos les URL i els tokens del MySmartHomes. Heu de reiniciar l'aplicació perquè els canvis en aquesta configuració tinguin efecte.";
 "settings_details.privacy.analytics.generic_title" = "Analytics";
 "settings_details.privacy.crash_reporting.description" = "Permet un seguiment més profund de bloquejos i altres errors de l'aplicació, cosa que permet publicar solucions amb més rapidesa. No s’envia cap informació identificable de l’usuari, a part de la informació bàsica del dispositiu. Heu de reiniciar l'aplicació perquè els canvis en aquesta configuració tinguin efecte.";
 "settings_details.privacy.crash_reporting.sentry" = "Actualment, aquesta característica utilitza Sentry com a destinació de l'informe.";
@@ -647,7 +637,6 @@ Home Assistant és un programari d'automatització de la llar gratuït i de codi
 "settings_details.privacy.messaging.description" = "Firebase Cloud Messaging ha d'estar habilitat perquè funcionin les notificacions push.";
 "settings_details.privacy.messaging.title" = "Firebase Cloud Messaging";
 "settings_details.privacy.title" = "Privacitat";
-"settings_details.thread.delete_credential.confirmation.title" = "Are you sure you want to delete this credential from your Apple Keychain? This can't be reverted and should only be executed if you know what you're doing.";
 "settings_details.thread.title" = "Fil";
 "settings_details.updates.check_for_updates.include_betas" = "Incloure Versions Beta";
 "settings_details.updates.check_for_updates.title" = "Comprovar automàticament si hi ha actualitzacions";
@@ -682,16 +671,15 @@ Home Assistant és un programari d'automatització de la llar gratuït i de codi
 "thread.credentials.screen_title" = "Thread Credentials";
 "thread.credentials.share_credentials.no_credentials_message" = "Assegureu-vos que heu iniciat la sessió amb el vostre compte d'iCloud, que és propietari d'una llar a Apple Home.";
 "thread.credentials.share_credentials.no_credentials_title" = "No teniu credencials per compartir";
-"thread.credentials.share_credentials_button_title" = "Comparteix la credencial amb Home Assistant";
+"thread.credentials.share_credentials_button_title" = "Comparteix la credencial amb MySmartHomes";
 "thread.extended_pan_id.title" = "Extended PAN ID";
 "thread.management.title" = "Thread Credentials";
 "thread.network_key.title" = "Network Key";
-"thread.save_credential.fail.alert.message" = "Failed to save thread network credential.";
 "thread.store_in_keychain.error.generic.body" = "Failed to store thread credential in keychain, check logs for more information.";
 "thread.store_in_keychain.error.hexadecimal_conversion.body" = "Failed to convert input to hexadecimal while storing thread credential in keychain";
 "thread.store_in_keychain.error.title" = "L'operació ha fallat";
 "thread.transter_to_apple.title" = "Transferir al clauer d'Apple";
-"thread.transter_to_homeassistant.title" = "Transferir a Home Assistant";
+"thread.transter_to_homeassistant.title" = "Transferir a MySmartHomes";
 "token_error.connection_failed" = "La connexió ha fallat.";
 "token_error.expired" = "El token ha caducat.";
 "token_error.token_unavailable" = "El token no està disponible.";
@@ -937,7 +925,7 @@ Home Assistant és un programari d'automatització de la llar gratuït i de codi
 "watch.labels.selected_pipeline.title" = "Pipeline";
 "watch.placeholder_complication_name" = "Contenidor";
 "watch.settings.no_items.phone.title" = "No items configured, please choose items below.";
-"widgets.actions.description" = "Realitza accions del Home Assistant.";
+"widgets.actions.description" = "Realitza accions del MySmartHomes.";
 "widgets.actions.not_configured" = "No hi ha accions configurades";
 "widgets.actions.parameters.action" = "Action";
 "widgets.actions.title" = "Accions";
@@ -946,23 +934,15 @@ Home Assistant és un programari d'automatització de la llar gratuït i de codi
 "widgets.assist.title" = "Assist";
 "widgets.assist.unknown_configuration" = "Configurar";
 "widgets.button.reload_timeline" = "Recarrega tots els ginys";
-"widgets.controls.assist.description" = "Open Assist in Home Assistant app";
 "widgets.controls.assist.pipeline.placeholder" = "Choose a pipeline";
 "widgets.controls.assist.title" = "Assist";
-"widgets.controls.light.description" = "Turn on/off your light";
-"widgets.controls.light.title" = "Light";
-"widgets.controls.open_page.configuration.parameter.choose_page" = "Choose page";
-"widgets.controls.open_page.configuration.parameter.page" = "Page";
-"widgets.controls.open_page.configuration.title" = "Open Page";
 "widgets.controls.scene.description" = "Run scene";
 "widgets.controls.scene.display_name" = "Scene";
 "widgets.controls.scenes.placeholder_title" = "Choose scene";
 "widgets.controls.script.description" = "Run script";
 "widgets.controls.script.display_name" = "Script";
 "widgets.controls.scripts.placeholder_title" = "Choose script";
-"widgets.controls.switch.description" = "Turn on/off your switch";
-"widgets.controls.switch.title" = "Switch";
-"widgets.details.description" = "Display states using from Home Assistant in text";
+"widgets.details.description" = "Display states using from MySmartHomes in text";
 "widgets.details.parameters.action" = "Action";
 "widgets.details.parameters.details_template" = "Details Text Template (only in rectangular family)";
 "widgets.details.parameters.lower_template" = "Lower Text Template";
@@ -970,7 +950,7 @@ Home Assistant és un programari d'automatització de la llar gratuït i de codi
 "widgets.details.parameters.server" = "Server";
 "widgets.details.parameters.upper_template" = "Upper Text Template";
 "widgets.details.title" = "Details";
-"widgets.gauge.description" = "Display numeric states from Home Assistant in a gauge";
+"widgets.gauge.description" = "Display numeric states from MySmartHomes in a gauge";
 "widgets.gauge.parameters.action" = "Action";
 "widgets.gauge.parameters.gauge_type" = "Gauge Type";
 "widgets.gauge.parameters.gauge_type.capacity" = "Capacity";
@@ -982,13 +962,11 @@ Home Assistant és un programari d'automatització de la llar gratuït i de codi
 "widgets.gauge.parameters.value_label_template" = "Value Label Template";
 "widgets.gauge.parameters.value_template" = "Value Template (0-1)";
 "widgets.gauge.title" = "Gauge";
-"widgets.lights.description" = "Turn on/off light";
-"widgets.open_page.description" = "Obrir una pàgina del Home Assistant";
+"widgets.open_page.description" = "Obrir una pàgina del MySmartHomes";
 "widgets.open_page.not_configured" = "No hi ha pàgines disponibles";
 "widgets.open_page.title" = "Obre la pàgina";
 "widgets.reload_widgets.app_intent.description" = "Reload all widgets timelines.";
 "widgets.reload_widgets.app_intent.title" = "Reload widgets";
-"widgets.scene.activate.title" = "Activate scene";
 "widgets.scene.description.title" = "Run Scene";
 "widgets.scripts.description" = "Run Scripts";
 "widgets.scripts.not_configured" = "No Scripts Configured";

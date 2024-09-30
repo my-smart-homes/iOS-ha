@@ -9,10 +9,10 @@
 "about.github_issue_tracker.title" = "GitHub Issue Tracker";
 "about.help_localize.title" = "Aita rakendust tõlkida!";
 "about.home_assistant_on_facebook.title" = "Home Assistanti  Facebooki leht";
-"about.home_assistant_on_twitter.title" = "Home Assistant Twitteris";
-"about.logo.app_title" = "Home Assistant Companion";
+"about.home_assistant_on_twitter.title" = "MySmartHomes Twitteris";
+"about.logo.app_title" = "MySmartHomes Companion";
 "about.logo.tagline" = "Ärata oma kodu";
-"about.logo.title" = "Home Assistant";
+"about.logo.title" = "MySmartHomes";
 "about.review.title" = "Jäta arvustus";
 "about.title" = "Teave";
 "about.website.title" = "Koduleht";
@@ -32,7 +32,7 @@
 "actions_configurator.visual_section.scene_hint_footer" = "Neid saab muuta ka Scene atribuutide kohandamisega: %@";
 "actions_configurator.visual_section.server_defined" = "Selle toimingu välimust juhib serveri konfiguratsioon.";
 "addButtonLabel" = "Lisa";
-"alerts.action_automation_editor.unavailable.body" = "Toimingu automaatseks loomiseks värskenda Home Assistant vähemalt versioonile 2024.2";
+"alerts.action_automation_editor.unavailable.body" = "Toimingu automaatseks loomiseks värskenda MySmartHomes vähemalt versioonile 2024.2";
 "alerts.action_automation_editor.unavailable.title" = "Uuenda oma  Home Assistantit";
 "alerts.alert.ok" = "Sobib";
 "alerts.auth_required.message" = "Server on mandaadi tagasi lükanud ja jätkamiseks pead uuesti sisse logima.";
@@ -52,33 +52,24 @@
 "announcement.drop_support.button_read_more" = "Lisateave";
 "announcement.drop_support.subtitle" = "Pärast hoolikat kaalumist lõpetame oma tulevastes värskendustes iOS 12, 13 ja 14 toe.";
 "announcement.drop_support.title" = "Oluline uuendus";
-"app_intents.assist.pipeline.default.title" = "Vaikimisi";
-"app_intents.assist.pipeline.title" = "Voog";
+"app_intents.assist.pipeline.title" = "Pipeline";
 "app_intents.assist.preferred_pipeline.title" = "Eelistatud";
-"app_intents.assist.refresh_warning.title" = "Ei leia oma Assisti voogu? Voogude loendi värskendamiseks ava rakenduses Assist.";
-"app_intents.controls.assist.parameter.with_voice" = "Häälega";
-"app_intents.controls.assist.title" = "Assist rakenduses";
 "app_intents.haptic_confirmation.title" = "Tunnetatav kinnitus";
-"app_intents.lights.light.target" = "Sihtolek";
-"app_intents.lights.light.title" = "Valgusti";
-"app_intents.notify_when_run.description" = "Pärast täitmist kuvab teatise";
-"app_intents.notify_when_run.title" = "Käivitamisel teavita";
 "app_intents.perform_action.action_parameter_configuration" = "Milline toiming?";
 "app_intents.perform_action.action_parameter_confirmation" = "Lihtsalt kinnita, kas sa tahtsid ' %@ '?";
 "app_intents.perform_action.action_parameter_disambiguation_intro" = "On %@ valikut mis vastavad '%@'.";
 "app_intents.perform_action.response_failure" = "Nurjus: %@";
 "app_intents.perform_action.response_success" = "Valmis";
 "app_intents.scenes.failure_message.content" = "Stseeni \" %@ \" käivitamine nurjus, kontrolli logisid.";
-"app_intents.scenes.icon.title" = "Ikoon";
-"app_intents.scenes.parameter.scene.title" = "Stseen";
+"app_intents.scenes.icon.title" = "Icon";
 "app_intents.scenes.requires_confirmation_before_run.description" = "Nõuab enne stseeni käivitamist käsitsi kinnitamist.";
 "app_intents.scenes.requires_confirmation_before_run.title" = "Kinnita enne käivitamist";
-"app_intents.scenes.scene.title" = "Stseen";
+"app_intents.scenes.scene.title" = "Scene";
 "app_intents.scenes.success_message.content" = "Stseen \"%@\" on käivitatud.";
 "app_intents.scenes.title" = "Käivita stseen";
 "app_intents.scripts.failure_message.content" = "Skripti \" %@ \" käivitamine nurjus, kontrolli logisid.";
 "app_intents.scripts.haptic_confirmation.title" = "Tunnetatav kinnitus";
-"app_intents.scripts.icon.title" = "Ikoon";
+"app_intents.scripts.icon.title" = "Icon";
 "app_intents.scripts.requires_confirmation_before_run.description" = "Enne skripti käivitamist on vaja käsitsi kinnitust.";
 "app_intents.scripts.requires_confirmation_before_run.title" = "Kinnita enne käivitamist";
 "app_intents.scripts.script.title" = "Käivita skript";
@@ -174,7 +165,7 @@
 "ha_api.api_error.cant_build_url" = "API URL-i ei saa luua";
 "ha_api.api_error.invalid_response" = "Saadi Home Assistantilt vale vastus";
 "ha_api.api_error.manager_not_available" = "HA API haldur pole saadaval";
-"ha_api.api_error.mobile_app_component_not_loaded" = "Komponent mobile_app ei ole laaditud. Palun lisa see oma konfiguratsiooni, taaskäivita Home Assistant ja proovi uuesti.";
+"ha_api.api_error.mobile_app_component_not_loaded" = "Komponent mobile_app ei ole laaditud. Palun lisa see oma konfiguratsiooni, taaskäivita MySmartHomes ja proovi uuesti.";
 "ha_api.api_error.must_upgrade_home_assistant" = "Home Assistanti versioon (%@) on liiga vana, rakenduse kasutamiseks pead uuendama vähemalt versioonile %@.";
 "ha_api.api_error.not_configured" = "HA API pole seadistatud";
 "ha_api.api_error.unacceptable_status_code" = "Kehtetu olekukood %1$li .";
@@ -234,7 +225,6 @@
 "magic_item.item_type.selection.list.title" = "Üksuse tüüp";
 "magic_item.name.title" = "Nimi";
 "magic_item.name_and_icon.footer" = "Muuda skripti nime ja ikooni kasutajaliideses jaotises \"Seaded\" > \"Automaatikad ja stseenid\" > \"Skriptid\".";
-"magic_item.name_and_icon.footer.scenes" = "Muuda stseeni nime ja ikooni kasutajaliideses jaotises „Seaded” > „Automatiseerimine ja stseenid” > „Stseenid”.";
 "magic_item.require_confirmation.title" = "Nõua kinnitust";
 "magic_item.text_color.title" = "Teksti värv";
 "magic_item.use_custom_colors.title" = "Kasuta kohandatud värve";
@@ -258,7 +248,7 @@
 "nfc.generic_tag_read" = "Märgise lugemine";
 "nfc.list.description" = "Rakenduse poolt kirjutatud NFC-märgised näitavad teavitust kui viid oma seadme nende lähedusse. Teate aktiveerimine käivitab rakenduse ja vallandab sündmuse.\
 \
-Sildid toimivad igas seadmes, kuhu on paigaldatud Home Assistant, millel on nende lugemiseks riistvaraline tugi.";
+Sildid toimivad igas seadmes, kuhu on paigaldatud MySmartHomes, millel on nende lugemiseks riistvaraline tugi.";
 "nfc.list.learn_more" = "Lisateave";
 "nfc.list.read_tag" = "Loe NFC märgist";
 "nfc.list.title" = "NFC-märgised";
@@ -371,7 +361,7 @@ Sildid toimivad igas seadmes, kuhu on paigaldatud Home Assistant, millel on nend
 "onboarding.scanning.title" = "Serverite otsimine";
 "onboarding.welcome.description" = "See rakendus loob ühenduse Home Assistanti serveriga ja võimaldab integreerida teie ja teie telefoni andmeid. \
 \
- Home Assistant on tasuta avatud lähtekoodiga koduautomaatika tarkvara, mis keskendub kohalikule juhtimisele ja privaatsusele.";
+ MySmartHomes on tasuta avatud lähtekoodiga koduautomaatika tarkvara, mis keskendub kohalikule juhtimisele ja privaatsusele.";
 "onboarding.welcome.title" = "Tere tulemast Home Assistanti %@!";
 "open_label" = "Avatud";
 "preview_output" = "Kujunduse eelvaade";
@@ -391,11 +381,11 @@ Sildid toimivad igas seadmes, kuhu on paigaldatud Home Assistant, millel on nend
 "settings.connection_section.delete_server.title" = "Kustuta server";
 "settings.connection_section.details" = "Üksikasjad";
 "settings.connection_section.errors.cannot_remove_last_url" = "Ainult saadaolevat URL-i ei saa eemaldada.";
-"settings.connection_section.external_base_url.placeholder" = "https://homeassistant.myhouse.com";
+"settings.connection_section.external_base_url.placeholder" = "https://mysmarthomes.myhouse.com";
 "settings.connection_section.external_base_url.title" = "Välise ühenduse URL";
 "settings.connection_section.header" = "Ühendus";
-"settings.connection_section.home_assistant_cloud.title" = "Home Assistant Cloud";
-"settings.connection_section.internal_base_url.placeholder" = "näiteks http://homeassistant.local:8123/";
+"settings.connection_section.home_assistant_cloud.title" = "MySmartHomes Cloud";
+"settings.connection_section.internal_base_url.placeholder" = "näiteks http://mysmarthomes.local:8123/";
 "settings.connection_section.internal_base_url.title" = "Seesmise ühenduse URL";
 "settings.connection_section.internal_url_hardware_addresses.add_new_ssid" = "Uue riistvara aadressi lisamine";
 "settings.connection_section.internal_url_hardware_addresses.footer" = "Sisemist URL-i kasutatakse siis, kui peamise võrguliidese MAC-aadress vastab ühele neist riistvaraaadressidest.";
@@ -470,7 +460,7 @@ Sildid toimivad igas seadmes, kuhu on paigaldatud Home Assistant, millel on nend
 "settings.server_select.page_title" = "Server";
 "settings.server_select.title" = "Server";
 "settings.status_section.header" = "Olek";
-"settings.status_section.location_name_row.placeholder" = "My Home Assistant";
+"settings.status_section.location_name_row.placeholder" = "My MySmartHomes";
 "settings.status_section.location_name_row.title" = "Nimi";
 "settings.status_section.version_row.placeholder" = "0.92.0";
 "settings.status_section.version_row.title" = "Versioon";
@@ -647,7 +637,6 @@ Sildid toimivad igas seadmes, kuhu on paigaldatud Home Assistant, millel on nend
 "settings_details.privacy.messaging.description" = "Tõukemärguannete toimimiseks peab Firebase'i pilvsõnumside olema lubatud.";
 "settings_details.privacy.messaging.title" = "Firebase'i pilvsõnumside";
 "settings_details.privacy.title" = "Privaatsus";
-"settings_details.thread.delete_credential.confirmation.title" = "Kas oled kindel, et soovite selle kasutajatunnuse oma Apple'i võtmehoidjast kustutada? Seda ei saa tagasi võtta ja seda tuleks teostada ainult siis kui te tead mida teed.";
 "settings_details.thread.title" = "Thread";
 "settings_details.updates.check_for_updates.include_betas" = "Kaasa beetaversioonid";
 "settings_details.updates.check_for_updates.title" = "Uuenduste automaatne kontrollimine";
@@ -686,7 +675,6 @@ Sildid toimivad igas seadmes, kuhu on paigaldatud Home Assistant, millel on nend
 "thread.extended_pan_id.title" = "Laiendatud PAN ID";
 "thread.management.title" = "Threadi sidumse volitused";
 "thread.network_key.title" = "Võrgu võti";
-"thread.save_credential.fail.alert.message" = "Thread võrgu identimisteabe salvestamine nurjus.";
 "thread.store_in_keychain.error.generic.body" = "Threadi mandaadi salvestamine võtmehoidlasse nurjus. Lisateabe saamiseks vaata logisid.";
 "thread.store_in_keychain.error.hexadecimal_conversion.body" = "Sisendi teisendamine kuueteistkümnendsüsteemiks nurjus lõimemandaadi salvestamisel võtmehoidlasse";
 "thread.store_in_keychain.error.title" = "Toiming nurjus";
@@ -721,7 +709,7 @@ Sildid toimivad igas seadmes, kuhu on paigaldatud Home Assistant, millel on nend
 "url_handler.send_location.success.title" = "Asukohateave edastatud";
 "url_handler.x_callback_url.error.eventNameMissing" = "eventName peab olema määratletud";
 "url_handler.x_callback_url.error.general" = "Ilmnes üldine tõrge";
-"url_handler.x_callback_url.error.serviceMissing" = "teenus (nt homeassistant.turn_on) peab olema määratletud";
+"url_handler.x_callback_url.error.serviceMissing" = "teenus (nt mysmarthomes.turn_on) peab olema määratletud";
 "url_handler.x_callback_url.error.templateMissing" = "Tuleb määratleda renderdatav mall";
 "username_label" = "Kasutajanimi";
 "watch.assist.lack_config.error.title" = "Seadista Assist iOS-i kaasrakenduse abil";
@@ -946,22 +934,14 @@ Sildid toimivad igas seadmes, kuhu on paigaldatud Home Assistant, millel on nend
 "widgets.assist.title" = "Abiline";
 "widgets.assist.unknown_configuration" = "Seadista";
 "widgets.button.reload_timeline" = "Taaslae kõik paanid";
-"widgets.controls.assist.description" = "Ava Assist rakenduses Home Assistant";
-"widgets.controls.assist.pipeline.placeholder" = "Vali voog";
-"widgets.controls.assist.title" = "Abiline";
-"widgets.controls.light.description" = "Valgusti sisse/välja lülitamine";
-"widgets.controls.light.title" = "Valgusti";
-"widgets.controls.open_page.configuration.parameter.choose_page" = "Vali lehekülg";
-"widgets.controls.open_page.configuration.parameter.page" = "Lehekülg";
-"widgets.controls.open_page.configuration.title" = "Ava lehekülg";
+"widgets.controls.assist.pipeline.placeholder" = "Choose a pipeline";
+"widgets.controls.assist.title" = "Assist";
 "widgets.controls.scene.description" = "Käivita stseen";
 "widgets.controls.scene.display_name" = "Stseen";
 "widgets.controls.scenes.placeholder_title" = "Vali stseen";
 "widgets.controls.script.description" = "Käivita skript";
 "widgets.controls.script.display_name" = "Skript";
 "widgets.controls.scripts.placeholder_title" = "Vali skript";
-"widgets.controls.switch.description" = "Lüliti sisse/välja";
-"widgets.controls.switch.title" = "Lüliti";
 "widgets.details.description" = "Kuva olekud kasutades Home Assistanti teksti";
 "widgets.details.parameters.action" = "Toiming";
 "widgets.details.parameters.details_template" = "Üksikasjade tekstimall (ainult ristkülikus)";
@@ -982,13 +962,11 @@ Sildid toimivad igas seadmes, kuhu on paigaldatud Home Assistant, millel on nend
 "widgets.gauge.parameters.value_label_template" = "Väärtussildi mall";
 "widgets.gauge.parameters.value_template" = "Väärtuse mall (0-1)";
 "widgets.gauge.title" = "Mõõtur";
-"widgets.lights.description" = "Valgustuse sisse/välja lülitamine";
 "widgets.open_page.description" = "AvaHome Assistantis esileht.";
 "widgets.open_page.not_configured" = "Lehekülgi pole saadaval";
 "widgets.open_page.title" = "Ava lehekülg";
 "widgets.reload_widgets.app_intent.description" = "Taaslae kõik vidinad.";
 "widgets.reload_widgets.app_intent.title" = "Taaslae vidinad";
-"widgets.scene.activate.title" = "Aktiveeri stseen";
 "widgets.scene.description.title" = "Käivita stseen";
 "widgets.scripts.description" = "Skriptide käivitamine";
 "widgets.scripts.not_configured" = "Skripte pole seadistatud";

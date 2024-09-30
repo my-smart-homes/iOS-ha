@@ -1,5 +1,5 @@
 import Alamofire
-@testable import HomeAssistant
+@testable import MySmartHomes
 import OHHTTPStubs
 import PromiseKit
 import XCTest

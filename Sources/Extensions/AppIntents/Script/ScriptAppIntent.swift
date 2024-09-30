@@ -2,7 +2,6 @@ import AppIntents
 import AudioToolbox
 import Foundation
 import PromiseKit
-import SFSafeSymbols
 import Shared
 import SwiftUI
 
@@ -15,12 +14,25 @@ final class ScriptAppIntent: AppIntent {
 
     @Parameter(
         title: LocalizedStringResource(
-            "app_intents.notify_when_run.title",
-            defaultValue: "Notify when run"
+            "app_intents.scripts.requires_confirmation_before_run.title",
+            defaultValue: "Confirm before run"
         ),
         description: LocalizedStringResource(
-            "app_intents.notify_when_run.description",
-            defaultValue: "Shows notification after executed"
+            "app_intents.scripts.requires_confirmation_before_run.description",
+            defaultValue: "Requires manual confirmation before running the script."
+        ),
+        default: true
+    )
+    var requiresConfirmationBeforeRun: Bool
+
+    @Parameter(
+        title: LocalizedStringResource(
+            "app_intents.scripts.show_confirmation_dialog.title",
+            defaultValue: "Confirmation notification"
+        ),
+        description: LocalizedStringResource(
+            "app_intents.scripts.show_confirmation_dialog.description",
+            defaultValue: "Shows confirmation notification after executed"
         ),
         default: true
     )
@@ -36,6 +48,10 @@ final class ScriptAppIntent: AppIntent {
     var hapticConfirmation: Bool
 
     func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
+        if requiresConfirmationBeforeRun {
+            try await requestConfirmation()
+        }
+
         if hapticConfirmation {
             // Unfortunately this is the only 'haptics' that work with widgets
             // ideally in the future this should use CoreHaptics for a better experience
@@ -48,7 +64,7 @@ final class ScriptAppIntent: AppIntent {
                 return
             }
             let domain = Domain.script.rawValue
-            let service = script.entityId.replacingOccurrences(of: "\(domain).", with: "")
+            let service = script.id.replacingOccurrences(of: "\(domain).", with: "")
             Current.api(for: server).CallService(domain: domain, service: service, serviceData: [:])
                 .pipe { [weak self] result in
                     switch result {
@@ -70,9 +86,6 @@ final class ScriptAppIntent: AppIntent {
                     .Scripts.FailureMessage.content(script.displayString)
             ))
         }
-
-        DataWidgetsUpdater.update()
-
         return .result(value: success)
     }
 }
@@ -84,7 +97,6 @@ struct IntentScriptEntity: AppEntity {
     static let defaultQuery = IntentScriptAppEntityQuery()
 
     var id: String
-    var entityId: String
     var serverId: String
     var serverName: String
     var displayString: String
@@ -95,14 +107,12 @@ struct IntentScriptEntity: AppEntity {
 
     init(
         id: String,
-        entityId: String,
         serverId: String,
         serverName: String,
         displayString: String,
         iconName: String
     ) {
         self.id = id
-        self.entityId = entityId
         self.serverId = serverId
         self.serverName = serverName
         self.displayString = displayString
@@ -113,45 +123,65 @@ struct IntentScriptEntity: AppEntity {
 @available(iOS 16.4, macOS 13.0, watchOS 9.0, *)
 struct IntentScriptAppEntityQuery: EntityQuery, EntityStringQuery {
     func entities(for identifiers: [String]) async throws -> [IntentScriptEntity] {
-        getScriptEntities().flatMap(\.value).filter { identifiers.contains($0.id) }
+        await getScriptEntities().flatMap(\.value).filter { identifiers.contains($0.id) }
     }
 
     func entities(matching string: String) async throws -> IntentItemCollection<IntentScriptEntity> {
-        let scriptsPerServer = getScriptEntities()
-
-        return .init(sections: scriptsPerServer.map { (key: Server, value: [IntentScriptEntity]) in
-            .init(
-                .init(stringLiteral: key.info.name),
-                items: value.filter({ $0.displayString.lowercased().contains(string.lowercased()) })
-            )
-        })
-    }
-
-    func suggestedEntities() async throws -> IntentItemCollection<IntentScriptEntity> {
-        let scriptsPerServer = getScriptEntities()
+        let scriptsPerServer = await getScriptEntities()
 
         return .init(sections: scriptsPerServer.map { (key: Server, value: [IntentScriptEntity]) in
             .init(.init(stringLiteral: key.info.name), items: value)
         })
     }
 
-    private func getScriptEntities(matching string: String? = nil) -> [Server: [IntentScriptEntity]] {
-        var scriptEntities: [Server: [IntentScriptEntity]] = [:]
-        let entities = ControlEntityProvider(domain: .script).getEntities(matching: string)
+    func suggestedEntities() async throws -> IntentItemCollection<IntentScriptEntity> {
+        let scriptsPerServer = await getScriptEntities()
 
-        for (server, values) in entities {
-            scriptEntities[server] = values.map({ entity in
-                IntentScriptEntity(
-                    id: entity.id,
-                    entityId: entity.entityId,
-                    serverId: entity.serverId,
-                    serverName: server.info.name,
-                    displayString: entity.name,
-                    iconName: entity.icon ?? SFSymbol.applescriptFill.rawValue
-                )
-            })
+        return .init(sections: scriptsPerServer.map { (key: Server, value: [IntentScriptEntity]) in
+            .init(.init(stringLiteral: key.info.name), items: value)
+        })
+    }
+
+    private func getScriptEntities(matching string: String? = nil) async -> [Server: [IntentScriptEntity]] {
+        await withCheckedContinuation { continuation in
+            var entities: [Server: [IntentScriptEntity]] = [:]
+            var serverCheckedCount = 0
+            for server in Current.servers.all.sorted(by: { $0.info.name < $1.info.name }) {
+                (
+                    Current.diskCache
+                        .value(
+                            for: HAScript
+                                .cacheKey(serverId: server.identifier.rawValue)
+                        ) as? Promise<[HAScript]>
+                )?.pipe(to: { result in
+                    switch result {
+                    case let .fulfilled(scripts):
+                        var scripts = scripts.sorted(by: { $0.name ?? "" < $1.name ?? "" })
+                        if let string {
+                            scripts = scripts.filter { $0.name?.contains(string) ?? false }
+                        }
+
+                        entities[server] = scripts.compactMap { script in
+                            IntentScriptEntity(
+                                id: script.id,
+                                serverId: server.identifier.rawValue,
+                                serverName: server.info.name,
+                                displayString: script.name ?? "Unknown",
+                                iconName: script.iconName ?? ""
+                            )
+                        }
+                    case let .rejected(error):
+                        Current.Log
+                            .error(
+                                "Failed to get scripts cache for server identifier: \(server.identifier.rawValue), error: \(error.localizedDescription)"
+                            )
+                    }
+                    serverCheckedCount += 1
+                    if serverCheckedCount == Current.servers.all.count {
+                        continuation.resume(returning: entities)
+                    }
+                })
+            }
         }
-
-        return scriptEntities
     }
 }

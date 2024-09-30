@@ -7,7 +7,7 @@
 		"sound": "default",
 		"category": "map"
 	},
-    "homeassistant": {
+    "mysmarthomes": {
         "latitude": "37",
         "longitude": "-122"
     }

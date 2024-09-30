@@ -47,13 +47,6 @@ struct WatchHomeCoordinatorView: View {
                            !config.assist.pipelineId.isEmpty {
                             ToolbarItem(placement: .topBarTrailing) {
                                 assistButton
-                                    .modify { view in
-                                        if #available(watchOS 11, *) {
-                                            view.handGestureShortcut(.primaryAction)
-                                        } else {
-                                            view
-                                        }
-                                    }
                             }
                         }
                     }
@@ -61,6 +54,11 @@ struct WatchHomeCoordinatorView: View {
         } else {
             NavigationView {
                 content
+                    .toolbar {
+                        if #available(watchOS 9.0, *), let config = viewModel.config, config.assist.showAssist {
+                            assistButton
+                        }
+                    }
             }
         }
     }
@@ -100,7 +98,7 @@ struct WatchHomeCoordinatorView: View {
                     reloadButton
                 }
             case let .config(watchConfig, magicItemsInfo):
-                WatchHomeView(watchConfig: watchConfig, magicItemsInfo: magicItemsInfo, showAssist: $showAssist) {
+                WatchHomeView(watchConfig: watchConfig, magicItemsInfo: magicItemsInfo) {
                     viewModel.requestConfig()
                 }
             case let .error(errorMessage):

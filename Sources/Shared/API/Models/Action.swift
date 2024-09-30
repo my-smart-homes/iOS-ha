@@ -248,7 +248,7 @@ public final class Action: Object, ImmutableMappable, UpdatableModel {
 
     public var widgetLinkURL: URL {
         var components = URLComponents()
-        components.scheme = "homeassistant"
+        components.scheme = "mysmarthomes"
         components.host = "perform_action"
         components.path = "/" + ID
         components.queryItems = [

@@ -14,12 +14,25 @@ final class SceneAppIntent: AppIntent {
 
     @Parameter(
         title: LocalizedStringResource(
-            "app_intents.notify_when_run.title",
-            defaultValue: "Notify when run"
+            "app_intents.scenes.requires_confirmation_before_run.title",
+            defaultValue: "Confirm before run"
         ),
         description: LocalizedStringResource(
-            "app_intents.notify_when_run.description",
-            defaultValue: "Shows notification after executed"
+            "app_intents.scenes.requires_confirmation_before_run.description",
+            defaultValue: "Requires manual confirmation before running the scene."
+        ),
+        default: true
+    )
+    var requiresConfirmationBeforeRun: Bool
+
+    @Parameter(
+        title: LocalizedStringResource(
+            "app_intents.show_confirmation_dialog.title",
+            defaultValue: "Confirmation notification"
+        ),
+        description: LocalizedStringResource(
+            "app_intents.show_confirmation_dialog.description",
+            defaultValue: "Shows confirmation notification after executed"
         ),
         default: true
     )
@@ -35,6 +48,10 @@ final class SceneAppIntent: AppIntent {
     var hapticConfirmation: Bool
 
     func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
+        if requiresConfirmationBeforeRun {
+            try await requestConfirmation()
+        }
+
         if hapticConfirmation {
             // Unfortunately this is the only 'haptics' that work with widgets
             // ideally in the future this should use CoreHaptics for a better experience
@@ -49,7 +66,7 @@ final class SceneAppIntent: AppIntent {
             Current.api(for: server).CallService(
                 domain: Domain.scene.rawValue,
                 service: "turn_on",
-                serviceData: ["entity_id": scene.entityId]
+                serviceData: ["entity_id": scene.id]
             )
             .pipe { [weak self] result in
                 switch result {
@@ -71,9 +88,6 @@ final class SceneAppIntent: AppIntent {
                     .Scenes.FailureMessage.content(scene.displayString)
             ))
         }
-
-        DataWidgetsUpdater.update()
-
         return .result(value: success)
     }
 }

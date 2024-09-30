@@ -30,7 +30,7 @@ struct ThreadCredentialDetailsView: View {
         Button {
             feedbackGenerator.prepare()
             actionButtonState = .loading
-            viewModel.transfer(credential, to: source == .HomeAssistant ? .Apple : .HomeAssistant) { success in
+            viewModel.transfer(credential, to: source == .MySmartHomes ? .Apple : .MySmartHomes) { success in
                 defer {
                     resetActionButtonState()
                 }
@@ -47,7 +47,7 @@ struct ThreadCredentialDetailsView: View {
             switch actionButtonState {
             case .standard:
                 Text(
-                    source == .HomeAssistant ? L10n.Thread.TransterToApple.title : L10n.Thread.TransterToHomeassistant
+                    source == .MySmartHomes ? L10n.Thread.TransterToApple.title : L10n.Thread.TransterToHomeassistant
                         .title
                 )
             case .loading:

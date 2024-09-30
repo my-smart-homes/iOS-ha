@@ -16,40 +16,11 @@ public extension XCGLogger {
 
     func export(from source: UIViewController, sender: UIView, openURLHandler: (URL) -> Void) {
         Current.Log.verbose("Logs directory is: \(Shared.AppConstants.LogsDirectory)")
-        guard let archiveURL = archiveURL() else { return }
 
         guard !Current.isCatalyst else {
             // on Catalyst we can just open the directory to get to Finder
-            openURLHandler(archiveURL)
+            openURLHandler(Shared.AppConstants.LogsDirectory)
             return
-        }
-
-        Current.Log.debug("Exporting logs as filename \(archiveURL.absoluteString)")
-        let fileManager = FileManager.default
-
-        let controller = UIActivityViewController(activityItems: [archiveURL], applicationActivities: nil)
-
-        controller.completionWithItemsHandler = { type, completed, _, _ in
-            let didCancelEntirely = type == nil && !completed
-            let didCompleteEntirely = completed
-
-            if didCancelEntirely || didCompleteEntirely {
-                try? fileManager.removeItem(at: archiveURL)
-            }
-        }
-
-        with(controller.popoverPresentationController) {
-            $0?.sourceView = sender
-        }
-
-        source.present(controller, animated: true, completion: nil)
-    }
-
-    func archiveURL() -> URL? {
-        Current.Log.verbose("Logs directory is: \(Shared.AppConstants.LogsDirectory)")
-
-        guard !Current.isCatalyst else {
-            return Shared.AppConstants.LogsDirectory
         }
 
         let fileManager = FileManager.default
@@ -62,10 +33,7 @@ public extension XCGLogger {
         Current.Log.debug("Exporting logs as filename \(fileName)")
 
         let archiveURL = fileManager.temporaryDirectory.appendingPathComponent(fileName, isDirectory: false)
-        guard let archive = Archive(url: archiveURL, accessMode: .create) else {
-            Current.Log.error("Failed to create archive at \(archiveURL.path)")
-            return nil
-        }
+        let archive = Archive(url: archiveURL, accessMode: .create)!
 
         do {
             if let backupURL = Realm.backup() {
@@ -75,15 +43,15 @@ public extension XCGLogger {
                 )
             }
 
-            // In case App config does not exist it can safely fail
+            // In case watch config does not exist it can safely fail
             do {
                 try archive.addEntry(
-                    with: AppConstants.appGRDBFile.lastPathComponent,
-                    fileURL: AppConstants.appGRDBFile
+                    with: AppConstants.watchGRDBFile.lastPathComponent,
+                    fileURL: AppConstants.watchGRDBFile
                 )
             } catch {
                 Current.Log
-                    .info("No App config database file added to export logs, error: \(error.localizedDescription)")
+                    .info("No watch config database file added to export logs, error: \(error.localizedDescription)")
             }
 
             for logFile in try fileManager.contentsOfDirectory(
@@ -95,10 +63,27 @@ public extension XCGLogger {
                     relativeTo: logFile.deletingLastPathComponent()
                 )
             }
-            return archiveURL
+
+            let controller = UIActivityViewController(activityItems: [archiveURL], applicationActivities: nil)
+
+            controller.completionWithItemsHandler = { type, completed, _, _ in
+                let didCancelEntirely = type == nil && !completed
+                let didCompleteEntirely = completed
+
+                if didCancelEntirely || didCompleteEntirely {
+                    try? fileManager.removeItem(at: archiveURL)
+                }
+            }
+
+            with(controller.popoverPresentationController) {
+                $0?.sourceView = sender
+            }
+
+            source.present(controller, animated: true, completion: nil)
         } catch {
-            Current.Log.error("Error getting logs URL: \(error.localizedDescription)")
-            return nil
+            let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: L10n.okLabel, style: .cancel, handler: nil))
+            source.present(alert, animated: true, completion: nil)
         }
     }
 }

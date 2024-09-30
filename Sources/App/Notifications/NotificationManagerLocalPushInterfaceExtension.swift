@@ -163,7 +163,7 @@ final class NotificationManagerLocalPushInterfaceExtension: NSObject, Notificati
         }
 
         updateAndDirty(\.isEnabled, true)
-        updateAndDirty(\.localizedDescription, "HomeAssistant for \(ssid)")
+        updateAndDirty(\.localizedDescription, "MySmartHomes for \(ssid)")
         updateAndDirty(\.providerBundleIdentifier, AppConstants.BundleID + ".PushProvider")
         updateAndDirty(\.matchSSIDs, [ssid])
 

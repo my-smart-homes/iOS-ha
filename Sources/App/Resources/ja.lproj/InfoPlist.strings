@@ -1,5 +1,5 @@
 "NFCReaderUsageDescription" = "NFCタグの読み取りと書き込みにより、イベントをトリガーできます。";
-"NSCameraUsageDescription" = "写真を撮って、Home Assistant serverに送ることができます。";
+"NSCameraUsageDescription" = "写真を撮って、MySmartHomes serverに送ることができます。";
 "NSCrossWebsiteTrackingUsageDescription" = "必要に応じて、クロス Web サイト トラッキングを有効にします。";
 "NSFocusStatusUsageDescription" = "フォーカスの状態をセンサーとして報告します。";
 "NSLocalNetworkUsageDescription" = "Home Assistantのインスタンスを見つけて通信します。";

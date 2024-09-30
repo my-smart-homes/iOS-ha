@@ -1,6 +1,6 @@
 import Foundation
 import HAKit
-@testable import HomeAssistant
+@testable import MySmartHomes
 import PromiseKit
 @testable import Shared
 import XCTest
@@ -16,8 +16,8 @@ class OnboardingAuthTests: XCTestCase {
 
         Current.servers = FakeServerManager()
 
-        var instance = DiscoveredHomeAssistant(manualURL: URL(string: "https://external.homeassistant:8123")!)
-        instance.internalURL = URL(string: "https://internal.homeassistant:8123")!
+        var instance = DiscoveredHomeAssistant(manualURL: URL(string: "https://external.mysmarthomes:8123")!)
+        instance.internalURL = URL(string: "https://internal.mysmarthomes:8123")!
         self.instance = instance
     }
 

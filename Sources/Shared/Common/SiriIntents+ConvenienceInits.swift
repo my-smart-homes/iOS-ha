@@ -151,7 +151,7 @@ public extension IntentPanel {
 
     var widgetURL: URL {
         var components = URLComponents()
-        components.scheme = "homeassistant"
+        components.scheme = "mysmarthomes"
         components.host = "navigate"
         components.path = "/" + (identifier ?? "lovelace")
         if let server = Current.servers.server(for: self) {

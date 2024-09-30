@@ -1,5 +1,5 @@
 import Foundation
-@testable import HomeAssistant
+@testable import MySmartHomes
 import XCTest
 
 class UIColorCSSRGBTests: XCTestCase {

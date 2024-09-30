@@ -11,7 +11,7 @@ class MapViewController: UIViewController, NotificationCategory, MKMapViewDelega
     let haDict: [String: Any]
 
     required init(api: HomeAssistantAPI, notification: UNNotification, attachmentURL: URL?) throws {
-        guard let haDict = notification.request.content.userInfo["homeassistant"] as? [String: Any] else {
+        guard let haDict = notification.request.content.userInfo["mysmarthomes"] as? [String: Any] else {
             throw MapError.missingPayload
         }
         guard let latitude = CLLocationDegrees(templateValue: haDict["latitude"]) else {

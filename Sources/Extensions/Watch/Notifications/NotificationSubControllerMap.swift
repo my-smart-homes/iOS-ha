@@ -12,7 +12,7 @@ class NotificationSubControllerMap: NotificationSubController {
     required init?(api: HomeAssistantAPI, notification: UNNotification) {
         let userInfo = notification.request.content.userInfo
 
-        guard let haDict = userInfo["homeassistant"] as? [String: Any],
+        guard let haDict = userInfo["mysmarthomes"] as? [String: Any],
               let latitude = CLLocationDegrees(templateValue: haDict["latitude"]),
               let longitude = CLLocationDegrees(templateValue: haDict["longitude"]) else {
             return nil

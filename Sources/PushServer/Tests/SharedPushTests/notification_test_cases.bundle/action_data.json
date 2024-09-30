@@ -8,7 +8,7 @@
             }
         },
         "registration_info": {
-            "app_id": "io.robbie.HomeAssistant.dev",
+            "app_id": "io.robbie.MySmartHomes.dev",
             "os_version": "10.15",
             "app_version": "2021.5"
         }
@@ -25,7 +25,7 @@
             "category": "DYNAMIC",
             "sound": "default"
         },
-        "homeassistant": {
+        "mysmarthomes": {
             "latitude": "40.785091",
             "longitude": "-73.968285"
         }

@@ -26,7 +26,7 @@ struct WidgetBasicContainerView: View {
         .widgetBackground(Color.asset(Asset.Colors.primaryBackground))
     }
 
-    @available(iOS 16.4, *)
+    @available(iOS 17.0, *)
     private func intent(for model: WidgetBasicViewModel) -> (any AppIntent)? {
         switch model.interactionType {
         case .widgetURL:
@@ -34,15 +34,14 @@ struct WidgetBasicContainerView: View {
         case let .appIntent(widgetIntentType):
             switch widgetIntentType {
             case .action:
-                let intent = PerformAction()
+                var intent = PerformAction()
                 intent.action = IntentActionAppEntity(id: model.id, displayString: model.title)
                 intent.hapticConfirmation = true
                 return intent
-            case let .script(id, entityId, serverId, name, showConfirmationNotification):
+            case let .script(id, serverId, name, showConfirmationNotification):
                 let intent = ScriptAppIntent()
                 intent.script = .init(
                     id: id,
-                    entityId: entityId,
                     serverId: serverId,
                     serverName: "", // not used in this context
                     displayString: name,
@@ -86,16 +85,12 @@ struct WidgetBasicContainerView: View {
                     ForEach(column) { model in
                         if case let .widgetURL(url) = model.interactionType {
                             Link(destination: url.withWidgetAuthenticity()) {
-                                if #available(iOS 18.0, *) {
-                                    WidgetBasicViewTintedWrapper(model: model, sizeStyle: sizeStyle)
-                                } else {
-                                    WidgetBasicView(model: model, sizeStyle: sizeStyle, tinted: false)
-                                }
+                                WidgetBasicView(model: model, sizeStyle: sizeStyle)
                             }
                         } else {
                             if #available(iOS 17.0, *), let intent = intent(for: model) {
                                 Button(intent: intent) {
-                                    WidgetBasicViewTintedWrapper(model: model, sizeStyle: sizeStyle)
+                                    WidgetBasicView(model: model, sizeStyle: sizeStyle)
                                 }
                                 .buttonStyle(.plain)
                             }

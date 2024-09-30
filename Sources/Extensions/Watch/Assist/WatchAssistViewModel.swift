@@ -137,7 +137,7 @@ final class WatchAssistViewModel: ObservableObject {
     }
 }
 
-extension WatchAssistViewModel: @preconcurrency WatchAudioRecorderDelegate {
+extension WatchAssistViewModel: WatchAudioRecorderDelegate {
     @MainActor
     func didStartRecording() {
         runInMainThread { [weak self] in

@@ -426,8 +426,8 @@ public enum ComplicationGroupMember: String, Comparable {
         case .modularLarge:
             if isPlaceholder {
                 let template = CLKComplicationTemplateModularLargeStandardBody()
-                template.headerTextProvider = CLKSimpleTextProvider(text: "Home Assistant")
-                template.body1TextProvider = CLKSimpleTextProvider(text: "Home Assistant")
+                template.headerTextProvider = CLKSimpleTextProvider(text: "MySmartHomes")
+                template.body1TextProvider = CLKSimpleTextProvider(text: "MySmartHomes")
                 template.tintColor = hassColor
                 return template
             } else {
@@ -456,7 +456,7 @@ public enum ComplicationGroupMember: String, Comparable {
             if isPlaceholder {
                 let template = CLKComplicationTemplateUtilitarianLargeFlat()
                 template.imageProvider = CLKImageProvider(onePieceImage: templateImage)
-                template.textProvider = CLKSimpleTextProvider(text: "Home Assistant")
+                template.textProvider = CLKSimpleTextProvider(text: "MySmartHomes")
                 template.tintColor = hassColor
                 return template
             } else {

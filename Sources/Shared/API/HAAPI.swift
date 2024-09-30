@@ -52,12 +52,12 @@ public class HomeAssistantAPI {
             return "\(osName) \(versionString)"
         }()
 
-        return "Home Assistant/\(appVersion) (\(bundle); build:\(appBuild); \(osNameVersion))"
+        return "MySmartHomes/\(appVersion) (\(bundle); build:\(appBuild); \(osNameVersion))"
     }
 
     // "Mobile/BUILD_NUMBER" is what CodeMirror sniffs for to decide iOS or not; other things likely look for Safari
     public static var applicationNameForUserAgent: String {
-        HomeAssistantAPI.userAgent + " Mobile/HomeAssistant, like Safari"
+        HomeAssistantAPI.userAgent + " Mobile/MySmartHomes, like Safari"
     }
 
     /// Initialize an API object with an authenticated tokenManager.
@@ -690,7 +690,7 @@ public class HomeAssistantAPI {
 
             self.identifier = UNNotificationContent.uncombinedAction(from: response.actionIdentifier)
             self.category = response.notification.request.content.categoryIdentifier
-            self.actionData = response.notification.request.content.userInfo["homeassistant"]
+            self.actionData = response.notification.request.content.userInfo["mysmarthomes"]
             self.textInput = (response as? UNTextInputNotificationResponse)?.userText
         }
 

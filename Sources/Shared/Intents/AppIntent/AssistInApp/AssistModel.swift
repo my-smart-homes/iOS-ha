@@ -1,5 +1,4 @@
 import Foundation
-import GRDB
 import HAKit
 
 public struct PipelineResponse: HADataDecodable {
@@ -17,7 +16,7 @@ public struct PipelineResponse: HADataDecodable {
     }
 }
 
-public struct Pipeline: HADataDecodable, Codable {
+public struct Pipeline: HADataDecodable {
     public let conversationEngine: String?
     public let conversationLanguage: String?
     public let id: String
@@ -184,23 +183,4 @@ public enum AssistEvent: String, Codable {
     case ttsStart = "tts-start"
     case ttsEnd = "tts-end"
     case error = "error"
-}
-
-/// Saved in database
-public struct AssistPipelines: Codable, FetchableRecord, PersistableRecord {
-    public let serverId: String
-    public let preferredPipeline: String
-    public let pipelines: [Pipeline]
-
-    public init(serverId: String, preferredPipeline: String, pipelines: [Pipeline]) {
-        self.serverId = serverId
-        self.preferredPipeline = preferredPipeline
-        self.pipelines = pipelines
-    }
-
-    public init(serverId: String, pipelineResponse: PipelineResponse) {
-        self.serverId = serverId
-        self.preferredPipeline = pipelineResponse.preferredPipeline
-        self.pipelines = pipelineResponse.pipelines
-    }
 }

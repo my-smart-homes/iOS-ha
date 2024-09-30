@@ -7,7 +7,7 @@ import Shared
 struct WidgetGaugeAppIntent: WidgetConfigurationIntent {
     static let title: LocalizedStringResource = .init("widgets.gauge.title", defaultValue: "Actions")
     static let description = IntentDescription(
-        .init("widgets.gauge.description", defaultValue: "Display numeric states from Home Assistant in a gauge")
+        .init("widgets.gauge.description", defaultValue: "Display numeric states from MySmartHomes in a gauge")
     )
 
     @Parameter(title: .init("widgets.gauge.parameters.gauge_type", defaultValue: "Gauge Type"), default: .normal)

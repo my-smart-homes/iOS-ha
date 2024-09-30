@@ -1,5 +1,5 @@
 import Foundation
-@testable import HomeAssistant
+@testable import MySmartHomes
 import Shared
 import UIKit
 
@@ -30,9 +30,7 @@ final class MockWebViewController: WebViewControllerProtocol {
     var updateImprovEntryViewCalled = false
     var lastUpdateImprovEntryViewState = false
 
-    var reloadCalled = false
-
-    func presentOverlayController(controller: UIViewController, animated: Bool) {
+    func presentOverlayController(controller: UIViewController) {
         presentOverlayControllerCalled = true
         overlayAppController = controller
     }
@@ -72,9 +70,5 @@ final class MockWebViewController: WebViewControllerProtocol {
     func navigateToPath(path: String) {
         navigateToPathCalled = true
         lastNavigateToPathPath = path
-    }
-
-    func reload() {
-        reloadCalled = true
     }
 }
