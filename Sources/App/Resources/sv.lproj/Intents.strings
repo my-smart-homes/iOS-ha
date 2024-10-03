@@ -1,12 +1,12 @@
 "0aqrcy" = "Misslyckades: ${error}";
-"2KWKqM" = "Misslyckades: MySmartHomes är inte tillgänglig";
+"2KWKqM" = "Misslyckades: MySmart är inte tillgänglig";
 "2LIxe4" = "Misslyckades: ${error}";
 "2b0Uo4" = "Tjänst";
 "2yevCF" = "Which pipeline do you want to use?";
 "3jKamg" = "{{ now() }}";
 "4fFx9y" = "Uppdaterad";
 "4tpAXn" = "För att bekräfta, du väljer ‘${server}’?";
-"5ZzwZD" = "Misslyckades: MySmartHomes kan inte nås för tillfället";
+"5ZzwZD" = "Misslyckades: MySmart kan inte nås för tillfället";
 "5bVvn0" = "Misslyckades med att uppdatera plats: ${error}";
 "637QjD" = "Fel";
 "6ozAdN" = "Kamerabild";
@@ -29,7 +29,7 @@
 "DsasVx" = "Fel";
 "EA0zLv" = "Det finns ${count} alternativ som matchar '${server}'.";
 "EWqRDj" = "Misslyckades: ${error}";
-"FBQiVD" = "Anropa en tjänst på MySmartHomes-installationen";
+"FBQiVD" = "Anropa en tjänst på MySmart-installationen";
 "FZ9qkT" = "Skapa mall";
 "FtQqoU" = "Plats uppdaterad";
 "GiSjQE" = "Misslyckades: ${error}";
@@ -40,7 +40,7 @@
 "JBMp1T" = "För att bekräfta, du väljer ‘${server}’?";
 "JFaYRG" = "Bara för att bekräfta, ville du ha '${pipeline}'?";
 "K4xrvF" = "Fel";
-"KHH48D" = "Misslyckades: MySmartHomes är för närvarande inte tillgänglig";
+"KHH48D" = "Misslyckades: MySmart är för närvarande inte tillgänglig";
 "KJS2jk" = "Misslyckades: ${error}";
 "KM7mXC" = "Åtgärd";
 "KSmKl0" = "Anropade ${domain}.${service}";
@@ -52,7 +52,7 @@
 "MwEpGz" = "Klar";
 "N9iJpK" = "Hämta kamerabild";
 "NUF0Pa" = "${result}";
-"NdG9Jz" = "Skapar MySmartHomes-mallen";
+"NdG9Jz" = "Skapar MySmart-mallen";
 "NsbUTz" = "Kameraegenskap";
 "Q2Qp4a" = "Åtgärd";
 "QCGKRz" = "Välj ett språk";
@@ -60,7 +60,7 @@
 "QmGpOH" = "Fel";
 "R2PmrD" = "Vill du ha hjälp med att använda rösten?";
 "RCQAlr" = "Ta emot bild från ${cameraID}";
-"RMQY3r" = "Skicka plats till MySmartHomes";
+"RMQY3r" = "Skicka plats till MySmart";
 "RsOw3P" = "Lyckades skapa mall";
 "T06Fka" = "Öppna en sida i frontend";
 "U4u9Xz" = "Det finns ${count} alternativ som matchar '${server}'.";
@@ -82,7 +82,7 @@
 "am5G4A" = "För att bekräfta, du väljer ‘${server}’?";
 "cK9jdK" = "Misslyckades: ${error}";
 "cLmTme" = "Åtgärd";
-"cuflz3" = "Misslyckades: MySmartHomes kan inte nås för tillfället";
+"cuflz3" = "Misslyckades: MySmart kan inte nås för tillfället";
 "d65H6l" = "Hjälp till med \" ${text} \"";
 "dFHPYK" = "Utförde ${action}";
 "eObn2i" = "Sida";
@@ -91,13 +91,13 @@
 "fkQXDn" = "Det finns ${count} möjliga matchningar till ’${action}’.";
 "flUgtx" = "Vilken åtgärd?";
 "fnz838" = "Sensorer uppdaterade";
-"foI0Fv" = "Misslyckades: MySmartHomes är för närvarande inte tillgänglig";
+"foI0Fv" = "Misslyckades: MySmart är för närvarande inte tillgänglig";
 "ftQHJw" = "Vilken server?";
-"fuRWMi" = "Skicka ${location} till MySmartHomes";
+"fuRWMi" = "Skicka ${location} till MySmart";
 "g8g7Af" = "Utför åtgärden";
 "gI3mme" = "Vilka tjänstedata vill du skicka?";
 "gePUyy" = "Plats";
-"glRCfJ" = "Misslyckades: MySmartHomes är för närvarande inte tillgänglig";
+"glRCfJ" = "Misslyckades: MySmart är för närvarande inte tillgänglig";
 "gv7Gg6" = "Plats";
 "h1xQ53" = "Uppdatera sensorer";
 "hKNPaD" = "Server";
@@ -115,7 +115,7 @@
 "lGqSSG" = "Kunde inte uppdatera sensorer.";
 "lNmaCR" = "Mall";
 "lxHlyQ" = "Utlös händelse";
-"mAibJP" = "Misslyckades: MySmartHomes är för närvarande inte tillgänglig";
+"mAibJP" = "Misslyckades: MySmart är för närvarande inte tillgänglig";
 "mJ6CrP" = "Misslyckades med att skicka ${eventName}: ${error}";
 "mZnRHS" = "${eventName} startad";
 "mi6B62" = "Vilka data vill du skicka med händelsen?";
@@ -125,7 +125,7 @@
 "oHn0vD" = "Sidor";
 "oIWFyR" = "Misslyckades: ${error}";
 "onq5yE" = "Misslyckades att anropa tjänsten, fick felet: ${error}";
-"pQhTjo" = "Misslyckades: MySmartHomes kan inte nås för tillfället";
+"pQhTjo" = "Misslyckades: MySmart kan inte nås för tillfället";
 "pjQR7t" = "Uppdatera sensorer";
 "qYpzmu" = "Vilka sidor?";
 "qayMH6" = "Anropa tjänst";
@@ -144,9 +144,9 @@
 "tycImk" = "Utför en åtgärd definierad i appen";
 "uqeIcc" = "Hjälp till med \" ${text} \"";
 "v7TSD5" = "Skicka plats";
-"vAIAF2" = "Skicka sensoruppdatering till MySmartHomes";
+"vAIAF2" = "Skicka sensoruppdatering till MySmart";
 "vebd70" = "Server";
-"wfPQQQ" = "Skicka en händelse till MySmartHomes händelse-anslutning";
+"wfPQQQ" = "Skicka en händelse till MySmart händelse-anslutning";
 "xN51te" = "Resultat";
 "xfXG6b" = "Vilken server?";
 "xhwpj4" = "Klar";
