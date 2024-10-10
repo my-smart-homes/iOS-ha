@@ -31,14 +31,14 @@ class OnboardingLoginViewController: UIViewController, OnboardingViewController,
         
         view.addSubview(stackView)
         
-            // Logo (não foi fornecido no exemplo, então adicionei um placeholder)
+        // Logo (não foi fornecido no exemplo, então adicionei um placeholder)
         let logoLabel = UILabel()
         logoLabel.text = "Log in"
         logoLabel.font = UIFont.boldSystemFont(ofSize: 28)
         logoLabel.textColor = .white
         stackView.addArrangedSubview(logoLabel)
         
-            // Email Field
+        // Email Field
         emailTextField.delegate = self
         emailTextField.backgroundColor = UIColor(white: 1, alpha: 0.1)
         emailTextField.borderStyle = .roundedRect
@@ -50,14 +50,14 @@ class OnboardingLoginViewController: UIViewController, OnboardingViewController,
         emailTextField.tintColor = .white
         emailTextField.keyboardAppearance = .dark
         
-            // Adiciona o placeholder com cor cinza claro
+        // Adiciona o placeholder com cor cinza claro
         emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [
             .foregroundColor: UIColor.lightGray
         ])
         
         stackView.addArrangedSubview(emailTextField)
         
-            // Password Field
+        // Password Field
         passwordTextField.delegate = self
         passwordTextField.backgroundColor = UIColor(white: 1, alpha: 0.1)
         passwordTextField.borderStyle = .roundedRect
@@ -76,7 +76,7 @@ class OnboardingLoginViewController: UIViewController, OnboardingViewController,
         
         stackView.addArrangedSubview(passwordTextField)
         
-            // Login Button
+        // Login Button
         let loginButton = UIButton(type: .custom)
         loginButton.setTitle("Log in", for: .normal)
         loginButton.setTitleColor(.white, for: .normal)
@@ -87,14 +87,14 @@ class OnboardingLoginViewController: UIViewController, OnboardingViewController,
         loginButton.addTarget(self, action: #selector(loginTapped(_:)), for: .touchUpInside)
         stackView.addArrangedSubview(loginButton)
         
-            // Forgot Password Button
+        // Forgot Password Button
         let forgotPasswordButton = UIButton(type: .system)
         forgotPasswordButton.setTitle("Forgot Password?", for: .normal)
         forgotPasswordButton.setTitleColor(.lightGray, for: .normal)
         forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordTapped(_:)), for: .touchUpInside)
         stackView.addArrangedSubview(forgotPasswordButton)
         
-            // Sign Up Button
+        // Sign Up Button
         let signUpButton = UIButton(type: .system)
         signUpButton.setTitle("Sign up", for: .normal)
         signUpButton.setTitleColor(.white, for: .normal)
@@ -106,7 +106,7 @@ class OnboardingLoginViewController: UIViewController, OnboardingViewController,
         signUpButton.addTarget(self, action: #selector(signUpTapped(_:)), for: .touchUpInside)
         stackView.addArrangedSubview(signUpButton)
         
-            // Activity Indicator (Loader)
+        // Activity Indicator (Loader)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.hidesWhenStopped = true
         view.addSubview(activityIndicator)
@@ -129,69 +129,92 @@ class OnboardingLoginViewController: UIViewController, OnboardingViewController,
             return
         }
         
-            // Mostrar o loader enquanto faz login
-        activityIndicator.startAnimating()
-        
-            // Realizar login com Firebase Authentication
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+        print("Fetching Server Time")
+        fetchServerTime { [weak self] serverTime, error in
             guard let self = self else { return }
             
-                // Parar o loader após a resposta
-            self.activityIndicator.stopAnimating()
-            
             if let error = error {
-                    // Exibir mensagem de erro
-                self.showAlert(title: "Login Failed", message: error.localizedDescription)
+                self.showAlert(title: "Error", message: "Failed to fetch server time: \(error.localizedDescription)")
                 return
             }
             
+            guard let serverTime = serverTime else {
+                self.showAlert(title: "Error", message: "Failed to retrieve server time.")
+                return
+            }
             
-                // Login successful, print to the console
-            print("Login Success")
-            if let userId = authResult?.user.uid {
-                print("Logged in user ID: \(userId)")
+            // Mostrar o loader enquanto faz login
+            activityIndicator.startAnimating()
+            
+            // Realizar login com Firebase Authentication
+            Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+                guard let self = self else { return }
                 
+                // Parar o loader após a resposta
+                self.activityIndicator.stopAnimating()
+                
+                if let error = error {
+                    // Exibir mensagem de erro
+                    self.showAlert(title: "Login Failed", message: error.localizedDescription)
+                    return
+                }
+                
+                
+                // Login successful, print to the console
+                print("Login Success")
+                if let userId = authResult?.user.uid {
+                    print("Logged in user ID: \(userId)")
+                    
                     // Call function to fetch user data from Firestore
-                self.fetchUserData(userId: userId){ userData in
-                    guard let userData = userData else{
-                        self.showAlert(title: "Error", message: "Failed to retrieve user data.")
-                        return
-                    }
-                    
+                    self.fetchUserData(userId: userId){ userData in
+                        guard let userData = userData else{
+                            self.showAlert(title: "Error", message: "Failed to retrieve user data.")
+                            return
+                        }
+                        
                         // Perform the checks after fetching the user data
-                    guard let webviewUsername = userData["webview_username"] as? String, !webviewUsername.isEmpty,
-                          let webviewPassword = userData["webview_password"] as? String, !webviewPassword.isEmpty,
-                          let externalUrl = userData["external_url"] as? String, !externalUrl.isEmpty else {
-                        self.showAlert(title: "Missing Information", message: "One or more account details are missing.")
-                        return
-                    }
-                    
+                        guard let webviewUsername = userData["webview_username"] as? String, !webviewUsername.isEmpty,
+                              let webviewPassword = userData["webview_password"] as? String, !webviewPassword.isEmpty,
+                              let externalUrl = userData["external_url"] as? String, !externalUrl.isEmpty,
+                              let expirationDateTimestamp = userData["expirationDate"] as? Timestamp else {
+                            self.showAlert(title: "Missing Information", message: "One or more account details are missing.")
+                            return
+                        }
+
+                        let expirationDate = expirationDateTimestamp.dateValue()
+
+                        if expirationDate < serverTime {
+                            self.showAlert(title: "Subscription Expired", message: "Your subscription has expired. Please renew to continue.")
+                            return
+                        }
+                        
                         // If all checks pass, assign the external URL and proceed with navigation
-                    OnboardingManualURLViewController.externalURL = externalUrl
+                        OnboardingManualURLViewController.externalURL = externalUrl
                         // Navigate to the next screen
-                    self.show(OnboardingManualURLViewController(), sender: self)
+                        self.show(OnboardingManualURLViewController(), sender: self)
+                    }
                 }
             }
-
         }
+        
     }
     
     @objc private func forgotPasswordTapped(_ sender: UIButton) {
-            // Lógica para recuperação de senha
+        // Lógica para recuperação de senha
     }
     
     @objc private func signUpTapped(_ sender: UIButton) {
-            // Lógica para ir para a tela de cadastro
+        // Lógica para ir para a tela de cadastro
     }
     
-        // Método para exibir alertas
+    // Método para exibir alertas
     private func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
     
-        // Function to fetch additional user data from Firestore
+    // Function to fetch additional user data from Firestore
     private func fetchUserData(userId: String, completion: @escaping ([String: Any]?) -> Void){
         let db = Firestore.firestore()
         let userRef = db.collection("users").document(userId)
@@ -207,5 +230,29 @@ class OnboardingLoginViewController: UIViewController, OnboardingViewController,
         }
     }
     
-    
+    func fetchServerTime(completion: @escaping (Date?, Error?) -> Void) {
+        let docRef = Firestore.firestore().collection("server-time").document("current-time")
+        
+        docRef.setData(["timestamp": FieldValue.serverTimestamp()]) { error in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            docRef.getDocument { (document, error) in
+                if let error = error {
+                    completion(nil, error)
+                    return
+                }
+                
+                guard let document = document, document.exists, let serverTimestamp = document.data()?["timestamp"] as? Timestamp else {
+                    completion(nil, NSError(domain: "ServerTime", code: 404, userInfo: [NSLocalizedDescriptionKey: "Failed to retrieve server time."]))
+                    return
+                }
+                
+                let serverTime = serverTimestamp.dateValue()
+                completion(serverTime, nil)
+            }
+        }
+    }
 }
