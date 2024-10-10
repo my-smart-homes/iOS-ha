@@ -77,7 +77,8 @@ abstract_target 'iOS' do
 
     pod 'FirebaseMessaging'
     pod 'Firebase/Auth'
-    pod 'Firebase/Core' 
+    pod 'Firebase/Core'
+    pod 'Firebase/Firestore'
 
     pod 'lottie-ios'
     pod 'SwiftMessages'

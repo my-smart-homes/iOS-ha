@@ -3,6 +3,8 @@ import FirebaseAuth
 import Shared
 import UIKit
 import SwiftUI
+import FirebaseFirestore
+
 
 class OnboardingLoginViewController: UIViewController, OnboardingViewController, UITextFieldDelegate {
     
@@ -118,6 +120,8 @@ class OnboardingLoginViewController: UIViewController, OnboardingViewController,
         ])
     }
     
+    
+    
     @objc private func loginTapped(_ sender: UIButton) {
         guard let email = emailTextField.text, !email.isEmpty,
               let password = passwordTextField.text, !password.isEmpty else {
@@ -141,8 +145,34 @@ class OnboardingLoginViewController: UIViewController, OnboardingViewController,
                 return
             }
             
-                // Login bem-sucedido, ir para a próxima tela
-            self.show(OnboardingScanningViewController(), sender: self)
+            
+                // Login successful, print to the console
+            print("Login Success")
+            if let userId = authResult?.user.uid {
+                print("Logged in user ID: \(userId)")
+                
+                    // Call function to fetch user data from Firestore
+                self.fetchUserData(userId: userId){ userData in
+                    guard let userData = userData else{
+                        self.showAlert(title: "Error", message: "Failed to retrieve user data.")
+                        return
+                    }
+                    
+                        // Perform the checks after fetching the user data
+                    guard let webviewUsername = userData["webview_username"] as? String, !webviewUsername.isEmpty,
+                          let webviewPassword = userData["webview_password"] as? String, !webviewPassword.isEmpty,
+                          let externalUrl = userData["external_url"] as? String, !externalUrl.isEmpty else {
+                        self.showAlert(title: "Missing Information", message: "One or more account details are missing.")
+                        return
+                    }
+                    
+                        // If all checks pass, assign the external URL and proceed with navigation
+                    OnboardingManualURLViewController.externalURL = externalUrl
+                        // Navigate to the next screen
+                    self.show(OnboardingManualURLViewController(), sender: self)
+                }
+            }
+
         }
     }
     
@@ -160,4 +190,22 @@ class OnboardingLoginViewController: UIViewController, OnboardingViewController,
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
+    
+        // Function to fetch additional user data from Firestore
+    private func fetchUserData(userId: String, completion: @escaping ([String: Any]?) -> Void){
+        let db = Firestore.firestore()
+        let userRef = db.collection("users").document(userId)
+        
+        userRef.getDocument { document, error in
+            if let document = document, document.exists {
+                let data = document.data()
+                completion(data)
+            }else{
+                print("No document found or error: \(error?.localizedDescription ?? "Unknown error")")
+                completion(nil)
+            }
+        }
+    }
+    
+    
 }
