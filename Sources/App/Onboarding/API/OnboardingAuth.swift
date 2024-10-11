@@ -123,7 +123,15 @@ class OnboardingAuth {
 
         for (idx, (url, instance)) in instances.enumerated() {
             promise = promise.recover { [self] originalError -> Promise<HomeAssistantAPI> in
-                let authDetails = try OnboardingAuthDetails(baseURL: url)
+                let authDetails: OnboardingAuthDetails
+                do {
+                    authDetails = try OnboardingAuthDetails(baseURL: url)
+                } catch {
+                    print("%%%% Failed to create authDetails with error: \(error)")
+                    throw error
+                }
+
+                
 
                 return firstly {
                     performPreSteps(checkPoint: .beforeAuth, authDetails: authDetails, sender: sender)
@@ -152,15 +160,15 @@ class OnboardingAuth {
         code: String
     ) -> Promise<HomeAssistantAPI> {
         Current.Log.info()
-
+        print("%%%% configuredAPI called code \(code)")
         var connectionInfo = ConnectionInfo(discovered: instance, authDetails: authDetails)
-
+        
         return tokenExchange.tokenInfo(
             code: code,
             connectionInfo: &connectionInfo
         ).then { tokenInfo -> Promise<HomeAssistantAPI> in
             Current.Log.verbose()
-
+            print("%%%% Token exchange successful. Token info: \(tokenInfo)")
             var serverInfo = ServerInfo(
                 name: ServerInfo.defaultName,
                 connection: connectionInfo,
@@ -176,6 +184,9 @@ class OnboardingAuth {
             )
 
             return .value(HomeAssistantAPI(server: server))
+        }.recover { error -> Promise<HomeAssistantAPI> in
+            print("%%%% Token exchange failed with error: \(error)")
+            throw error // Allows error to propagate if recovery is not possible
         }
     }
 

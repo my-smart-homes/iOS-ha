@@ -97,7 +97,10 @@ class OnboardingAuthLoginViewControllerImpl: UIViewController, OnboardingAuthLog
         decidePolicyFor navigationAction: WKNavigationAction,
         decisionHandler: @escaping (WKNavigationActionPolicy) -> Void
     ) {
-        if let url = navigationAction.request.url, url.scheme?.hasPrefix("mysmarthomes") == true {
+        let turl = navigationAction.request.url
+        print("%%%% webview decidepolicy: \(turl)")
+                                                                        // MANUAL_CHANGE
+        if let url = navigationAction.request.url, url.scheme?.hasPrefix("homeassistant") == true {
             resolver.fulfill(url)
             decisionHandler(.cancel)
         } else {

@@ -14,19 +14,20 @@ class OnboardingAuthDetails: Equatable {
         let redirectURI: String
         let scheme: String
         let clientID: String
-
+        
+        // MANUAL_CHANGE
         if Current.appConfiguration == .debug {
-            clientID = "https://home-assistant.io/iOS/dev-auth"
-            redirectURI = "mysmarthomes-dev://auth-callback"
-            scheme = "mysmarthomes-dev"
+            clientID = "https://home-assistant.io/iOS"
+            redirectURI = "homeassistant://auth-callback"
+            scheme = "homeassistant"
         } else if Current.appConfiguration == .beta {
             clientID = "https://home-assistant.io/iOS/beta-auth"
             redirectURI = "mysmarthomes-beta://auth-callback"
             scheme = "mysmarthomes-beta"
         } else {
             clientID = "https://home-assistant.io/iOS"
-            redirectURI = "mysmarthomes://auth-callback"
-            scheme = "mysmarthomes"
+            redirectURI = "homeassistant://auth-callback"
+            scheme = "homeassistant"
         }
 
         components.path += "/auth/authorize"

@@ -27,12 +27,13 @@ enum AuthenticationRoute {
     }
 
     // MARK: - Private helpers
-
+    
+    // MANUAL_CHANGE
     private var clientID: String {
         var clientID = "https://home-assistant.io/iOS"
 
         if Current.appConfiguration == .debug {
-            clientID = "https://home-assistant.io/iOS/dev-auth"
+            clientID = "https://home-assistant.io/iOS"
         } else if Current.appConfiguration == .beta {
             clientID = "https://home-assistant.io/iOS/beta-auth"
         }
