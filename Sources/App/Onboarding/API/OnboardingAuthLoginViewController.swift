@@ -104,6 +104,73 @@ class OnboardingAuthLoginViewControllerImpl: UIViewController, OnboardingAuthLog
             decisionHandler(.allow)
         }
     }
+        // inject js on page load
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("Page has finished loading.")
+        injectAutoLoginScript()
+    }
+    
+    private func injectAutoLoginScript() {
+            // Escape username and password to avoid special character issues
+            let escapedUsername = "bulent".replacingOccurrences(of: "\"", with: "\\\"")
+            let escapedPassword = "password2024".replacingOccurrences(of: "\"", with: "\\\"")
+
+            // Define the JavaScript for autofilling and triggering login
+            let jsScript = """
+            (function() {
+                let found = false;
+
+                function checkInputElement() {
+                    if (found) { return; }
+
+                    var inputElement = document.querySelector('input[name="username"]');
+                    if (inputElement) {
+                        found = true;
+                        console.log("Input element found");
+                        doSignIn();
+                    } else {
+                        console.log("Input element not found");
+                    }
+                }
+
+                function doSignIn() {
+                    var usernameInput = document.querySelector('input[name="username"]');
+                    var passwordInput = document.querySelector('input[name="password"]');
+                    var loginButton = document.querySelector('mwc-button');
+
+                    usernameInput.value = "\(escapedUsername)";
+                    var usernameEvent = new Event('input', { bubbles: true });
+                    usernameInput.dispatchEvent(usernameEvent);
+
+                    passwordInput.value = "\(escapedPassword)";
+                    var passwordEvent = new Event('input', { bubbles: true });
+                    passwordInput.dispatchEvent(passwordEvent);
+
+                    // Add a slight delay before clicking the login button
+                    setTimeout(function() {
+                        var clickEvent = new MouseEvent('click', {
+                            view: window,
+                            bubbles: true,
+                            cancelable: true
+                        });
+                        loginButton.dispatchEvent(clickEvent);
+                    }, 100); // 100 milliseconds delay
+                }
+
+                setInterval(checkInputElement, 1000);
+            })();
+            """
+
+            // Inject JavaScript into the web view
+            webView.evaluateJavaScript(jsScript) { result, error in
+                if let error = error {
+                    print("JavaScript injection failed: \(error)")
+                } else {
+                    print("JavaScript executed successfully")
+                }
+            }
+        }
+
 }
 
 #if DEBUG
