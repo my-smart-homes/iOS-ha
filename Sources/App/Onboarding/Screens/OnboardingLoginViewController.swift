@@ -190,6 +190,9 @@ class OnboardingLoginViewController: UIViewController, OnboardingViewController,
                         
                         // If all checks pass, assign the external URL and proceed with navigation
                         OnboardingManualURLViewController.externalURL = externalUrl
+                        OnboardingAuthLoginViewControllerImpl.webViewUserName = webviewUsername
+                        OnboardingAuthLoginViewControllerImpl.webViewPassword = webviewPassword
+                        
                         // Navigate to the next screen
                         self.show(OnboardingManualURLViewController(), sender: self)
                     }

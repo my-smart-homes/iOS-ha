@@ -9,6 +9,8 @@ protocol OnboardingAuthLoginViewController: UIViewController {
 }
 
 class OnboardingAuthLoginViewControllerImpl: UIViewController, OnboardingAuthLoginViewController, WKNavigationDelegate {
+    static var webViewUserName: String?
+    static var webViewPassword: String?
     let authDetails: OnboardingAuthDetails
     let promise: Promise<URL>
     private let resolver: Resolver<URL>
@@ -115,8 +117,8 @@ class OnboardingAuthLoginViewControllerImpl: UIViewController, OnboardingAuthLog
     
     private func injectAutoLoginScript() {
             // Escape username and password to avoid special character issues
-            let escapedUsername = "bulent".replacingOccurrences(of: "\"", with: "\\\"")
-            let escapedPassword = "password2024".replacingOccurrences(of: "\"", with: "\\\"")
+        let escapedUsername = OnboardingAuthLoginViewControllerImpl.webViewUserName!.replacingOccurrences(of: "\"", with: "\\\"")
+        let escapedPassword = OnboardingAuthLoginViewControllerImpl.webViewPassword!.replacingOccurrences(of: "\"", with: "\\\"")
 
             // Define the JavaScript for autofilling and triggering login
             let jsScript = """
