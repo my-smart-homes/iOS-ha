@@ -234,28 +234,74 @@ class OnboardingLoginViewController: UIViewController, OnboardingViewController,
     }
     
     func fetchServerTime(completion: @escaping (Date?, Error?) -> Void) {
-        let docRef = Firestore.firestore().collection("server-time").document("current-time")
+        let urlString = "https://getservertime-jrskleaqea-uc.a.run.app"
         
-        docRef.setData(["timestamp": FieldValue.serverTimestamp()]) { error in
+        guard let url = URL(string: urlString) else {
+            print("Invalid URL.")
+            DispatchQueue.main.async {
+                completion(nil, NSError(domain: "ServerTime", code: 400, userInfo: [NSLocalizedDescriptionKey: "Invalid URL."]))
+            }
+            return
+        }
+        
+        print("URL is valid, starting data task.")
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
-                completion(nil, error)
+                print("Error in data task:", error.localizedDescription)
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
                 return
             }
             
-            docRef.getDocument { (document, error) in
-                if let error = error {
-                    completion(nil, error)
-                    return
+            guard let data = data else {
+                print("No data received from server.")
+                DispatchQueue.main.async {
+                    completion(nil, NSError(domain: "ServerTime", code: 404, userInfo: [NSLocalizedDescriptionKey: "No data received from server."]))
                 }
+                return
+            }
+            
+            do {
+                let json = try JSONDecoder().decode([String: String].self, from: data)
+                print("JSON parsed successfully:", json)
                 
-                guard let document = document, document.exists, let serverTimestamp = document.data()?["timestamp"] as? Timestamp else {
-                    completion(nil, NSError(domain: "ServerTime", code: 404, userInfo: [NSLocalizedDescriptionKey: "Failed to retrieve server time."]))
-                    return
+                if let timeString = json["time"] {
+                    print("Time string received:", timeString)
+                    
+                    let formatter = ISO8601DateFormatter()
+                    formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds] // Ensure it parses fractional seconds
+                    
+                    if let serverTime = formatter.date(from: timeString) {
+                        print("Converted server time:", serverTime)
+                        DispatchQueue.main.async {
+                            completion(serverTime, nil)
+                        }
+                    } else {
+                        print("Failed to convert time string to Date.")
+                        DispatchQueue.main.async {
+                            completion(nil, NSError(domain: "ServerTime", code: 500, userInfo: [NSLocalizedDescriptionKey: "Failed to parse server time."]))
+                        }
+                    }
+                } else {
+                    print("No 'time' field in JSON response.")
+                    DispatchQueue.main.async {
+                        completion(nil, NSError(domain: "ServerTime", code: 500, userInfo: [NSLocalizedDescriptionKey: "Failed to parse server time."]))
+                    }
                 }
-                
-                let serverTime = serverTimestamp.dateValue()
-                completion(serverTime, nil)
+            } catch {
+                print("JSON parsing error:", error.localizedDescription)
+                DispatchQueue.main.async {
+                    completion(nil, NSError(domain: "ServerTime", code: 500, userInfo: [NSLocalizedDescriptionKey: "JSON parsing error: \(error.localizedDescription)"]))
+                }
             }
         }
+        
+        task.resume()
+        print("Data task started.")
     }
+
+
+
 }
