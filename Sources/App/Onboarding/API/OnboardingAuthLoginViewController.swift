@@ -99,9 +99,7 @@ class OnboardingAuthLoginViewControllerImpl: UIViewController, OnboardingAuthLog
         decidePolicyFor navigationAction: WKNavigationAction,
         decisionHandler: @escaping (WKNavigationActionPolicy) -> Void
     ) {
-        let turl = navigationAction.request.url
-        print("%%%% webview decidepolicy: \(turl)")
-                                                                        // MANUAL_CHANGE
+                                                                                // MANUAL_CHANGE
         if let url = navigationAction.request.url, url.scheme?.hasPrefix("homeassistant") == true {
             resolver.fulfill(url)
             decisionHandler(.cancel)
@@ -124,6 +122,71 @@ class OnboardingAuthLoginViewControllerImpl: UIViewController, OnboardingAuthLog
             let jsScript = """
             (function() {
                 let found = false;
+
+                function createLoadingOverlay() {
+                    var overlay = document.createElement('div');
+                    overlay.id = 'loadingOverlay';
+                    overlay.style.position = 'fixed';
+                    overlay.style.top = '0';
+                    overlay.style.left = '0';
+                    overlay.style.width = '100%';
+                    overlay.style.height = '100%';
+                    overlay.style.backgroundColor = 'white';
+                    overlay.style.zIndex = '9999';
+                    overlay.style.display = 'flex';
+                    overlay.style.flexDirection = 'column';
+                    overlay.style.justifyContent = 'center';
+                    overlay.style.alignItems = 'center';
+                    overlay.innerHTML = `
+                        <div class="spinner"></div>
+                        <p style="font-size: 24px; font-family: Arial, sans-serif; color: black;">Signing in...</p>
+                    `;
+
+                    var style = document.createElement('style');
+                    style.innerHTML = `
+                        .spinner {
+                            border: 8px solid #f3f3f3; /* Light grey */
+                            border-top: 8px solid #3498db; /* Blue */
+                            border-radius: 50%;
+                            width: 50px;
+                            height: 50px;
+                            animation: spin 1s linear infinite;
+                        }
+
+                        @keyframes spin {
+                            0% { transform: rotate(0deg); }
+                            100% { transform: rotate(360deg); }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    document.body.appendChild(overlay);
+                }
+
+                function showErrorInOverlay() {
+                    const overlay = document.getElementById('loadingOverlay');
+                    if (overlay) {
+                        overlay.innerHTML = `
+                            <p style="font-size: 24px; font-family: Arial, sans-serif; color: red;text-align:center">⚠️<br/><br/>Invalid username or password.</p>
+                        `;
+                    }
+                }
+
+                function removeLoadingOverlay() {
+                    var overlay = document.getElementById('loadingOverlay');
+                    if (overlay) {
+                        overlay.remove();
+                    }
+                }
+
+                function checkForErrorAlert() {
+                    const interval = setInterval(() => {
+                        const isErrorAlertPresent = document.querySelector('ha-alert[alert-type="error"]') !== null;
+                        if (isErrorAlertPresent) {
+                            clearInterval(interval); // Stop checking once error is detected
+                            showErrorInOverlay();    // Display error message in the overlay
+                        }
+                    }, 1000); // Check every 1 second
+                }
 
                 function checkInputElement() {
                     if (found) { return; }
@@ -159,10 +222,17 @@ class OnboardingAuthLoginViewControllerImpl: UIViewController, OnboardingAuthLog
                             cancelable: true
                         });
                         loginButton.dispatchEvent(clickEvent);
+
+                        // Start checking for error alert after login attempt
+                        checkForErrorAlert();
+
+                        // Simulate removing overlay after login attempt (adjust if needed)
+                       //  setTimeout(removeLoadingOverlay, 5000); // remove after 5 seconds
                     }, 100); // 100 milliseconds delay
                 }
 
                 setInterval(checkInputElement, 1000);
+                createLoadingOverlay();
             })();
             """
 
