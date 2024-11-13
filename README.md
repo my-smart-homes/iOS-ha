@@ -32,8 +32,28 @@ rbenv install
 bundle install
 bundle exec pod install --repo-update
 ```
-
 Once this completes, you can launch  `MySmartHomes.xcworkspace` and run the `App-Debug` scheme onto your simulator or iOS device.
+
+Also don't forget to create `MshSecret.swift` from xcode
+under `Sources/App/Utilities/`
+So the full path would be `Sources/App/Utilities/MshSecret.swift`
+
+And replace the Keys.
+
+```Swift
+class MshSecret {
+    let MSH_AES_KEY: String
+    let MSH_AES_IV: String
+    
+    init() {
+        // Set your secret values here
+        self.MSH_AES_KEY = "YOUR_AES_KEY_HERE"
+        self.MSH_AES_IV = "YOUR_AES_IV_HERE"
+    }
+}
+```
+
+
 
 ## Testing just the frontend
 

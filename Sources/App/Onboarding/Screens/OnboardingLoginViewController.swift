@@ -123,83 +123,108 @@ class OnboardingLoginViewController: UIViewController, OnboardingViewController,
     
     
     @objc private func loginTapped(_ sender: UIButton) {
+        guard validateInputs() else { return }
+        fetchServerTimeAndLogin()
+    }
+
+    private func validateInputs() -> Bool {
         guard let email = emailTextField.text, !email.isEmpty,
               let password = passwordTextField.text, !password.isEmpty else {
             showAlert(title: "Error", message: "Please enter both email and password.")
-            return
+            return false
         }
-        
-        print("Fetching Server Time")
+        return true
+    }
+
+    private func fetchServerTimeAndLogin() {
         fetchServerTime { [weak self] serverTime, error in
             guard let self = self else { return }
-            
+
             if let error = error {
                 self.showAlert(title: "Error", message: "Failed to fetch server time: \(error.localizedDescription)")
                 return
             }
-            
+
             guard let serverTime = serverTime else {
                 self.showAlert(title: "Error", message: "Failed to retrieve server time.")
                 return
             }
-            
-            // Mostrar o loader enquanto faz login
-            activityIndicator.startAnimating()
-            
-            // Realizar login com Firebase Authentication
-            Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-                guard let self = self else { return }
-                
-                // Parar o loader após a resposta
-                self.activityIndicator.stopAnimating()
-                
-                if let error = error {
-                    // Exibir mensagem de erro
-                    self.showAlert(title: "Login Failed", message: error.localizedDescription)
-                    return
-                }
-                
-                
-                // Login successful, print to the console
-                print("Login Success")
-                if let userId = authResult?.user.uid {
-                    print("Logged in user ID: \(userId)")
-                    
-                    // Call function to fetch user data from Firestore
-                    self.fetchUserData(userId: userId){ userData in
-                        guard let userData = userData else{
-                            self.showAlert(title: "Error", message: "Failed to retrieve user data.")
-                            return
-                        }
-                        
-                        // Perform the checks after fetching the user data
-                        guard let webviewUsername = userData["webview_username"] as? String, !webviewUsername.isEmpty,
-                              let webviewPassword = userData["webview_password"] as? String, !webviewPassword.isEmpty,
-                              let externalUrl = userData["external_url"] as? String, !externalUrl.isEmpty,
-                              let expirationDateTimestamp = userData["expirationDate"] as? Timestamp else {
-                            self.showAlert(title: "Missing Information", message: "One or more account details are missing.")
-                            return
-                        }
 
-                        let expirationDate = expirationDateTimestamp.dateValue()
+            self.performLogin(serverTime: serverTime)
+        }
+    }
 
-                        if expirationDate < serverTime {
-                            self.showAlert(title: "Subscription Expired", message: "Your subscription has expired. Please renew to continue.")
-                            return
-                        }
-                        
-                        // If all checks pass, assign the external URL and proceed with navigation
-                        OnboardingManualURLViewController.externalURL = externalUrl
-                        OnboardingAuthLoginViewControllerImpl.webViewUserName = webviewUsername
-                        OnboardingAuthLoginViewControllerImpl.webViewPassword = webviewPassword
-                        
-                        // Navigate to the next screen
-                        self.show(OnboardingManualURLViewController(), sender: self)
-                    }
+    private func performLogin(serverTime: Date) {
+        activityIndicator.startAnimating()
+
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text else { return }
+
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            guard let self = self else { return }
+            
+            self.activityIndicator.stopAnimating()
+
+            if let error = error {
+                self.showAlert(title: "Login Failed", message: error.localizedDescription)
+                return
+            }
+
+            print("Login Success")
+            if let userId = authResult?.user.uid {
+                print("Logged in user ID: \(userId)")
+                self.fetchUserData(userId: userId) { userData in
+                    self.handleUserData(userData, serverTime)
                 }
             }
         }
+    }
+
+    private func handleUserData(_ userData: [String : Any]?, _ serverTime: Date) {
+        guard let userData = userData else {
+            showAlert(title: "Error", message: "Failed to retrieve user data.")
+            return
+        }
+
+        guard let webviewUsername = userData["webview_username"] as? String,
+              !webviewUsername.isEmpty,
+              let webviewPassword = userData["webview_password"] as? String,
+              !webviewPassword.isEmpty,
+              let externalUrl = userData["external_url"] as? String,
+              !externalUrl.isEmpty,
+              let expirationDateTimestamp = userData["expirationDate"] as? Timestamp else {
+            showAlert(title: "Missing Information", message: "One or more account details are missing.")
+            return
+        }
+
+        let expirationDate = expirationDateTimestamp.dateValue()
+
+        if expirationDate < serverTime {
+            showAlert(title: "Subscription Expired", message: "Your subscription has expired. Please renew to continue.")
+            return
+        }
+
+        // If all checks pass, assign the external URL and proceed with navigation
+        OnboardingManualURLViewController.externalURL = externalUrl
+        OnboardingAuthLoginViewControllerImpl.webViewUserName = webviewUsername
+        //        OnboardingAuthLoginViewControllerImpl.webViewPassword = webviewPassword
+        let secret = MshSecret()
+        let decryption = AESDecryption(key: secret.MSH_AES_KEY,
+                                       iv: secret.MSH_AES_IV,
+                                           encryptedText: webviewPassword)
+        var decryptedString: String?
+        if let decrypted = decryption.decrypt() {
+            decryptedString = decrypted
+            print("Decrypted String::", decryptedString)
+        } else {
+            print("Failed to decrypt the string.")
+            return
+        }
         
+        OnboardingAuthLoginViewControllerImpl.webViewPassword = decryptedString
+
+        // Navigate to the next screen
+        show(OnboardingManualURLViewController(), sender: self)
     }
     
     @objc private func forgotPasswordTapped(_ sender: UIButton) {

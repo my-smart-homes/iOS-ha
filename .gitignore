@@ -80,6 +80,7 @@ dSYMs/
 
 # Local configuration overrides
 Configuration/HomeAssistant.overrides.xcconfig
+Sources/App/Utilities/MshSecret.swift
 
 *.profraw
 Brewfile.lock.json
