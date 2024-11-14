@@ -58,6 +58,8 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         webViewExternalMessageHandler.webViewController = self
+        
+        VersionChecker.shared.checkForUpdate(from: self)
 
         becomeFirstResponder()
 

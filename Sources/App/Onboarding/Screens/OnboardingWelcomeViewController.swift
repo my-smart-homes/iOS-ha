@@ -15,6 +15,8 @@ class OnboardingWelcomeViewController: UIViewController, OnboardingViewControlle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        VersionChecker.shared.checkForUpdate(from: self)
+        
         view.backgroundColor = UIColor.black // Mantenha o fundo atual ou ajuste conforme necessário
         
             // Stack view para centralizar os itens
