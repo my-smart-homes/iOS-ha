@@ -504,7 +504,7 @@
 		42FCD0132B9B29740057783F /* ThreadCredentialsManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FCD00E2B9B29740057783F /* ThreadCredentialsManagementViewModel.swift */; };
 		42FCD0142B9B29740057783F /* ThreadCredentialDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FCD00F2B9B29740057783F /* ThreadCredentialDetailsView.swift */; };
 		42FCD0152B9B29740057783F /* ThreadCredentialsManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FCD0112B9B29740057783F /* ThreadCredentialsManagementView.swift */; };
-		48EE67322CE4F83000DAC202 /* MshSecret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EE67312CE4F83000DAC202 /* MshSecret.swift */; };
+		480FEBF72D355F46007FC0C4 /* MshSecret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480FEBF62D355F46007FC0C4 /* MshSecret.swift */; };
 		48EE67362CE5060D00DAC202 /* AESDecryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EE67352CE5060D00DAC202 /* AESDecryptor.swift */; };
 		48FBE7652CE62AE400BAB50D /* VersionChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FBE7642CE62AE400BAB50D /* VersionChecker.swift */; };
 		491E98FF25D543560077BBE3 /* LogbookEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491E98FE25D543560077BBE3 /* LogbookEntry.swift */; };
@@ -1615,7 +1615,7 @@
 		42FCD00F2B9B29740057783F /* ThreadCredentialDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadCredentialDetailsView.swift; sourceTree = "<group>"; };
 		42FCD0112B9B29740057783F /* ThreadCredentialsManagementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadCredentialsManagementView.swift; sourceTree = "<group>"; };
 		479C2CCB032E2A0ECDE45B87 /* Pods-Tests-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests-App/Pods-Tests-App.debug.xcconfig"; sourceTree = "<group>"; };
-		48EE67312CE4F83000DAC202 /* MshSecret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MshSecret.swift; sourceTree = "<group>"; };
+		480FEBF62D355F46007FC0C4 /* MshSecret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MshSecret.swift; sourceTree = "<group>"; };
 		48EE67352CE5060D00DAC202 /* AESDecryptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESDecryptor.swift; sourceTree = "<group>"; };
 		48FBE7642CE62AE400BAB50D /* VersionChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionChecker.swift; sourceTree = "<group>"; };
 		491E98FE25D543560077BBE3 /* LogbookEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogbookEntry.swift; sourceTree = "<group>"; };
@@ -4018,9 +4018,9 @@
 				1100D51C2496AECE00B1073C /* PermissionStatusRow.swift */,
 				B6DD5E6924940F6F003A0154 /* OpenInFirefoxControllerSwift.swift */,
 				11761E2825EC1415007A9D17 /* WebSocketStatusRow.swift */,
-				48EE67312CE4F83000DAC202 /* MshSecret.swift */,
 				48EE67352CE5060D00DAC202 /* AESDecryptor.swift */,
 				48FBE7642CE62AE400BAB50D /* VersionChecker.swift */,
+				480FEBF62D355F46007FC0C4 /* MshSecret.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -5584,7 +5584,6 @@
 				11195F6B267EFB1F003DF674 /* NotificationManagerLocalPushInterface.swift in Sources */,
 				B6022213226DAC9D00E8DBFE /* ScaledFont.swift in Sources */,
 				1112AE9B25F71775007A541A /* LocationHistoryListViewController.swift in Sources */,
-				48EE67322CE4F83000DAC202 /* MshSecret.swift in Sources */,
 				B68EDD03215F0E2900DD6B28 /* NotificationCategoryConfigurator.swift in Sources */,
 				425573E72B5838BB00145217 /* HATypedRequest+CarPlay.swift in Sources */,
 				D0FF79D220D87D200034574D /* ClientEventTableViewController.swift in Sources */,
@@ -5760,6 +5759,7 @@
 				1185DFB1271FF53800ED7D9A /* OnboardingAuthStepNotify.swift in Sources */,
 				B65C0B522282BA13007E057B /* NotificationSettingsViewController.swift in Sources */,
 				11A183B32511BCF300CA326A /* LifecycleManager.swift in Sources */,
+				480FEBF72D355F46007FC0C4 /* MshSecret.swift in Sources */,
 				1185DFAE271FF53800ED7D9A /* OnboardingAuthStepConfig.swift in Sources */,
 				425573CE2B5574F100145217 /* CarPlayAreasViewModel.swift in Sources */,
 				42BA1BC92C8864C200A2FC36 /* OpenPageAppIntent.swift in Sources */,
