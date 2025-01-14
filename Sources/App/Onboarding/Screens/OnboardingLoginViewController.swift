@@ -174,27 +174,22 @@ class OnboardingLoginViewController: UIViewController, OnboardingViewController,
             if let userId = authResult?.user.uid {
                 print("Logged in user ID: \(userId)")
                 self.fetchUserData(userId: userId) { userData in
-                    self.handleUserData(userData, serverTime)
+                    self.handleUserData(userId, userData, serverTime)
                 }
             }
         }
     }
 
-    private func handleUserData(_ userData: [String : Any]?, _ serverTime: Date) {
+    private func handleUserData(_ userId: String, _ userData: [String : Any]?, _ serverTime: Date) {
         guard let userData = userData else {
             showAlert(title: "Error", message: "Failed to retrieve user data.")
             return
         }
 
-        guard let webviewUsername = userData["webview_username"] as? String,
-              !webviewUsername.isEmpty,
-              let webviewPassword = userData["webview_password"] as? String,
-              !webviewPassword.isEmpty,
-              let externalUrl = userData["external_url"] as? String,
-              !externalUrl.isEmpty,
-              let expirationDateTimestamp = userData["expirationDate"] as? Timestamp else {
-            showAlert(title: "Missing Information", message: "One or more account details are missing.")
-            return
+        guard let subscription = userData["subscription"] as? [String: Any],
+              let expirationDateTimestamp = subscription["expiresAt"] as? Timestamp else {
+            showAlert(title: "Missing Subscription Info", message: "This id doesnt have scbuscription expiry record.")
+            return;
         }
 
         let expirationDate = expirationDateTimestamp.dateValue()
@@ -203,28 +198,77 @@ class OnboardingLoginViewController: UIViewController, OnboardingViewController,
             showAlert(title: "Subscription Expired", message: "Your subscription has expired. Please renew to continue.")
             return
         }
+        
+        // fetch first server pass
+        let serverPassCollection = Firestore.firestore()
+            .collection("users").document(userId)
+            .collection("serverPasswords")
+        
+        serverPassCollection.limit(to: 1).getDocuments{snapshot, error in
+            guard error == nil, let document = snapshot?.documents.first else {
+                self.showAlert(title: "Error", message: "Failed to fetch server password")
+                return
+            }
+            
+            let encryptedPass = document.get("encryptedPass") as? String
+            let serverPassDocId = document.documentID
+            
+            guard let encryptedPass = encryptedPass else{
+                self.showAlert(title: "Error", message: "Password not found.")
+                return
+            }
+            
+            let secret = MshSecret()
+            let decryption = AESDecryption(key: secret.MSH_AES_KEY,
+                                           iv: secret.MSH_AES_IV,
+                                               encryptedText: encryptedPass)
+            guard let decrypted = decryption.decrypt() else {
+                print("Failed to decrypt the string.")
+                self.showAlert(title: "Error", message: "Decryption failed.")
+                return
+            }
+            
+            if let email = userData["email"] as? String {
+                self.fetchServerUrl(serverPassDocId, decrypted, email)
+            }else{
+                self.showAlert(title: "Error", message: "Username Missing for user")
+            }
+            
+        }
+    }
+    
+    private func fetchServerUrl(_ serverDocId: String, _ webviewPassword: String,_ email: String){
+        let serverRef = Firestore.firestore().collection("servers").document(serverDocId)
+        serverRef.getDocument{ document, error in
+            if let document = document, document.exists {
+                if let data = document.data() {
+                    let internalURl = data["internalUrl"] as? String
+                    let externalUrl = data["externalUrl"] as? String
+                    OnboardingManualURLViewController.externalURL = externalUrl
+                    OnboardingAuthLoginViewControllerImpl.webViewUserName = email
+                    OnboardingAuthLoginViewControllerImpl.webViewPassword = webviewPassword
 
-        // If all checks pass, assign the external URL and proceed with navigation
-        OnboardingManualURLViewController.externalURL = externalUrl
-        OnboardingAuthLoginViewControllerImpl.webViewUserName = webviewUsername
-        //        OnboardingAuthLoginViewControllerImpl.webViewPassword = webviewPassword
-        let secret = MshSecret()
-        let decryption = AESDecryption(key: secret.MSH_AES_KEY,
-                                       iv: secret.MSH_AES_IV,
-                                           encryptedText: webviewPassword)
-        var decryptedString: String?
-        if let decrypted = decryption.decrypt() {
-            decryptedString = decrypted
-            print("Decrypted String::", decryptedString)
-        } else {
-            print("Failed to decrypt the string.")
-            return
+                    // Navigate to the next screen
+                    self.show(OnboardingManualURLViewController(), sender: self)
+                } else {
+                    self.showAlert(title: "Error", message: "Document data is nil or invalid.")
+                }
+                
+            }else{
+                self.showAlert(title: "Error", message: "Getting Server Doc")
+            }
+        
         }
         
-        OnboardingAuthLoginViewControllerImpl.webViewPassword = decryptedString
-
-        // Navigate to the next screen
-        show(OnboardingManualURLViewController(), sender: self)
+//        userRef.getDocument { document, error in
+//            if let document = document, document.exists {
+//                let data = document.data()
+//                completion(data)
+//            }else{
+//                print("No document found or error: \(error?.localizedDescription ?? "Unknown error")")
+//                completion(nil)
+//            }
+//        }
     }
     
     @objc private func forgotPasswordTapped(_ sender: UIButton) {
