@@ -200,41 +200,52 @@ class OnboardingLoginViewController: UIViewController, OnboardingViewController,
         }
         
         // fetch first server pass
-        let serverPassCollection = Firestore.firestore()
-            .collection("users").document(userId)
-            .collection("serverPasswords")
-        
-        serverPassCollection.limit(to: 1).getDocuments{snapshot, error in
-            guard error == nil, let document = snapshot?.documents.first else {
-                self.showAlert(title: "Error", message: "Failed to fetch server password")
-                return
+        // Fetch all server passwords
+            let serverPassCollection = Firestore.firestore()
+                .collection("users").document(userId)
+                .collection("serverPasswords")
+
+            serverPassCollection.getDocuments { [weak self] snapshot, error in
+                guard let self = self else { return }
+                guard error == nil, let documents = snapshot?.documents else {
+                    self.showAlert(title: "Error", message: "Failed to fetch server passwords")
+                    return
+                }
+
+                if documents.count == 1 {
+                    // Only one server password, continue as before
+                    let document = documents.first!
+                    let encryptedPass = document.get("encryptedPass") as? String
+                    let serverPassDocId = document.documentID
+
+                    guard let encryptedPass = encryptedPass else {
+                        self.showAlert(title: "Error", message: "Password not found.")
+                        return
+                    }
+
+                    let secret = MshSecret()
+                    let decryption = AESDecryption(key: secret.MSH_AES_KEY,
+                                                  iv: secret.MSH_AES_IV,
+                                                  encryptedText: encryptedPass)
+                    guard let decrypted = decryption.decrypt() else {
+                        print("Failed to decrypt the string.")
+                        self.showAlert(title: "Error", message: "Decryption failed.")
+                        return
+                    }
+
+                    if let email = userData["email"] as? String {
+                        self.fetchServerUrl(serverPassDocId, decrypted, email)
+                    } else {
+                        self.showAlert(title: "Error", message: "Username Missing for user")
+                    }
+                } else if documents.count > 1 {
+                    // Multiple server passwords, show a dialog
+                    self.showServerSelectionDialog(documents, userData: userData)
+                } else {
+                    // No server passwords found
+                    self.showAlert(title: "Error", message: "No server passwords found.")
+                }
             }
-            
-            let encryptedPass = document.get("encryptedPass") as? String
-            let serverPassDocId = document.documentID
-            
-            guard let encryptedPass = encryptedPass else{
-                self.showAlert(title: "Error", message: "Password not found.")
-                return
-            }
-            
-            let secret = MshSecret()
-            let decryption = AESDecryption(key: secret.MSH_AES_KEY,
-                                           iv: secret.MSH_AES_IV,
-                                               encryptedText: encryptedPass)
-            guard let decrypted = decryption.decrypt() else {
-                print("Failed to decrypt the string.")
-                self.showAlert(title: "Error", message: "Decryption failed.")
-                return
-            }
-            
-            if let email = userData["email"] as? String {
-                self.fetchServerUrl(serverPassDocId, decrypted, email)
-            }else{
-                self.showAlert(title: "Error", message: "Username Missing for user")
-            }
-            
-        }
     }
     
     private func fetchServerUrl(_ serverDocId: String, _ webviewPassword: String,_ email: String){
@@ -260,16 +271,50 @@ class OnboardingLoginViewController: UIViewController, OnboardingViewController,
         
         }
         
-//        userRef.getDocument { document, error in
-//            if let document = document, document.exists {
-//                let data = document.data()
-//                completion(data)
-//            }else{
-//                print("No document found or error: \(error?.localizedDescription ?? "Unknown error")")
-//                completion(nil)
-//            }
-//        }
     }
+    
+    private func showServerSelectionDialog(_ documents: [QueryDocumentSnapshot], userData: [String: Any]?) {
+        let alertController = UIAlertController(title: "Select Server", message: "Please choose a server to connect to.", preferredStyle: .actionSheet)
+
+        for document in documents {
+            let serverId = document.documentID
+            let homeName = document.get("homeName") as? String
+            let title = homeName ?? serverId
+            
+            let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
+                guard let self = self else { return }
+                let encryptedPass = document.get("encryptedPass") as? String
+
+                guard let encryptedPass = encryptedPass else {
+                    self.showAlert(title: "Error", message: "Password not found.")
+                    return
+                }
+
+                let secret = MshSecret()
+                let decryption = AESDecryption(key: secret.MSH_AES_KEY,
+                                              iv: secret.MSH_AES_IV,
+                                              encryptedText: encryptedPass)
+                guard let decrypted = decryption.decrypt() else {
+                    print("Failed to decrypt the string.")
+                    self.showAlert(title: "Error", message: "Decryption failed.")
+                    return
+                }
+
+                if let userData = userData, let email = userData["email"] as? String {
+                    self.fetchServerUrl(serverId, decrypted, email)
+                } else {
+                    self.showAlert(title: "Error", message: "Username Missing for user")
+                }
+            }
+            alertController.addAction(action)
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+
+        present(alertController, animated: true, completion: nil)
+    }
+
     
     @objc private func forgotPasswordTapped(_ sender: UIButton) {
         // Lógica para recuperação de senha
