@@ -253,9 +253,17 @@ class OnboardingLoginViewController: UIViewController, OnboardingViewController,
         serverRef.getDocument{ document, error in
             if let document = document, document.exists {
                 if let data = document.data() {
-                    let internalURl = data["internalUrl"] as? String
-                    let externalUrl = data["externalUrl"] as? String
-                    OnboardingManualURLViewController.internalUrl = internalURl
+                    var internalUrl = data["internalUrl"] as? String
+                    var externalUrl = data["externalUrl"] as? String
+                    if let url = internalUrl, !url.lowercased().hasPrefix("http://") && !url.lowercased().hasPrefix("https://") {
+                        internalUrl = "http://" + url
+                    }
+                    
+                    if let url = externalUrl, !url.lowercased().hasPrefix("http://") && !url.lowercased().hasPrefix("https://") {
+                        externalUrl = "https://" + url
+                    }
+    
+                    OnboardingManualURLViewController.internalUrl = internalUrl
                     OnboardingManualURLViewController.externalURL = externalUrl
                     OnboardingAuthLoginViewControllerImpl.webViewUserName = email
                     OnboardingAuthLoginViewControllerImpl.webViewPassword = webviewPassword
