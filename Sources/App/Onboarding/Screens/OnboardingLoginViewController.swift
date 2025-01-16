@@ -255,6 +255,7 @@ class OnboardingLoginViewController: UIViewController, OnboardingViewController,
                 if let data = document.data() {
                     let internalURl = data["internalUrl"] as? String
                     let externalUrl = data["externalUrl"] as? String
+                    OnboardingManualURLViewController.internalUrl = internalURl
                     OnboardingManualURLViewController.externalURL = externalUrl
                     OnboardingAuthLoginViewControllerImpl.webViewUserName = email
                     OnboardingAuthLoginViewControllerImpl.webViewPassword = webviewPassword
