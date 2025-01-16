@@ -218,6 +218,23 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
             webView.isInspectable = true
         }
         #endif
+        
+        if let internalUrlString = OnboardingManualURLViewController.internalUrl,
+           let internalUrl = URL(string: internalUrlString) {
+            // Iterate over all servers and update their internal URL
+            for server in Current.servers.all {
+                server.update { info in
+                    // Set the internal address for the server
+                    info.connection.set(address: internalUrl, for: .internal)
+                    
+                    // Optionally, you can update other properties if needed
+                    // For example, if you want to disable cloud usage:
+                    // info.connection.useCloud = false
+                }
+            }
+        } else {
+            print("Invalid or missing internal URL")
+        }
     }
 
     public func showSettingsViewController() {
